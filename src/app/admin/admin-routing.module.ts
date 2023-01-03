@@ -8,9 +8,9 @@ import { UserAccessComponent } from './user-access/user-access.component';
 const routes: Routes = [
   {path:'admin-home-path',component:AdminHomeComponent,
   children:[
-    {path:'add-product',component:AddProductComponent},
-    {path:'delivary',component:DeliveryComponent},
-    {path:'user-access',component:UserAccessComponent}
+    {path:'add-product-path',component:AddProductComponent},
+    {path:'delivery-path',component:DeliveryComponent},
+    {path:'user-access-path',component:UserAccessComponent}
   ]
 }
 ];

@@ -4,8 +4,8 @@ import { OrderedItemsComponent } from './ordered-items/ordered-items.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
-  {path:'ordered-items',component:OrderedItemsComponent},
-  {path:'product-list',component:ProductListComponent}
+  {path:'ordered-items-path',component:OrderedItemsComponent},
+  {path:'product-list-path',component:ProductListComponent}
 ];
 
 @NgModule({
