@@ -1,0 +1,12 @@
+<div class="container" id="container">
+    <form #editProduct="ngForm" (ngSubmit)="onSubmit(editProduct)" >
+        <h1>Edit product</h1>
+        <div>
+            <input id="id" type="number" name="id" class="formcontrol" placeholder="Enter the id" ngModel>
+            <input id="productName" name="productName" class="formcontrol" type="text" placeholder="Enter the name of the product" ngModel>
+            <input id="productPrice" name="productPrice" class="formcontrol" type="number" placeholder="Enter the price of the product" ngModel>
+            <input type="file" id="productImage" name="productImage" class="formcontrol" ngModel>
+            <button>Edit Product</button>
+        </div>
+    </form>
+</div>

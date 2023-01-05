@@ -10,13 +10,26 @@ import { AdminService } from 'src/app/Services/admin.service';
 export class ViewProductComponent implements OnInit{
     public product!:AddProduct[];
     public access=false;
-     constructor(public addminservice:AdminService){}
+    public update!:AddProduct[];
+    ho= 'any';
+     constructor(public adminservice:AdminService){}
 
   ngOnInit(){
-    this.addminservice.getProduct().subscribe(
+    this.adminservice.getProduct().subscribe(
       (res:AddProduct[])=>{
         this.product=res;
       }
     )
+  }
+
+  editProduct(data:any,data1:any){
+    this.update=data1;
+    this.adminservice.editProduct(data,this.update).subscribe();
+    
+  }
+
+  deleteProduct(data:any){
+    this.adminservice.deleteProduct(data).subscribe();
+    this.ngOnInit();
   }
 }

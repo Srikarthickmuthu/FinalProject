@@ -19,4 +19,8 @@ public access=false;
       }
     )
   }
+  blockUser(data:Number){
+    this.addminservice.deleteUser(data).subscribe();
+    this.ngOnInit();
+  }
 }

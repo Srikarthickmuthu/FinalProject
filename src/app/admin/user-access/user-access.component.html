@@ -6,8 +6,10 @@
             <th>Last name</th>
             <th>Number</th>
             <th>Email</th>
+            <th>Password</th>
             <th>Gender</th>
             <th>Country</th>
+            <th>Block User</th>
         </tr>
     </thead>
     <tbody>
@@ -17,8 +19,12 @@
             <td>{{user.lname}}</td>
             <td>{{user.number}}</td>
             <td>{{user.email}}</td>
+            <td>{{user.password}}</td>
             <td>{{user.gender}}</td>
             <td>{{user.country}}</td>
+            <td>
+                <button (click)="blockUser(user.id)">Block</button>
+            </td>
         </tr>
     </tbody>
 </table>

@@ -4,6 +4,7 @@ export interface UserData{
     lname:String;
     number:Number;
     email:String;
+    password:String;
     gender:String;
     country:String;
     access:String;

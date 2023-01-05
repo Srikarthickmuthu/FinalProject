@@ -13,12 +13,10 @@ export class AddProductComponent {
 
   onSubmit(addProduct:NgForm ){
 
-
-    console.log(addProduct.value);
-
     this.addProductService.addProduct(addProduct.value).subscribe();
 
     addProduct.resetForm();
   
   }
 }
+

@@ -10,7 +10,6 @@ export class AddProductService {
   url="http://localhost:3000";
 
   addProduct(data:any){
-    console.log(data);
     return this.http.post(`${this.url}/product-details`,data);
   }
 }

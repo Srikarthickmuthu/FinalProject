@@ -8,6 +8,7 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewProductComponent } from './view-product/view-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
     AddProductComponent,
     DeliveryComponent,
     AdminHomeComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,

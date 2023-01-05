@@ -5,24 +5,37 @@
         <div>
             <input id="fname" name="fname" type="text" class="formcontrol" placeholder="Enter your first name" ngModel
                 required fname>
+
             <input id="lname" name="lname" type="text" class="formcontrol" placeholder="Enter your last name" ngModel
                 required lname>
+
             <input id="number" name="number" type="number" class="formcontrol" placeholder="Enter your Mobile Number"
-                ngModel required number>
+                ngModel required number #number="ngModel">
+                
+            <span *ngIf="!number.valid && number.touched">Please enter valid number</span><br>
+
             <input type="text" id="email" class="formcontrol" name="email" placeholder="Enter your Mail Id" ngModel
                 required email #email="ngModel">
+
+            <input type="password" id="password" class="formcontrol" name="password" placeholder="Enter the new passsword" ngModel
+             required password>
+
             <span *ngIf="!email.valid && email.touched">Please enter valid email</span><br>
-            <select id="gender" name="gender" for="gender" class="formcontrol" name="Select your gender" placeholder="Select your gender" ngModel required gender>
+
+            <select id="gender" name="gender" for="gender" class="formcontrol" name="gender" placeholder="Select your gender" ngModel required gender>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Others">Others</option>
             </select>
+
             <select id="country"name="country" for="country" class="formcontrol" placeholder="Select Your country" ngModel required country>
                 <option *ngFor="let c of countryList">
                     {{c.countryname}}
                 </option>
             </select>
+
             <br><br>
+
             <button [disabled]="!userForm.valid">Submit</button>
         </div>
     </form>
