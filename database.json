@@ -1,0 +1,61 @@
+{
+  "user-details": [
+    {
+      "id": 1,
+      "fname": "karthick",
+      "lname": "kumar",
+      "number": 1234567890,
+      "email": "abc@gmail.com",
+      "gender": "male",
+      "country": "India"
+    },
+    {
+      "fname": "karthick",
+      "lname": "oliujghf",
+      "number": 9876543,
+      "email": "training@aspiresys.com",
+      "gender": "Male",
+      "country": "America",
+      "id": 2
+    },
+    {
+      "fname": "amarnath",
+      "lname": "arumugam",
+      "number": 1234557890,
+      "email": "amar@gmail.com",
+      "gender": "Male",
+      "country": "America",
+      "id": 3
+    },
+    {
+      "fname": "santha",
+      "lname": "ruban",
+      "number": 123456,
+      "email": "santha@gmail.com",
+      "gender": "Male",
+      "country": "India",
+      "id": 4
+    },
+    {
+      "fname": "Nisha",
+      "lname": "N",
+      "number": 1234,
+      "email": "nisha@gmail.com",
+      "gender": "Female",
+      "country": "India",
+      "id": 5
+    },
+    {
+      "fname": "dhanush",
+      "lname": "b",
+      "number": 45678,
+      "email": "d@gmail.com",
+      "gender": "Male",
+      "country": "India",
+      "id": 6
+    }
+  ],
+  "product-details": [
+
+  ]
+}

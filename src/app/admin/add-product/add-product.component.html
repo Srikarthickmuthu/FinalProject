@@ -1,1 +1,12 @@
-<p>add-product works!</p>
+
+<div class="container" id="container">
+    <form #addProduct="ngForm" (ngSubmit)="onSubmit(addProduct)" >
+        <h1>Add new product</h1>
+        <div>
+            <input id="productName" name="productName" class="formcontrol" type="text" placeholder="Enter the name of the product" ngModel required productName>
+            <input id="productPrice" name="productPrice" class="formcontrol" type="number" placeholder="Enter the price of the product" ngModel required productPrice>
+            <input type="file" id="productImage" name="productImage" class="formcontrol" target="/home/asplap3262/Desktop/FinalProject/src/assets" ngModel required >
+            <button>Add Product</button>
+        </div>
+    </form>
+</div>

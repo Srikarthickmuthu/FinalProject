@@ -7,15 +7,18 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 
 
+
+
 @NgModule({
   declarations: [
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class LoginModule { }

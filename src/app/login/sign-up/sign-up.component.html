@@ -12,12 +12,12 @@
             <input type="text" id="email" class="formcontrol" name="email" placeholder="Enter your Mail Id" ngModel
                 required email #email="ngModel">
             <span *ngIf="!email.valid && email.touched">Please enter valid email</span><br>
-            <select for="gender" class="formcontrol" placeholder="Select your gender" ngModel required>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Others</option>
+            <select id="gender" name="gender" for="gender" class="formcontrol" name="Select your gender" placeholder="Select your gender" ngModel required gender>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
             </select>
-            <select for="country" class="formcontrol" placeholder="Select Your country" ngModel required>
+            <select id="country"name="country" for="country" class="formcontrol" placeholder="Select Your country" ngModel required country>
                 <option *ngFor="let c of countryList">
                     {{c.countryname}}
                 </option>
