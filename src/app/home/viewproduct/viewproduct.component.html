@@ -1,1 +1,35 @@
-<p>viewproduct works!</p>
+<!-- <form (ngSubmit)="onSubmit(cart)" #cart="ngForm"> -->
+<table>
+      <thead>
+        <tr>
+            <th>Select</th>
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Product Price Per Kg</th>
+            <th>Select the quantity need</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of product">
+            
+                <td><input type="checkbox" id="check" name="check" class="formcontrol" ngModel check></td>
+                <td><img src="../../../assets/product-images/{{product.productImage}}"></td>
+                <td>
+                    <h3>{{product.productName}}</h3>
+                </td>
+                <td>
+                    <h3>₹ {{product.productPrice}}</h3>
+                </td>
+                <td>
+                    <select id="quantity" name="quantity" for="quantity" class="formcontrol" ngModel required quantity>
+                        <option *ngFor="let c of gramWeight">
+                            {{c.gram}} Grams
+                        </option>
+                    </select>
+                </td>
+
+        </tr>
+    </tbody>
+</table>
+<button> Submit </button>
+<!-- </form> -->

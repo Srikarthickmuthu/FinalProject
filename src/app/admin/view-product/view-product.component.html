@@ -3,6 +3,7 @@
         <tr>
             <th>Id</th>
             <th>Product name</th>
+            <th>Product Type</th>
             <th>Product Price</th>
             <th>Product Image</th>
             <th colspan="2">Edit/Delete</th>
@@ -12,15 +13,16 @@
         <tr *ngFor="let product of product">
             <td>{{product.id}}</td>
             <td>{{product.productName}}</td>
+            <td>{{product.productType}}</td>
             <td>{{product.productPrice}}</td>
             <td>{{product.productImage}}</td>
+            <td><button (click)="edit(product.id)">Edit</button></td>
             <td><button (click)="deleteProduct(product.id)">Delete</button></td>
         </tr>
     </tbody>
 </table>
+<router-outlet></router-outlet>
 
-
-<form>
-    <h1>hellooooo</h1>
-    <input type="text" [defaultValue]="ho">
-</form>
+<div *ngIf=show>
+    <app-edit-product [id]="id"></app-edit-product>
+</div>

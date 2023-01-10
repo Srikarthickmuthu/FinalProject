@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddProduct } from 'src/app/Services/add-product';
 import { AdminService } from 'src/app/Services/admin.service';
@@ -10,18 +10,24 @@ import { AdminService } from 'src/app/Services/admin.service';
 })
 export class EditProductComponent {
   public product!:AddProduct[];
+  public productEdit!:AddProduct[];
   public update!:AddProduct[];
 
-  constructor(private adminService:AdminService){}
+  constructor(private adminService:AdminService){
 
+  }
+
+  @Input('id')id="";
+  
   ngOnInit(){
-    this.adminService.getProduct().subscribe(
+    this.adminService.getProductEdit(this.id).subscribe(
       (res:AddProduct[])=>{
-        this.product=res;
+        this.productEdit=res;
+        console.log(this.productEdit)
       }
     )
   }
-
+ 
   onSubmit(editProduct:NgForm){
 
     const data=editProduct.value.id;
@@ -29,6 +35,9 @@ export class EditProductComponent {
     this.update=editProduct.value;
 
     this.adminService.editProduct(data,this.update).subscribe();
+
+    editProduct.resetForm();
+
   }
 
 

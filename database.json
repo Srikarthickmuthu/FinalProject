@@ -13,10 +13,73 @@
   ],
   "product-details": [
     {
-      "id": 1,
-      "productName": "sded",
-      "productPrice": 1234,
-      "productImage": "C:\\fakepath\\rice.png"
+      "productName": "Rice",
+      "productPrice": 1500,
+      "productType": "Kilogram",
+      "productImage": "rice.png",
+      "id": 1
+    },
+    {
+      "productName": "Wheat",
+      "productPrice": 100,
+      "productType": "Kilogram",
+      "productImage": "wheat.png",
+      "id": 2
+    },
+    {
+      "productName": "Corn",
+      "productPrice": 150,
+      "productType": "Kilogram",
+      "productImage": "corn.png",
+      "id": 3
+    }
+  ],
+  "gramWeight": [
+    {
+      "gram": 50
+    },
+    {
+      "gram": 100
+    },
+    {
+      "gram": 250
+    },
+    {
+      "gram": 500
+    }
+  ],
+  "kiloWeight": [
+    {
+      "kilo": 0.5
+    },
+    {
+      "kilo": 1
+    },
+    {
+      "kilo": 2
+    },
+    {
+      "kilo": 5
+    }
+  ],
+  "litreWeight": [
+    {
+      "litre": 0.5
+    },
+    {
+      "litre": 1
+    },
+    {
+      "litre": 1.5
+    },
+    {
+      "litre": 2
+    },
+    {
+      "litre": 5
+    },
+    {
+      "litre": 10
     }
   ]
 }

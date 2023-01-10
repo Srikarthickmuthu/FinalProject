@@ -1,9 +1,12 @@
 <div class="container" id="container">
-    <form action="LoginPage.jsp" method="post">
+    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
         <h1>Login</h1>
-        <input type="email" name="username" placeholder="Email" />
-        <input type="password" name="password" placeholder="Password" /><br>
-        <button>Submit</button><br>
+        <input type="text" id="email" class="formcontrol" name="email" placeholder="Enter your Mail Id" ngModel required
+            email>
+        <input type="password" id="password" class="formcontrol" name="password" placeholder="Enter the passsword"
+            ngModel required password>
+        <button>Submit</button>
+        <br>
         <br />
         <div>
             <span>

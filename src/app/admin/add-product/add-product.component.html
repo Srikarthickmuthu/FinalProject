@@ -4,8 +4,13 @@
         <div>
             <input id="productName" name="productName" class="formcontrol" type="text" placeholder="Enter the name of the product" ngModel required productName>
             <input id="productPrice" name="productPrice" class="formcontrol" type="number" placeholder="Enter the price of the product" ngModel required productPrice>
-            <input type="file" id="productImage" name="productImage" class="formcontrol" target="/home/asplap3262/Desktop/FinalProject/src/assets" ngModel required >
-            <button>Add Product</button>
+            <select id="productType" name="productType" for="productType" class="formcontrol" ngModel required productType>
+                <option>Gram</option>
+                <option>Kilogram</option>
+                <option>Liter</option>
+            </select>
+            <input type="url" id="productImage" name="productImage" class="formcontrol" placeholder="Enter the url of the image" ngModel required >
+            <button>Add Product</button> 
         </div>
     </form>
-</div>
+</div>  

@@ -11,8 +11,7 @@ export class ViewProductComponent implements OnInit{
     public product!:AddProduct[];
     public access=false;
     public update!:AddProduct[];
-    ho= 'any';
-     constructor(public adminservice:AdminService){}
+    constructor(public adminservice:AdminService){}
 
   ngOnInit(){
     this.adminservice.getProduct().subscribe(
@@ -21,11 +20,12 @@ export class ViewProductComponent implements OnInit{
       }
     )
   }
-
-  editProduct(data:any,data1:any){
-    this.update=data1;
-    this.adminservice.editProduct(data,this.update).subscribe();
-    
+  id:any;
+  show=false;
+  edit(data:any){
+    console.log(data);
+    return this.show=true ,
+    this.id=data;
   }
 
   deleteProduct(data:any){

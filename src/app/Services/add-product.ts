@@ -1,6 +1,7 @@
 export interface AddProduct{
-    id:Number;
+    id:String;
     productName:String;
-    productPrice:Number;
-    productImage:URL;
+    productType:String;
+    productPrice:String;
+    productImage:String;
 }

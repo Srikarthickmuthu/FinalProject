@@ -1,26 +1,23 @@
 <div class="intro">
-    <h1>Online Shopping</h1>
+    <h1>Online Glossary shopping</h1>
     <p>We Deliver Your Masterpiece!</p>
-    <button>Order now</button>
+    <button routerLink="/home-path/view-home-path">Order now</button>
 </div>
-
 <div class="about-me">
     <div class="about-me-text">
         <h2>About Us...</h2>
         <p></p>
     </div>
 </div>
-
 <section id="contact">
     <footer class="footer">
         <div class="copy">&copy; Angular Developer Srikarthick</div>
-        <div class="bottom-links">
-            <div class="links">
-                <span>More Info</span>
-                <a>Home</a>
-                <a>About</a>
-                <a>Contact</a>
-            </div>
+        <div class="links">
+            <span>More Info</span>
+            <a>Home</a>
+            <a>About</a>
+            <a>Contact</a>
         </div>
     </footer>
 </section>
+<router-outlet></router-outlet>
