@@ -24,7 +24,7 @@ export class ViewProductComponent implements OnInit{
   show=false;
   edit(data:any){
     console.log(data);
-    return this.show=true ,
+    return this.show=true,
     this.id=data;
   }
 

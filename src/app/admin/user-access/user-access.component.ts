@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../Services/admin.service';
-import { UserData } from 'src/app/Services/sign-in';
+import { UserData } from 'src/app/Services/sign-up';
 @Component({
   selector: 'app-user-access',
   templateUrl: './user-access.component.html',

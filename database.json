@@ -9,6 +9,16 @@
       "gender": "Male",
       "country": "India",
       "id": 1
+    },
+    {
+      "fname": "Srikarthick",
+      "lname": "kumar",
+      "number": 7548895770,
+      "email": "sri@gmail.com",
+      "password": "1234",
+      "gender": "Male",
+      "country": "India",
+      "id": 2
     }
   ],
   "product-details": [
@@ -27,10 +37,10 @@
       "id": 2
     },
     {
-      "productName": "Corn",
-      "productPrice": 150,
+      "productName": "Oats",
+      "productPrice": 300,
       "productType": "Kilogram",
-      "productImage": "corn.png",
+      "productImage": "oats.png",
       "id": 3
     }
   ],

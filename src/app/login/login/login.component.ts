@@ -1,28 +1,51 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/Services/admin.service';
-import { LoginService } from 'src/app/Services/login.service';
-import { UserData } from 'src/app/Services/sign-in';
-
+import { UserData } from 'src/app/Services/sign-up';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-
+export class LoginComponent implements OnInit {
   public user!:UserData[];
-  constructor (public LoginService: LoginService ,public adminservice:AdminService)   {}
-  
-  onSubmit(loginform:NgForm){
-    this.adminservice.getUser().subscribe(
+  public loginform!:FormGroup;
+  constructor(private formbuilder:FormBuilder,private http:HttpClient,public addminservice:AdminService ,private router:Router){}
+
+  ngOnInit() {
+    this.loginform=this.formbuilder.group({
+      email:[''],
+      password:['']
+    })
+  }
+
+  login(){
+    if(this.loginform.value.email==="admin@aspire.com" && this.loginform.value.password==="admin@123"){
+      alert("Welcome admin !!");
+      this.loginform.reset();
+      this.router.navigate(['../../admin-path/admin-home-path']);
+    }
+    else{
+    this.addminservice.getUser().subscribe(
       (res:UserData[])=>{
-        this.user=res;
+        const user=res.find((a:any)=>{
+          return a.email===this.loginform.value.email && a.password===this.loginform.value.password
+        })
+
+        if(user){
+          alert("Login successful");
+          this.loginform.reset();
+          this.router.navigate(['/home-path/user-home-path'])
+
+        }
+        else{
+          alert("User not found")
+          this.loginform.reset();
+        }
       }
     )
-      console.log(loginform);
-      console.log(loginform.value);
-    sessionStorage.setItem("userid",loginform.value);
-
   }
+}
 }

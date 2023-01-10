@@ -11,17 +11,13 @@ import { UserService } from '../../Services/signup-user.service';
 
 export class SignUpComponent {
 
- 
-
   constructor(public userservice:UserService){}
 
-  
 onSubmit(myForm: NgForm) {
 
     this.userservice.addUser(myForm.value).subscribe();
     myForm.resetForm();
 }
-
 
 countryList = [
     { "countryname": "India" },

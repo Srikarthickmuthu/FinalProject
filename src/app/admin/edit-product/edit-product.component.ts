@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AddProduct } from 'src/app/Services/add-product';
+import { AddProduct, Default } from 'src/app/Services/add-product';
 import { AdminService } from 'src/app/Services/admin.service';
 
 @Component({
@@ -8,37 +8,34 @@ import { AdminService } from 'src/app/Services/admin.service';
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.css']
 })
-export class EditProductComponent {
-  public product!:AddProduct[];
-  public productEdit!:AddProduct[];
-  public update!:AddProduct[];
+export class EditProductComponent implements OnInit {
+  id1=1;
+  public product!: AddProduct[];
 
-  constructor(private adminService:AdminService){
+  constructor(private adminService: AdminService) { }
 
-  }
+  @Input('id') id = "";
 
-  @Input('id')id="";
-  
-  ngOnInit(){
+  ngOnInit() {
     this.adminService.getProductEdit(this.id).subscribe(
-      (res:AddProduct[])=>{
-        this.productEdit=res;
-        console.log(this.productEdit)
-      }
-    )
+      (res: AddProduct[]) => {
+        this.product = res;
+        console.log(this.product);
+      })
   }
- 
-  onSubmit(editProduct:NgForm){
 
-    const data=editProduct.value.id;
-    
-    this.update=editProduct.value;
+  // a = new Default(1, "ytre", "ugf", 2345, "dfgh");
 
-    this.adminService.editProduct(data,this.update).subscribe();
+  onSubmit(editProduct: NgForm) {
+
+    const data = editProduct.value.id;
+
+    this.product = editProduct.value;
+
+    this.adminService.editProduct(data, this.product).subscribe();
 
     editProduct.resetForm();
 
   }
-
-
 }
+

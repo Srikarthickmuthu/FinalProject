@@ -1,17 +1,13 @@
 <div class="container" id="container">
-    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+    <form [formGroup]="loginform" (ngSubmit)="login()">
         <h1>Login</h1>
-        <input type="text" id="email" class="formcontrol" name="email" placeholder="Enter your Mail Id" ngModel required
+        <input type="text" id="email" class="formcontrol" formControlName="email" placeholder="Enter your Mail Id" autocomplete="off" ngModel required
             email>
-        <input type="password" id="password" class="formcontrol" name="password" placeholder="Enter the passsword"
+        <input type="password" id="password" class="formcontrol" formControlName="password" placeholder="Enter the passsword" autocomplete="off"
             ngModel required password>
-        <button>Submit</button>
-        <br>
-        <br />
-        <div>
-            <span>
-                <a href="">Sign-up</a>
-            </span>
-        </div>
+        <button type="submit">Submit</button>
+        <br><br>
+        <button routerLink="/loginSignUp-path/sign-up-path" >Sign-up</button>
     </form>
 </div>
+<router-outlet></router-outlet>
