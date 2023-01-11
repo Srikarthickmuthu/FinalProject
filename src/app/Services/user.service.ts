@@ -13,4 +13,10 @@ export class UserService {
   addProduct(data:any){
     return this.http.post(`${this.url}/cart`,data);
   }
+  getCart(){
+    return this.http.get(`${this.url}/cart`);
+  }
+  delete(data:any){
+    return this.http.delete(`${this.url}/cart/${data}`);
+  }
 }

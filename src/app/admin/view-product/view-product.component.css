@@ -12,7 +12,10 @@ tr:nth-child(odd) {
 td,th {
     padding: 10px 20px;
 }
-
+td{
+    max-width: 100px;
+    overflow:auto;
+}
 .column { 
     float: right;
     width: 50%;

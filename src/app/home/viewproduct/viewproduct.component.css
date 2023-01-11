@@ -21,7 +21,7 @@
     flex-wrap:wrap;
     padding-top: 55px
 }
-button {
+.button {
     border-radius: 20px;
     border: 1px solid #00d2ff;
     background-color: #3a47d5;
@@ -31,4 +31,23 @@ button {
     padding: 12px 45px;
     letter-spacing: 1px;
     cursor: pointer;
+}
+.clicked {
+    border-radius: 20px;
+    border: 1px solid #00d2ff;
+    background-color: red;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+img{
+    max-width: 200px;
+    max-height: 200px;
+}
+td{
+    text-align: center;
+    padding: 5px;
 }
