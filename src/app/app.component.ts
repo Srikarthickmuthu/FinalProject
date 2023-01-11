@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'OnlineShopping';
+
+logout() {
+  localStorage.removeItem("Active-User");
+  console.log("the user is");
+}
+  user:any;
+  constructor(){
+    this.user=localStorage.getItem("Active-User");
+    console.log("the user is" ,this.user);
+  }
+  
 }

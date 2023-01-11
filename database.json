@@ -21,6 +21,7 @@
       "id": 2
     }
   ],
+
   "product-details": [
     {
       "productName": "Rice",
@@ -44,52 +45,8 @@
       "id": 3
     }
   ],
-  "gramWeight": [
-    {
-      "gram": 50
-    },
-    {
-      "gram": 100
-    },
-    {
-      "gram": 250
-    },
-    {
-      "gram": 500
-    }
-  ],
-  "kiloWeight": [
-    {
-      "kilo": 0.5
-    },
-    {
-      "kilo": 1
-    },
-    {
-      "kilo": 2
-    },
-    {
-      "kilo": 5
-    }
-  ],
-  "litreWeight": [
-    {
-      "litre": 0.5
-    },
-    {
-      "litre": 1
-    },
-    {
-      "litre": 1.5
-    },
-    {
-      "litre": 2
-    },
-    {
-      "litre": 5
-    },
-    {
-      "litre": 10
-    }
+
+  "cart":[
+    
   ]
 }

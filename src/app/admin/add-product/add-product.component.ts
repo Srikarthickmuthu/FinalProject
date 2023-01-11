@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AddProductService } from 'src/app/Services/add-product.service';
+import { AdminService } from 'src/app/Services/admin.service';
+
 
 @Component({
   selector: 'app-add-product',
@@ -9,11 +10,11 @@ import { AddProductService } from 'src/app/Services/add-product.service';
 })
 export class AddProductComponent {
 
-  constructor(public addProductService:AddProductService){}
+  constructor(public adminservice:AdminService){}
 
   onSubmit(addProduct:NgForm ){
 
-    this.addProductService.addProduct(addProduct.value).subscribe();
+    this.adminservice.addProduct(addProduct.value).subscribe();
 
     addProduct.resetForm();
   

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AddProduct, Default } from 'src/app/Services/add-product';
+import { AddProduct, Default } from 'src/app/Services/product';
 import { AdminService } from 'src/app/Services/admin.service';
 
 @Component({
@@ -24,12 +24,14 @@ export class EditProductComponent implements OnInit {
       })
   }
 
-  // a = new Default(1, "ytre", "ugf", 2345, "dfgh");
+
+  
+  a = new Default(1,"hjj","mjjn",3654,"ytrde");
 
   onSubmit(editProduct: NgForm) {
 
     const data = editProduct.value.id;
-
+    
     this.product = editProduct.value;
 
     this.adminService.editProduct(data, this.product).subscribe();

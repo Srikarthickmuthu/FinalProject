@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AddProduct } from 'src/app/Services/add-product';
+import { AddProduct } from 'src/app/Services/product';
 import { AdminService } from 'src/app/Services/admin.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-viewproduct',
@@ -9,9 +10,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 })
 export class ViewproductComponent implements OnInit {
   public product!:AddProduct[];
-total: any;
-
-  constructor(public adminservice:AdminService){}
+  constructor(public adminservice:AdminService , public userservice:UserService){}
 
   ngOnInit(){
     this.adminservice.getProduct().subscribe(
@@ -20,17 +19,7 @@ total: any;
       }
     )
   }
-  gramWeight=[
-    {"gram":50},
-    {"gram":100},
-    {"gram":250},
-    {"gram":500}
-  ]
-
-
-  // onSubmit(cartForm:NgForm){
-  //   this.
-  // }
-
-
+  cart(data:any){
+    this.userservice.addProduct(data).subscribe()
+  }
 }
