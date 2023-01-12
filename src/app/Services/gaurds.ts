@@ -1,37 +1,37 @@
 
-import { Injectable } from "@angular/core";
+// import { Injectable } from "@angular/core";
 
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
+// import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 
-@Injectable({
+// @Injectable({
 
-    providedIn:"root"
+//     providedIn:"root"
 
-})
+// })
 
-export class canActivate implements CanActivate{
+// export class canActivate implements CanActivate{
 
-    constructor(private router:Router){}
+//     constructor(private router:Router){}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean{
+//     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean{
 
-        const a=localStorage.getItem("Active-User");
+//         const a=localStorage.getItem("Active-User");
 
-        if(a!=null){
+//         if(a!=null){
 
-            return true;
+//             return true;
 
-        }
-        else{
+//         }
+//         else{
 
-            alert("Please login before moving to next");
+//             alert("Please login before moving to next");
 
-            this.router.navigate(['login-path']);
+//             this.router.navigate(['login-path']);
 
-            return false;
+//             return false;
 
-        }
+//         }
 
-    }
-}
+//     }
+// }
 

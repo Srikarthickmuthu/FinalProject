@@ -6,20 +6,21 @@ import { UserData } from 'src/app/Services/sign-up';
   templateUrl: './user-access.component.html',
   styleUrls: ['./user-access.component.css']
 })
-export class UserAccessComponent implements OnInit{
+export class UserAccessComponent implements OnInit {
 
-  public user!:UserData[];
-public access=false;
-  constructor(public addminservice:AdminService){}
+  public user!: UserData[];
+  public access = false;
+  constructor(public addminservice: AdminService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.addminservice.getUser().subscribe(
-      (res:UserData[])=>{
-        this.user=res;
+      (res: UserData[]) => {
+        this.user = res;
       }
     )
   }
-  blockUser(data:Number){
+
+  blockUser(data: Number) {
     this.addminservice.deleteUser(data).subscribe();
     this.ngOnInit();
   }

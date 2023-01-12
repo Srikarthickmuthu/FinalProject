@@ -6,16 +6,16 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { canActivate } from '../Services/gaurds';
 
 const routes: Routes = [
   {path:'admin-home-path',component:AdminHomeComponent,
   children:[
-    {path:'add-product-path',component:AddProductComponent ,canActivate:[canActivate]},
-    {path:'delivery-path',component:DeliveryComponent ,canActivate:[canActivate]},
-    {path:'user-access-path',component:UserAccessComponent,canActivate:[canActivate]},
-    {path:'view-product-path',component:ViewProductComponent ,canActivate:[canActivate]},
-    {path:'edit-product-path',component:EditProductComponent ,canActivate:[canActivate]}
+    {path:'add-product-path',component:AddProductComponent },
+    {path:'delivery-path',component:DeliveryComponent },
+    {path:'user-access-path',component:UserAccessComponent},
+    {path:'view-product-path',component:ViewProductComponent },
+    {path:'edit-product-path',component:EditProductComponent },
+    {path:'',component:DeliveryComponent}
   ]
 }
 ];

@@ -6,8 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-home.component.css']
 })
 export class AdminHomeComponent {
+
   logout() {
+
     localStorage.removeItem("Active-User");
+    
     console.log("the user is");
+
   }
 }

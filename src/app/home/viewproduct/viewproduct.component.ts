@@ -22,7 +22,12 @@ export class ViewproductComponent implements OnInit {
       }
     )
   }
+
+  user=localStorage.getItem("Active-User");
+
   cart(data:any){
+
     this.userservice.addProduct(data).subscribe(); 
+    
   }
 }

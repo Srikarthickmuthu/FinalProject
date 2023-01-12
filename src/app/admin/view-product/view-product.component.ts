@@ -27,7 +27,6 @@ export class ViewProductComponent implements OnChanges{
 
   edit(data:any){
 
-    console.log(data);
     return this.show=true,
     this.id=data;
 

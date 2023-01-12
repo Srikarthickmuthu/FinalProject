@@ -1,5 +1,5 @@
 export interface Cart{
-    
+    user:String;
     id:Number;
     productName:String;
     productType:String;

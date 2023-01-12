@@ -1,4 +1,5 @@
 export interface AddProduct{
+    user:String;
     id:Number;
     productName:String;
     productType:String;

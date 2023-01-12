@@ -13,6 +13,7 @@ export class UserService {
   addUser(data: any) {
     return this.http.post(`${this.url}/user-details`, data);
   }
+
   addProduct(data: any) {
     return this.http.post(`${this.url}/cart`, data);
   }
@@ -22,4 +23,5 @@ export class UserService {
   delete(data: any) {
     return this.http.delete(`${this.url}/cart/${data}`);
   }
+  
 }

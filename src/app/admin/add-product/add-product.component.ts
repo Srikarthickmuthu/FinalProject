@@ -8,6 +8,7 @@ import { AdminService } from 'src/app/Services/admin.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
+
 export class AddProductComponent {
 
   constructor(public adminservice:AdminService){}

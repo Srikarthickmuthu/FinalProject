@@ -13,6 +13,7 @@ export class AdminService {
   getUser():Observable<any>{
     return this.http.get(`${this.url}/user-details`).pipe(map(res=>{return res})); //
   }
+  
   getProduct():Observable<any>{
     return this.http.get(`${this.url}/product-details`).pipe(map(res=>{return res}));
   }
