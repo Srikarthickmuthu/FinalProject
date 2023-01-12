@@ -7,7 +7,7 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
 
 const routes: Routes = [
   {path:'user-home-path',component:UserHomeComponent},
-  {path:'user-cart-path',component:CartComponent},
+  {path:'user-cart-path',component:CartComponent,canActivate:[canActivate]},
   {path:'view-home-path',component:ViewproductComponent,canActivate:[canActivate]}
 ];
 

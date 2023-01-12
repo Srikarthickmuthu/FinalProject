@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component,Input, OnChanges} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddProduct, Default } from 'src/app/Services/product';
 import { AdminService } from 'src/app/Services/admin.service';
@@ -8,25 +8,25 @@ import { AdminService } from 'src/app/Services/admin.service';
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.css']
 })
-export class EditProductComponent implements OnInit {
-  id1=1;
-  public product!: AddProduct[];
+export class EditProductComponent implements OnChanges{
+
+  public product!: AddProduct;
 
   constructor(private adminService: AdminService) { }
 
   @Input('id') id = "";
 
-  ngOnInit() {
-    this.adminService.getProductEdit(this.id).subscribe(
-      (res: AddProduct[]) => {
-        this.product = res;
-        console.log(this.product);
-      })
+  ngOnChanges(){
+    this.data();
   }
 
-
-  
-  a = new Default(1,"hjj","mjjn",3654,"ytrde");
+  data() {
+    this.adminService.getProductEdit(this.id).subscribe(
+      (res: AddProduct) => {
+        this.product = res;
+        console.log("The value of products",this.product);
+      })
+  }
 
   onSubmit(editProduct: NgForm) {
 

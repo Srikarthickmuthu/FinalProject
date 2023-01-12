@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserService } from '../../Services/signup-user.service';
+import { UserService } from 'src/app/Services/user.service';
 
 
 @Component({

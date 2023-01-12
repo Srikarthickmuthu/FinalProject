@@ -14,6 +14,7 @@ export class ViewproductComponent implements OnInit {
   constructor(public adminservice:AdminService , public userservice:UserService){}
 
   value=0;
+  
   ngOnInit(){
     this.adminservice.getProduct().subscribe(
       (res:AddProduct[])=>{
@@ -21,13 +22,7 @@ export class ViewproductComponent implements OnInit {
       }
     )
   }
-myClass="button";
-
   cart(data:any){
-
-    this.myClass="clicked";
-
-    this.userservice.addProduct(data).subscribe();
-    
+    this.userservice.addProduct(data).subscribe(); 
   }
 }

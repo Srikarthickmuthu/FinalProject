@@ -5,14 +5,14 @@
     <li routerLink="view-product-path">
         <p>View Product</p>
     </li>
-    <li routerLink="edit-product-path">
-        <p>Edit Product</p>
-    </li>
-    <li>
+    <li routerLink="delivery-path">
         <p>Delivery</p>
     </li>
     <li routerLink="user-access-path">
         <p>User List</p>
+    </li>
+    <li routerLink="/home-path/user-home-path">
+        <p (click)="logout()">Logout</p>
     </li>
 </ul>
 <router-outlet></router-outlet>

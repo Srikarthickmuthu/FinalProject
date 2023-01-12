@@ -16,5 +16,13 @@ logout() {
     this.user=localStorage.getItem("Active-User");
     console.log("the user is" ,this.user);
   }
+  show(){
+    if(this.user!="admin@aspire.com"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   
 }
