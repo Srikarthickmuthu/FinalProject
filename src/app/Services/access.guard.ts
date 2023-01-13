@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AccessService } from './access.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { AccessService } from './access.service';
 export class AccessGuard implements CanActivate {
 
 
-  constructor(private access:AccessService){}
+  constructor(private access:AccessService , public user:UserService , private route:Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -17,10 +18,17 @@ export class AccessGuard implements CanActivate {
       if(this.access.active){
           return true;
       }
+
       else{
-        alert("Please login before continue ...")
+        alert("Please login before continue ...");
+        // this.route.navigate(['./login-path']);
         return false;
-      }
+      };
+      // if(this.user.islogin()){
+      //   return true;
+      // }
+
   }
+  // if(this.access.islogin()){}
   
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccessService } from 'src/app/Services/access.service';
 import { AdminService } from 'src/app/Services/admin.service';
@@ -25,8 +25,9 @@ export class LoginComponent implements OnInit {
 
     this.loginform = this.formbuilder.group({
 
-      email: [''],
-      password: ['']
+      email: ['',[Validators.required,Validators.email]],
+
+      password: ['',Validators.required]
 
     })
   }
@@ -37,10 +38,10 @@ export class LoginComponent implements OnInit {
 
       alert("Welcome admin !!");
 
-      localStorage.setItem("Active-User", this.loginform.value.email);
+      localStorage.setItem("Active-User", this.loginform.value.email); //service
 
-      this.loginform.reset();
-
+      this.loginform.reset();    
+      
       this.router.navigate(['../../admin-path/admin-home-path']);
 
     }
@@ -48,10 +49,14 @@ export class LoginComponent implements OnInit {
     else {
 
       this.addminservice.getUser().subscribe(
+
         (res: UserData[]) => {
+
           const user = res.find((a: any) => {
+
             return a.email === this.loginform.value.email && a.password === this.loginform.value.password;
-          })
+
+          }) //service
 
           if (user) {
 

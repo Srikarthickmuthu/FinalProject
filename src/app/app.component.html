@@ -1,4 +1,4 @@
-<nav *ngIf="show()">
+<nav>
   <ul>
     <li routerLink="home-path/user-home-path">
       <p>Home</p>
@@ -6,10 +6,10 @@
     <li routerLink="home-path/user-cart-path">
       <p>Cart</p>
     </li>
-    <li routerLink="loginSignUp-path/login-path">
+    <li routerLink="loginSignUp-path/login-path" *ngIf="showLogin">
       <p>Login</p>
     </li>
-    <li (click)="logout()">
+    <li (click)="logout()" *ngIf="showLogout">
       <p >LogOut</p>
     </li>
   </ul>

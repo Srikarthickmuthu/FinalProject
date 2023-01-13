@@ -5,10 +5,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
+  authentication!:boolean
 
   constructor(private http: HttpClient) { }
 
   url = "http://localhost:3000";
+
+  
+  logout(){
+    localStorage.clear();
+  }
 
   addUser(data: any) {
     return this.http.post(`${this.url}/user-details`, data);

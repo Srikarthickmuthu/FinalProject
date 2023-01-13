@@ -9,25 +9,30 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./viewproduct.component.css']
 })
 export class ViewproductComponent implements OnInit {
-  public product!:AddProduct[];
-  public product1!:AddProduct[];
-  constructor(public adminservice:AdminService , public userservice:UserService){}
+  public product!: AddProduct[];
+  public product1!: AddProduct[];
+  constructor(public adminservice: AdminService, public userservice: UserService) { }
 
-  value=0;
-  
-  ngOnInit(){
+  value = 0;
+
+  ngOnInit() {
+    
     this.adminservice.getProduct().subscribe(
-      (res:AddProduct[])=>{
-        this.product=res;
+      (res: AddProduct[]) => {
+        this.product = res;
       }
     )
   }
 
-  user=localStorage.getItem("Active-User");
+  user = localStorage.getItem("Active-User");
 
-  cart(data:any){
+  cart(data: any, id: any) {
+    localStorage.setItem("productId", id)
+    // const a=data{"user":id};
+    console.log(data);
+    data.userId = this.user;
 
-    this.userservice.addProduct(data).subscribe(); 
-    
+    this.userservice.addProduct(data).subscribe();
+
   }
 }

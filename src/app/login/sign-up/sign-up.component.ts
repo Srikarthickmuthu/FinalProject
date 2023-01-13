@@ -10,8 +10,16 @@ import { UserService } from 'src/app/Services/user.service';
 })
 
 export class SignUpComponent {
+  
+  password: any;
 
   constructor(public userservice:UserService){}
+
+  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+
+  Emailpattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+
+  passwordPattern='^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
 
 onSubmit(myForm: NgForm) {
 

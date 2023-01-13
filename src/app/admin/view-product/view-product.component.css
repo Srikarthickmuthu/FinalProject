@@ -19,6 +19,7 @@ td{
 .column { 
     float: right;
     width: 50%;
+    transition: opacity 500ms;
 }
 .column1{
     text-align: center;

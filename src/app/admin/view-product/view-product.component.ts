@@ -10,7 +10,7 @@ export class ViewProductComponent implements OnChanges{
     public product!:AddProduct[];
     public access=false;
     public update!:AddProduct[];
-    constructor(public adminservice:AdminService){
+    constructor(public adminservice:AdminService ){
       this.ngOnChanges();
     }
     
@@ -26,10 +26,9 @@ export class ViewProductComponent implements OnChanges{
   show=false;
 
   edit(data:any){
-
+    
     return this.show=true,
     this.id=data;
-
   }
 
   deleteProduct(data:any){

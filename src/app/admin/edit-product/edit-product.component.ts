@@ -2,7 +2,6 @@ import { Component,Input, OnChanges} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddProduct, Default } from 'src/app/Services/product';
 import { AdminService } from 'src/app/Services/admin.service';
-
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',

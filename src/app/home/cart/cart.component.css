@@ -7,7 +7,10 @@ th {
 }
 
 tr:nth-child(odd) {
-    background-color: #eee;
+    background-color: rgb(245, 235, 235);
+}
+tr:nth-child(even) {
+    background-color: rgb(208, 204, 204);
 }
 
 td,th {
@@ -22,4 +25,7 @@ img{
     width: 100px;
     height: 100px;
     border-radius: 80px;
+}
+h2{
+    color: white;
 }

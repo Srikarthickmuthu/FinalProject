@@ -9,16 +9,18 @@
             <input id="lname" name="lname" type="text" class="formcontrol" placeholder="Enter your last name"
                 autocomplete="off" ngModel required lname>
 
-            <input id="number" name="number" type="number" class="formcontrol" placeholder="Enter your Mobile Number"
-                autocomplete="off" ngModel required number #number="ngModel">
+            <input id="number" name="number" type="text" class="formcontrol" placeholder="Enter your Mobile Number"
+                autocomplete="off" ngModel [pattern]="mobNumberPattern" required number #number="ngModel">
 
             <span *ngIf="!number.valid && number.touched">Please enter valid number</span><br>
 
             <input type="text" id="email" class="formcontrol" name="email" placeholder="Enter your Mail Id"
-                autocomplete="off" ngModel required email #email="ngModel">
+                autocomplete="off" ngModel [pattern]="Emailpattern" required email #email="ngModel">
+
+            <span *ngIf="!email.valid && email.touched">Please enter valid mail-id</span><br>
 
             <input type="password" id="password" class="formcontrol" name="password"
-                placeholder="Enter the new passsword" autocomplete="off" ngModel required password>
+                placeholder="Enter the new passsword" autocomplete="off" [pattern]="passwordPattern" ngModel required password>
             <label>Select your gender
                 <select id="gender" name="gender" for="gender" class="formcontrol" name="gender" ngModel required
                     gender>
