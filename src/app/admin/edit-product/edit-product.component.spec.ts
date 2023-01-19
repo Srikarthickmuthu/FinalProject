@@ -10,7 +10,7 @@ describe('EditProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EditProductComponent ],
-      providers:[HttpClient , HttpHandler]
+      providers:[HttpClient , HttpHandler , ]
     })
     .compileComponents();
 

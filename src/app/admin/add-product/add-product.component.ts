@@ -6,22 +6,19 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
-
 export class AddProductComponent {
+  constructor(
+    public adminservice: AdminService,
+    private toastr: ToastrService
+  ) {}
 
-  constructor(public adminservice:AdminService, private toastr: ToastrService){}
-
-  onSubmit(addProduct:NgForm ){
-
+  onSubmit(addProduct: NgForm) {
     this.adminservice.addProduct(addProduct.value).subscribe();
 
     addProduct.resetForm();
 
-    this.toastr.success("New product added..!")
-  
+    this.toastr.success('New product added..!');
   }
 }
-  
-
