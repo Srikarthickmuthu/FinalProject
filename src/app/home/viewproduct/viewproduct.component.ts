@@ -7,27 +7,29 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-viewproduct',
   templateUrl: './viewproduct.component.html',
-  styleUrls: ['./viewproduct.component.css']
+  styleUrls: ['./viewproduct.component.css'],
 })
 export class ViewproductComponent implements OnInit {
   public product!: AddProduct[];
   public product1!: AddProduct[];
-  constructor(public adminservice: AdminService, public userservice: UserService , private toastr:ToastrService) { }
+  constructor(
+    public adminservice: AdminService,
+    public userservice: UserService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
-    this.adminservice.getProduct().subscribe(
-      (res: AddProduct[]) => {
-        this.product = res;
-      }
-    )
+    this.adminservice.getProduct().subscribe((res: AddProduct[]) => {
+      this.product = res;
+    });
   }
 
-  user = localStorage.getItem("Active-User");
+  user = localStorage.getItem('Active-User');
 
   cart(data: any) {
     data.userId = this.user;
     this.userservice.addProduct(data).subscribe();
     delete data.id;
-    this.toastr.success("Product added to the cart..!");
+    this.toastr.success('Product added to the cart..!');
   }
 }

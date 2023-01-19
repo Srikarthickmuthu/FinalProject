@@ -5,39 +5,40 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { EditProductComponent } from '../edit-product/edit-product.component';
 
-
 @Component({
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
-  styleUrls: ['./view-product.component.css']
+  styleUrls: ['./view-product.component.css'],
 })
-export class ViewProductComponent implements OnChanges{
-    public product!:AddProduct[];
-    public access=false;
-    public update!:AddProduct[];
-    constructor(public adminservice:AdminService , private toastr:ToastrService ,private dialog:MatDialog){
-      this.ngOnChanges();
-    }
-    
-  ngOnChanges(){
-    this.adminservice.getProduct().subscribe(
-      (res:AddProduct[])=>{
-        this.product=res;
-      }
-    )
+export class ViewProductComponent implements OnChanges {
+  public product!: AddProduct[];
+  public access = false;
+  public update!: AddProduct[];
+  constructor(
+    public adminservice: AdminService,
+    private toastr: ToastrService,
+    private dialog: MatDialog
+  ) {
+    this.ngOnChanges();
   }
-  id:any;
-  show=false;
 
-  edit(data:any){
+  ngOnChanges() {
+    this.adminservice.getProduct().subscribe((res: AddProduct[]) => {
+      this.product = res;
+    });
+  }
+  id: any;
+  show = false;
+
+  edit(data: any) {
     this.dialog.open(EditProductComponent);
-    localStorage.setItem("id",data);
-    this.id=data;
+    localStorage.setItem('id', data);
+    this.id = data;
   }
 
-  deleteProduct(data:any){
+  deleteProduct(data: any) {
     this.adminservice.deleteProduct(data).subscribe();
     this.ngOnChanges();
-    this.toastr.warning("Product deleted..!");
+    this.toastr.warning('Product deleted..!');
   }
 }

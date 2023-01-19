@@ -9,24 +9,24 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import {MatDialogModule} from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     UserAccessComponent,
     AddProductComponent,
     DeliveryComponent,
-  
+
     ViewProductComponent,
-    EditProductComponent
+    EditProductComponent,
   ],
-  entryComponents:[EditProductComponent],
+  entryComponents: [EditProductComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-  ]
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

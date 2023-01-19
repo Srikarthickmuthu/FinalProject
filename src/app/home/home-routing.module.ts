@@ -6,13 +6,21 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 
 const routes: Routes = [
-  {path:'user-home-path',component:UserHomeComponent},
-  {path:'user-cart-path',component:CartComponent, canActivate:[AccessGuard]},
-  {path:'view-home-path',component:ViewproductComponent,canActivate:[AccessGuard]}
+  { path: 'user-home-path', component: UserHomeComponent },
+  {
+    path: 'user-cart-path',
+    component: CartComponent,
+    canActivate: [AccessGuard],
+  },
+  {
+    path: 'view-home-path',
+    component: ViewproductComponent,
+    canActivate: [AccessGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}

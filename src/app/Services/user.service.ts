@@ -2,16 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  url = 'http://localhost:3000';
 
-  url = "http://localhost:3000";
-
-  
-  logout(){
+  logout() {
     localStorage.clear();
   }
 
@@ -28,5 +26,4 @@ export class UserService {
   delete(data: any) {
     return this.http.delete(`${this.url}/cart/${data}`);
   }
-  
 }

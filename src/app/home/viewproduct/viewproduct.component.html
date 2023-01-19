@@ -1,11 +1,11 @@
 <div class="container">
-    <ng-container *ngFor="let item of product">
-        <div class="card">
-            <img src="{{item.productImage}}" alt="images">
-            <h3>{{item.productName}}</h3>
-            <p><strong>Price:</strong>₹ {{item.productPrice}}</p>
-            <p>{{item.productType}}</p>
-            <button (click)="cart(item)">ADD TO CART</button>
-        </div>
-    </ng-container>
+  <ng-container *ngFor="let item of product">
+    <div class="card">
+      <img src="{{ item.productImage }}" alt="images" />
+      <h3>{{ item.productName }}</h3>
+      <p><strong>Price:</strong>₹ {{ item.productPrice }}</p>
+      <p>{{ item.productType }}</p>
+      <button (click)="cart(item)">ADD TO CART</button>
+    </div>
+  </ng-container>
 </div>

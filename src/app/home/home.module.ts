@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SumPipe } from './cart/sum.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
-
 @NgModule({
   declarations: [
     UserHomeComponent,
@@ -18,10 +17,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     SumPipe,
     PagenotfoundComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    HttpClientModule
-  ]
+  imports: [CommonModule, HomeRoutingModule, HttpClientModule],
 })
-export class HomeModule { }
+export class HomeModule {}

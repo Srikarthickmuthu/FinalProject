@@ -3,36 +3,47 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
+  constructor(private http: HttpClient) {}
+  url = 'http://localhost:3000';
 
-  constructor(private http:HttpClient) { }
-  url="http://localhost:3000";
+  getUser(): Observable<any> {
+    return this.http.get(`${this.url}/user-details`).pipe(
+      map((res) => {
+        return res;
+      })
+    ); //
+  }
 
-  getUser():Observable<any>{
-    return this.http.get(`${this.url}/user-details`).pipe(map(res=>{return res})); //
+  getProduct(): Observable<any> {
+    return this.http.get(`${this.url}/product-details`).pipe(
+      map((res) => {
+        return res;
+      })
+    );
   }
-  
-  getProduct():Observable<any>{
-    return this.http.get(`${this.url}/product-details`).pipe(map(res=>{return res}));
+  getProductEdit(data: any): Observable<any> {
+    return this.http.get(`${this.url}/product-details/${data}`).pipe(
+      map((res) => {
+        return res;
+      })
+    );
   }
-  getProductEdit(data:any):Observable<any>{
-    return this.http.get(`${this.url}/product-details/${data}`).pipe(map(res=>{return res}));
-  }
-  deleteProduct(data:any){
+  deleteProduct(data: any) {
     return this.http.delete(`${this.url}/product-details/${data}`);
   }
-  deleteUser(data:any){
+  deleteUser(data: any) {
     return this.http.delete(`${this.url}/user-details/${data}`);
   }
-  editProduct(data:any,update:any){
-    return this.http.put(`${this.url}/product-details/${data}`,update);
+  editProduct(data: any, update: any) {
+    return this.http.put(`${this.url}/product-details/${data}`, update);
   }
-  addProduct(data:any){
-    return this.http.post(`${this.url}/product-details`,data);
+  addProduct(data: any) {
+    return this.http.post(`${this.url}/product-details`, data);
   }
-  updateDelivery(data:any,id:any){
-    return this.http.patch(`${this.url}/cart/${id}`,data)
+  updateDelivery(data: any, id: any) {
+    return this.http.patch(`${this.url}/cart/${id}`, data);
   }
 }
