@@ -26,7 +26,7 @@ h1 {
     margin: 0;
 }
 
-p {
+#para {
     font-size: 35px;
     color: #ff0202;
     text-transform: uppercase;
@@ -68,4 +68,7 @@ button:hover {
     padding: 40px 80px;
     color: whitesmoke;
     font-size: 20px;
+}
+p{
+    
 }

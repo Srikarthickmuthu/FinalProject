@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
 
             return a.email === this.loginform.value.email && a.password === this.loginform.value.password;
 
-          }) //service
+          })
 
           if (user) {
 
