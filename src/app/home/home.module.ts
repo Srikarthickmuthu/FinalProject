@@ -6,6 +6,8 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SumPipe } from './cart/sum.pipe';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -13,6 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserHomeComponent,
     ViewproductComponent,
     CartComponent,
+    SumPipe,
+    PagenotfoundComponent,
   ],
   imports: [
     CommonModule,

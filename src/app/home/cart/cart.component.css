@@ -1,31 +1,70 @@
 table,
 td,
 th {
-    border: 1px solid;
-    border-collapse: collapse;
-    text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-bottom: 1px solid;
+  border-collapse: collapse;
 }
-
+h2 {
+  font-size: 40px;
+  color: rgb(232, 196, 196);
+  text-align: center;
+}
 tr:nth-child(odd) {
-    background-color: rgb(245, 235, 235);
+  background-color: #eee;
 }
 tr:nth-child(even) {
-    background-color: rgb(208, 204, 204);
+  background-color: rgb(180, 171, 171);
 }
 
-td,th {
-    padding: 10px 20px;
+td,
+th {
+  padding: 10px 39px;
+  font-size: 20px;
 }
-div,table{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 80px;
 }
-img{
-    width: 100px;
-    height: 100px;
-    border-radius: 80px;
+button {
+  padding: 5px 20px;
+  font-size: large;
+  background-color: red;
 }
-h2{
-    color: white;
+.card {
+  background-image: url(../../../assets/product-images/empthCart.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  width: fit-content;
+  border-radius: 30px;
+  background-color: floralwhite;
 }
+
+#button {
+  border-radius: 20px;
+  border: 1px solid #00d2ff;
+  background-color: #3a47d5;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+}
+
+#button:hover {
+  background-color: #92fe9d;
+}
+/* #cartimg{
+    width: 80%;
+    height: 60%;
+} */

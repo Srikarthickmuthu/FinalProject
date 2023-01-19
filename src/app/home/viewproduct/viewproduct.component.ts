@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddProduct } from 'src/app/Services/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { UserService } from 'src/app/Services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-viewproduct',
@@ -11,12 +12,9 @@ import { UserService } from 'src/app/Services/user.service';
 export class ViewproductComponent implements OnInit {
   public product!: AddProduct[];
   public product1!: AddProduct[];
-  constructor(public adminservice: AdminService, public userservice: UserService) { }
-
-  value = 0;
+  constructor(public adminservice: AdminService, public userservice: UserService , private toastr:ToastrService) { }
 
   ngOnInit() {
-    
     this.adminservice.getProduct().subscribe(
       (res: AddProduct[]) => {
         this.product = res;
@@ -26,13 +24,10 @@ export class ViewproductComponent implements OnInit {
 
   user = localStorage.getItem("Active-User");
 
-  cart(data: any, id: any) {
-    localStorage.setItem("productId", id)
-    // const a=data{"user":id};
-    console.log(data);
+  cart(data: any) {
     data.userId = this.user;
-
     this.userservice.addProduct(data).subscribe();
-
+    delete data.id;
+    this.toastr.success("Product added to the cart..!");
   }
 }

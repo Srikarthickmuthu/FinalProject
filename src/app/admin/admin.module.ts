@@ -5,26 +5,28 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { DeliveryComponent } from './delivery/delivery.component';
-import { AdminHomeComponent } from './admin-home/admin-home.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-
+import {MatDialogModule} from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
     UserAccessComponent,
     AddProductComponent,
     DeliveryComponent,
-    AdminHomeComponent,
+  
     ViewProductComponent,
     EditProductComponent
   ],
+  entryComponents:[EditProductComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
   ]
 })
 export class AdminModule { }

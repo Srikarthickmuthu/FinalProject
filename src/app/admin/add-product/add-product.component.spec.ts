@@ -1,4 +1,6 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ToastrService } from 'ngx-toastr';
 
 import { AddProductComponent } from './add-product.component';
 
@@ -8,7 +10,8 @@ describe('AddProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddProductComponent ]
+      declarations: [ AddProductComponent ],
+      providers:[HttpClient,HttpHandler,{provide: ToastrService, useClass: ToastrService}]
     })
     .compileComponents();
 

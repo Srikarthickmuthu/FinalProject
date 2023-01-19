@@ -1,30 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccessService } from './Services/access.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  user:any;
-  constructor(private access:AccessService,private route:Router){
-    this.user=localStorage.getItem("Active-User");
-    console.log("the user is" ,this.user);
-    if(this.user!=null){
-      this.showLogout=true;
-      this.showLogin=false;
+export class AppComponent  implements OnChanges{
+  title = "OnlineShopping"
+  user: any;
+  constructor (private access: AccessService, private route: Router , private toastr:ToastrService) {
+    this.user = localStorage.getItem("Active-User");
+    if (this.user == "admin@aspire.com") {
+      this.showUser = false;
+      this.showAdmin = true;
+      this.showLogin = false;
+      this.showLogout = true;
     }
 
+    if(this.user!=null){
+      this.showLogin=false;
+      this.showLogout=true;
+    }
   }
-  showLogin=true;
-  showLogout=false;
+  ngOnChanges() {
+    
+  }
+  showUser = true;
+  showAdmin = false;
+  showLogin = true;
+  showLogout = false;
 
-logout() {
-  alert("Logout Successfull...! User")
-  localStorage.clear();
-  this.access.active=false;
-  this.route.navigate(["home-path/user-home-path"])
-}  
+  logout() {
+    localStorage.clear();
+    this.toastr.success("Logout Successfull..!");
+    this.access.active = false;
+    this.route.navigate(["home-path/user-home-path"])
+  }
 }

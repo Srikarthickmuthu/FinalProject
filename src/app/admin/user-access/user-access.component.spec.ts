@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserAccessComponent } from './user-access.component';
@@ -8,7 +9,8 @@ describe('UserAccessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserAccessComponent ]
+      declarations: [ UserAccessComponent ],
+      providers:[HttpClient,HttpHandler]
     })
     .compileComponents();
 

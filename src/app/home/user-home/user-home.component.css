@@ -1,4 +1,4 @@
-    body {
+body {
     margin: 0;
     box-sizing: border-box;
     background-color: #f0ede1;
@@ -14,9 +14,8 @@
     background-image: url(../../../assets/product-images/background.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
-  background-size: cover;
-
-}   
+    background-size: cover;
+}
 
 h1 {
     font-family: sans-serif;
@@ -67,4 +66,6 @@ button:hover {
     align-items: center;
     background-color: #302f49;
     padding: 40px 80px;
+    color: whitesmoke;
+    font-size: 20px;
 }

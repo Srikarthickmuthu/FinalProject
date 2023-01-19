@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +13,7 @@ export class SignUpComponent {
   
   password: any;
 
-  constructor(public userservice:UserService){}
+  constructor(public userservice:UserService , private toastr :ToastrService){}
 
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";
 
@@ -25,6 +25,8 @@ onSubmit(myForm: NgForm) {
 
     this.userservice.addUser(myForm.value).subscribe();
     myForm.resetForm();
+    this.toastr.success("Sign-up Successfull ..!");
+
 }
 
 countryList = [

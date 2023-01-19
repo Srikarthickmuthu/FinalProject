@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AccessService } from './access.service';
 import { UserService } from './user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { UserService } from './user.service';
 export class AccessGuard implements CanActivate {
 
 
-  constructor(private access:AccessService , public user:UserService , private route:Router){}
+  constructor(private access:AccessService , public user:UserService , private route:Router , private toastr:ToastrService){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -20,15 +21,12 @@ export class AccessGuard implements CanActivate {
       }
 
       else{
-        alert("Please login before continue ...");
-        // this.route.navigate(['./login-path']);
+        localStorage.clear();
+        this.toastr.warning("Please login before continue..!");
         return false;
       };
-      // if(this.user.islogin()){
-      //   return true;
-      // }
+
 
   }
-  // if(this.access.islogin()){}
   
 }

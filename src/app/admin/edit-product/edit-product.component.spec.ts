@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditProductComponent } from './edit-product.component';
@@ -8,7 +9,8 @@ describe('EditProductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditProductComponent ]
+      declarations: [ EditProductComponent ],
+      providers:[HttpClient , HttpHandler]
     })
     .compileComponents();
 

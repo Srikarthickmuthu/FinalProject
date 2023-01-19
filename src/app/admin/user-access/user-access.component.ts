@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../Services/admin.service';
 import { UserData } from 'src/app/Services/sign-up';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-user-access',
   templateUrl: './user-access.component.html',
@@ -10,7 +11,7 @@ export class UserAccessComponent implements OnInit {
 
   public user!: UserData[];
   public access = false;
-  constructor(public addminservice: AdminService) { }
+  constructor(public addminservice: AdminService , private toastr:ToastrService) { }
 
   ngOnInit() {
     this.addminservice.getUser().subscribe(
@@ -23,5 +24,7 @@ export class UserAccessComponent implements OnInit {
   blockUser(data: Number) {
     this.addminservice.deleteUser(data).subscribe();
     this.ngOnInit();
+    this.toastr.error("User blocked successfully..!");
+
   }
 }

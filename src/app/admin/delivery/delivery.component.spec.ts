@@ -1,3 +1,4 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeliveryComponent } from './delivery.component';
@@ -8,7 +9,8 @@ describe('DeliveryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeliveryComponent ]
+      declarations: [ DeliveryComponent ],
+      providers:[HttpClient,HttpHandler]
     })
     .compileComponents();
 

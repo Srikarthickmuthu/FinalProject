@@ -1,4 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { InjectionToken } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TOAST_CONFIG } from 'ngx-toastr';
 
 import { ViewproductComponent } from './viewproduct.component';
 
@@ -8,7 +11,8 @@ describe('ViewproductComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewproductComponent ]
+      declarations: [ ViewproductComponent ],
+      providers:[HttpClient,HttpHandler]
     })
     .compileComponents();
 

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AccessService } from 'src/app/Services/access.service';
 import { AdminService } from 'src/app/Services/admin.service';
 import { UserData } from 'src/app/Services/sign-up';
+
 
 @Component({
 
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   public loginform!: FormGroup;
 
-  constructor(private formbuilder: FormBuilder, public access: AccessService, public addminservice: AdminService, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, public access: AccessService, public addminservice: AdminService, private router: Router , private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
 
       email: ['',[Validators.required,Validators.email]],
 
-      password: ['',Validators.required]
+      password: ['',Validators.required],
 
     })
   }
@@ -36,13 +38,13 @@ export class LoginComponent implements OnInit {
 
     if (this.loginform.value.email === "admin@aspire.com" && this.loginform.value.password === "admin@123") {
 
-      alert("Welcome admin !!");
-
       localStorage.setItem("Active-User", this.loginform.value.email); //service
 
       this.loginform.reset();    
       
-      this.router.navigate(['../../admin-path/admin-home-path']);
+      this.router.navigate(['../../admin-path/view-product-path']);
+
+      this.toastr.success("Welcome admin "); 
 
     }
 
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit {
 
           if (user) {
 
-            alert("Successful Login !...");
+            this.toastr.success("Login Successful !!"); 
 
             localStorage.setItem("Active-User", this.loginform.value.email);
 
@@ -73,8 +75,7 @@ export class LoginComponent implements OnInit {
           }
 
           else {
-
-            alert("User not found");
+            this.toastr.error("User Not Found"); 
 
             this.loginform.reset();
 
