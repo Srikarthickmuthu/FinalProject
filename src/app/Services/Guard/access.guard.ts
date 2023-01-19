@@ -7,8 +7,8 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AccessService } from './access.service';
-import { UserService } from './user.service';
+import { AccessService } from '../access.service';
+import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({

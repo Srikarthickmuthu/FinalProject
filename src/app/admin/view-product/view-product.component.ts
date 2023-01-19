@@ -1,5 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
-import { AddProduct } from 'src/app/Services/product';
+import { AddProduct } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';

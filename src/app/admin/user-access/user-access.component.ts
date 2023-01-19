@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../Services/admin.service';
-import { UserData } from 'src/app/Services/sign-up';
+import { UserData } from 'src/app/Services/Guard/sign-up';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-user-access',

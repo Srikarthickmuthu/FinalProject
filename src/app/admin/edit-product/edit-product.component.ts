@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AddProduct } from 'src/app/Services/product';
+import { AddProduct } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
