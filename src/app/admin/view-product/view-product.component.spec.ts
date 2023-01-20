@@ -1,5 +1,7 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 import { ViewProductComponent } from './view-product.component';
 
@@ -10,7 +12,9 @@ describe('ViewProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ViewProductComponent ],
-      providers:[HttpClient,HttpHandler]
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      },MatDialog]
     })
     .compileComponents();
 

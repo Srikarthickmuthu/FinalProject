@@ -1,5 +1,7 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 import { EditProductComponent } from './edit-product.component';
 
@@ -10,7 +12,10 @@ describe('EditProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ EditProductComponent ],
-      providers:[HttpClient , HttpHandler , ]
+      imports:[ReactiveFormsModule ,FormsModule],
+      providers:[HttpClient , HttpHandler ,ReactiveFormsModule, {
+        provide:ToastrService, useValue:ToastrService
+      }]
     })
     .compileComponents();
 

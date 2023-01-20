@@ -17,11 +17,12 @@ export class CartComponent implements OnInit {
   user = localStorage.getItem('Active-User');
   show = true;
   showCart = false;
+  length=0;
   ngOnInit() {
     this.userservice.getCart().subscribe((res: any) => {
       this.cart = res.filter((el: { userId: string; })=>{
         return el.userId==this.user;});
-      length = this.cart.length;
+      this.length = this.cart.length;
       if (length !== 0) {
         this.show = false;
         this.showCart = true;

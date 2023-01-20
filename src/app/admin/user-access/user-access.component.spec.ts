@@ -1,5 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ToastrService } from 'ngx-toastr';
 
 import { UserAccessComponent } from './user-access.component';
 
@@ -10,7 +11,9 @@ describe('UserAccessComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserAccessComponent ],
-      providers:[HttpClient,HttpHandler]
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      }]
     })
     .compileComponents();
 

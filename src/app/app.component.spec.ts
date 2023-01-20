@@ -1,5 +1,7 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -11,6 +13,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      }],
     }).compileComponents();
   });
   

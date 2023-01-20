@@ -2,6 +2,7 @@ import { Component, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccessService } from './Services/access.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from './Services/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,13 +10,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent implements OnChanges {
   title = 'OnlineShopping';
+  items=0;
   user: any;
+  userDetail: any;
+show: any;
   constructor(
     private access: AccessService,
     private route: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {
     this.user = localStorage.getItem('Active-User');
+    this.show=this.access.userNav;
     if (this.user == 'admin@aspire.com') {
       this.showUser = false;
       this.showAdmin = true;
@@ -26,7 +31,7 @@ export class AppComponent implements OnChanges {
     if (this.user != null) {
       this.showLogin = false;
       this.showLogout = true;
-    }
+    } 
   }
   ngOnChanges() {}
   showUser = true;

@@ -16,7 +16,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     UserAccessComponent,
     AddProductComponent,
     DeliveryComponent,
-
     ViewProductComponent,
     EditProductComponent,
   ],

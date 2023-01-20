@@ -1,4 +1,5 @@
-<div *ngIf="showCart">
+<ng-container *ngIf="cart.length!=0">
+<div >
   <h2>List of Products</h2>
   <table>
     <thead>
@@ -27,7 +28,10 @@
     </tfoot>
   </table>
 </div>
-
-<div class="card" *ngIf="show">
+</ng-container>
+<ng-container *ngIf="cart.length==0">
+<div class="card" >
   <button id="button" routerLink="/home-path/view-home-path">Shop Now!</button>
 </div>
+</ng-container>
+

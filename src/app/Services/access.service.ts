@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AppComponent } from '../app.component';
 import { AdminService } from './admin.service';
 import { UserData } from './Guard/sign-up';
 
@@ -15,11 +16,13 @@ export class AccessService {
   ) {}
 
   active = false;
+  userNav = true;
   public user!: UserData[];
 
   login(email: any, password: any) {
     if (email == 'admin@aspire.com' && password == 'admin@123') {
       localStorage.setItem('Active-User', email);
+      this.userNav = false;
       this.router.navigate(['../../admin-path/view-product-path']);
       this.toastr.success('Welcome admin ');
     } else {

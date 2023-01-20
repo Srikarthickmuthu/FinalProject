@@ -1,7 +1,8 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { InjectionToken } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TOAST_CONFIG } from 'ngx-toastr';
+import { MatDialog, MatDialogModule, MAT_DIALOG_SCROLL_STRATEGY } from '@angular/material/dialog';
+import { ToastrService, TOAST_CONFIG } from 'ngx-toastr';
 
 import { ViewproductComponent } from './viewproduct.component';
 
@@ -12,7 +13,9 @@ describe('ViewproductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ViewproductComponent ],
-      providers:[HttpClient,HttpHandler]
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      },MatDialogModule]
     })
     .compileComponents();
 
