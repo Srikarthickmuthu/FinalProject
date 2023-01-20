@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
+ 
   constructor(private http: HttpClient) {}
 
   url = 'http://localhost:3000';
@@ -25,5 +26,10 @@ export class UserService {
   }
   delete(data: any) {
     return this.http.delete(`${this.url}/cart/${data}`);
+  }
+  addedProduct(data:any){
+    const value=data;
+    console.log(value);
+    return value;
   }
 }

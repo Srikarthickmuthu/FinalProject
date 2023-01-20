@@ -2,7 +2,7 @@ import { Component, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccessService } from './Services/access.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from './Services/user.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

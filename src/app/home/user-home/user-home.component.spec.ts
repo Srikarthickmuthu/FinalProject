@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { UserHomeComponent } from './user-home.component';
 
@@ -11,6 +12,7 @@ describe('UserHomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserHomeComponent ],
+      imports:[RouterModule,RouterTestingModule],
       providers:[HttpClient]
     })
     .compileComponents();

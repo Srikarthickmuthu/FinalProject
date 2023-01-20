@@ -23,7 +23,7 @@
       <span *ngIf="!password.valid && password.touched">Password is required in requested format e.g Abcd@123
       </span><br />
 
-      <label>Select your gender </label>
+      <!-- <label>Select your gender </label>
         <div id="gender">
           <input id="male" type="radio" name="gender" value="male" checked ngModel required gender>
           <label for="male">Male</label>
@@ -32,7 +32,7 @@
           <input id="other" type="radio" name="gender" value="other" ngModel required gender>
           <label for="other">Other</label>
         </div>
-     
+      -->
       <label>Select Your Country
         <select id="country" name="country" for="country" class="formcontrol" ngModel required country>
           <option *ngFor="let c of countryList">

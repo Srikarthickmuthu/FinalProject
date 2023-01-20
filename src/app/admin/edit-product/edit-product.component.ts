@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AddProduct } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -10,15 +11,18 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditProductComponent implements OnInit {
   public product!: AddProduct;
-  id!: any;
+  id: any;
 
   constructor(
     private adminService: AdminService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService:UserService
   ) {}
 
   ngOnInit() {
     this.id = localStorage.getItem('id');
+    this.userService.addedProduct(this.id);
+    console.log(this.id);
     this.adminService.getProductEdit(this.id).subscribe((res: AddProduct) => {
       this.product = res;
     });
