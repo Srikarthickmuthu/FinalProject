@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AddProduct } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { UserService } from 'src/app/Services/user.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent implements OnInit, OnChanges {
+export class CartComponent implements OnInit {
   cart!: any;
+  a!:AddProduct;
 
   constructor(public userservice: UserService, private toastr: ToastrService) {}
 
@@ -17,15 +19,17 @@ export class CartComponent implements OnInit, OnChanges {
   showCart = false;
   ngOnInit() {
     this.userservice.getCart().subscribe((res: any) => {
-      this.cart = res;
+      this.cart = res.filter((el: { userId: string; })=>{
+        return el.userId==this.user;});
       length = this.cart.length;
       if (length !== 0) {
         this.show = false;
         this.showCart = true;
       }
+      
     });
   }
-  ngOnChanges() {}
+
 
   delete(data: any) {
     this.userservice.delete(data).subscribe();

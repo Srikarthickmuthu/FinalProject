@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccessService } from './Services/access.service';
 import { ToastrService } from 'ngx-toastr';
