@@ -29,6 +29,46 @@
       "gender": "Male",
       "country": "India",
       "id": 3
+    },
+    {
+      "fname": "aa",
+      "lname": "aa",
+      "number": "9123456782",
+      "email": "a@gmail.com",
+      "password": "Abc@1234",
+      "gender": "",
+      "country": "America",
+      "id": 4
+    },
+    {
+      "fname": "sqa",
+      "lname": "ax",
+      "number": "9876543232",
+      "email": "sa@gh.xd",
+      "password": "Asdbsnd@123",
+      "gender": "",
+      "country": "America",
+      "id": 5
+    },
+    {
+      "fname": "wdsax",
+      "lname": "asx",
+      "number": "9876545673",
+      "email": "aa@gm.bn",
+      "password": "Ajhdgfdshhj@1234",
+      "gender": "male",
+      "country": "America",
+      "id": 6
+    },
+    {
+      "fname": "koiuyftdgfsfxghjk",
+      "lname": "jliuyftdgfsghuijo",
+      "number": "6987654356",
+      "email": "kjhgfdfdghj@dfs.bh",
+      "password": "Abcd@123",
+      "gender": "female",
+      "country": "India",
+      "id": 7
     }
   ],
   "product-details": [
