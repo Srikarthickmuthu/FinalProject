@@ -28,7 +28,6 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            
             "scripts": []
           },
           "configurations": {
@@ -93,8 +92,21 @@
               "src/styles.css"
             ],
             "scripts": [],
-            
-            "codeCoverage":true
+            "codeCoverage": true
+          }
+        },
+        "nightwatch-run": {
+          "builder": "@nightwatch/schematics:nightwatch",
+          "options": {
+            "devServerTarget": "OnlineShopping:serve",
+            "tsConfig": "../nightwatch/tsconfig.e2e.json",
+            "config": "./nightwatch.conf.js",
+            "env": "chrome"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "OnlineShopping:serve:production"
+            }
           }
         }
       }

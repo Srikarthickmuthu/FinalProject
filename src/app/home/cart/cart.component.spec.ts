@@ -13,13 +13,17 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartComponent , NavbarComponent],
-      providers:[HttpClient,HttpHandler,{
-        provide:ToastrService, useValue:ToastrService
-      }],
-      imports:[RouterModule , RouterTestingModule]
-    })
-    .compileComponents();
+      declarations: [CartComponent, NavbarComponent],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+      ],
+      imports: [RouterModule, RouterTestingModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;

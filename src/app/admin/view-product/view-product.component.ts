@@ -21,13 +21,16 @@ export class ViewProductComponent implements OnChanges {
     private dialog: MatDialog,
     private userService:UserService
   ) {
-    this.ngOnChanges();
+    this.getProducts();
   }
 
-  ngOnChanges() {
+  getProducts(){
     this.adminservice.getProduct().subscribe((res: AddProduct[]) => {
       this.product = res;
     });
+  }
+  ngOnChanges() {
+    this.getProducts();
   }
   id: any;
   show = false;
@@ -41,7 +44,7 @@ export class ViewProductComponent implements OnChanges {
 
   deleteProduct(data: any) {
     this.adminservice.deleteProduct(data).subscribe();
-    this.ngOnChanges();
+    this.getProducts();
     this.toastr.warning('Product deleted..!');
   }
 }

@@ -14,7 +14,7 @@ export class AdminService {
       map((res) => {
         return res;
       })
-    ); //
+    ); 
   }
 
   getProduct(): Observable<any> {

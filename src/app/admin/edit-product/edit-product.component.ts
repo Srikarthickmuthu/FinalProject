@@ -16,13 +16,12 @@ export class EditProductComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private toastr: ToastrService,
-    private userService:UserService
+    private userService: UserService
   ) {}
 
   ngOnInit() {
     this.id = localStorage.getItem('id');
     this.userService.addedProduct(this.id);
-    console.log(this.id);
     this.adminService.getProductEdit(this.id).subscribe((res: AddProduct) => {
       this.product = res;
     });

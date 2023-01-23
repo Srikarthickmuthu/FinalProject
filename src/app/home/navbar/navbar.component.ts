@@ -28,14 +28,13 @@ export class NavbarComponent {
       this.showLogin = false;
       this.showLogout = true;
     }
-
     if (this.user != null) {
       this.showLogin = false;
       this.showLogout = true;
     }
   }
 
-  logout() {
+  logout(): void {
     this.userservice.logout();
     this.toastr.success('Logout Successfull..!');
   }

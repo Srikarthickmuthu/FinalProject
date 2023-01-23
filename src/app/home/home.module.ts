@@ -8,9 +8,8 @@ import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SumPipe } from '../Services/Pipes/sum.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { AppModule } from '../app.module';
 import { NavbarComponent } from './navbar/navbar.component';
-// import { AppComponent } from '../app.component';
+
 
 @NgModule({
     declarations: [

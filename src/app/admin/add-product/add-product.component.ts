@@ -14,7 +14,7 @@ export class AddProductComponent {
     private toastr: ToastrService
   ) {}
 
-  onSubmit(addProduct: NgForm) {
+  onSubmit(addProduct: NgForm): void {
     this.adminservice.addProduct(addProduct.value).subscribe();
 
     addProduct.resetForm();

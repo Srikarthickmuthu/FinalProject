@@ -14,16 +14,18 @@ export class UserAccessComponent implements OnInit {
   constructor(public addminservice: AdminService , private toastr:ToastrService) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+  getUser(){
     this.addminservice.getUser().subscribe(
       (res: UserData[]) => {
         this.user = res;
       }
     )
   }
-
   blockUser(data: Number) {
     this.addminservice.deleteUser(data).subscribe();
-    this.ngOnInit();
+    this.getUser();
     this.toastr.error("User blocked successfully..!");
 
   }
