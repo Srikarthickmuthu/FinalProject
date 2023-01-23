@@ -1,6 +1,9 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
+import { NavbarComponent } from 'src/app/home/navbar/navbar.component';
 
 import { UserAccessComponent } from './user-access.component';
 
@@ -10,7 +13,8 @@ describe('UserAccessComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserAccessComponent ],
+      imports:[RouterModule , RouterTestingModule],
+      declarations: [ UserAccessComponent , NavbarComponent  ],
       providers:[HttpClient,HttpHandler,{
         provide:ToastrService, useValue:ToastrService
       }]

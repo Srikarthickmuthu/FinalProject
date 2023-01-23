@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import {  ToastrService } from 'ngx-toastr';
+import { NavbarComponent } from 'src/app/home/navbar/navbar.component';
 
 import { LoginComponent } from './login.component';
 
@@ -13,7 +14,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [ LoginComponent , NavbarComponent ],
       imports:[RouterModule,RouterTestingModule,ReactiveFormsModule],
       providers:[HttpClient,FormBuilder,HttpHandler,{
         provide:ToastrService, useValue:ToastrService

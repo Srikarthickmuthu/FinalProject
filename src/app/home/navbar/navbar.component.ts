@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
 import { AccessService } from '../../Services/access.service';
@@ -7,18 +6,19 @@ import { AccessService } from '../../Services/access.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  items = 0;
   user: any;
-  userDetail: any;
   show: any;
+  showUser = true;
+  showAdmin = false;
+  showLogin = true;
+  showLogout = false;
   constructor(
     private access: AccessService,
-    private route: Router,
     private toastr: ToastrService,
-    private userservice:UserService
+    private userservice: UserService
   ) {
     this.user = localStorage.getItem('Active-User');
     this.show = this.access.userNav;
@@ -34,11 +34,6 @@ export class NavbarComponent {
       this.showLogout = true;
     }
   }
-  ngOnChanges() {}
-  showUser = true;
-  showAdmin = false;
-  showLogin = true;
-  showLogout = false;
 
   logout() {
     this.userservice.logout();

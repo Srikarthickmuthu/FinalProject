@@ -1,5 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { ToastrService } from 'ngx-toastr';
 
 import { UserService } from './user.service';
 
@@ -8,7 +9,9 @@ describe('UserService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[HttpClient,HttpHandler]
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      }]
     });
     service = TestBed.inject(UserService);
   });

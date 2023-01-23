@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrService } from 'ngx-toastr';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 import { UserHomeComponent } from './user-home.component';
 
@@ -11,9 +13,11 @@ describe('UserHomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserHomeComponent ],
+      declarations: [ UserHomeComponent , NavbarComponent],
       imports:[RouterModule,RouterTestingModule],
-      providers:[HttpClient]
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      }]
     })
     .compileComponents();
 
