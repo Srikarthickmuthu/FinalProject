@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,5 +19,6 @@ import { ToastrModule } from 'ngx-toastr';
   entryComponents:[AppComponent],
   providers: [],
   bootstrap: [AppComponent],
+ 
 })
 export class AppModule {}

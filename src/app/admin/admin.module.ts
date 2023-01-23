@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     HttpClientModule,
     MatDialogModule,
+    HomeModule
   ],
 })
 export class AdminModule {}

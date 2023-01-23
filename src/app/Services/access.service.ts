@@ -38,9 +38,14 @@ export class AccessService {
 
           this.active = true;
 
+          // this.router.navigate(['/app'])
+
           this.router.navigate(['/home-path/user-home-path']);
-        } else {
+        } else {  
           this.toastr.error('User Not Found');
+        }
+        (_err:any)=>{
+          this.toastr.warning("Something went wrong");
         }
       });
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 // import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccessService } from 'src/app/Services/access.service';
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formbuilder: FormBuilder,
     public access: AccessService,
-    public addminservice: AdminService
+    public addminservice: AdminService,
+    public router:Router
   ) {}
 
   ngOnInit() {
@@ -35,5 +37,6 @@ export class LoginComponent implements OnInit {
     this.access.login(this.loginform.value.email,this.loginform.value.password);
 
     this.loginform.reset();
+
    }
 }

@@ -8,15 +8,21 @@ import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SumPipe } from '../Services/Pipes/sum.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AppModule } from '../app.module';
+import { NavbarComponent } from './navbar/navbar.component';
+// import { AppComponent } from '../app.component';
 
 @NgModule({
-  declarations: [
-    UserHomeComponent,
-    ViewproductComponent,
-    CartComponent,
-    SumPipe,
-    PagenotfoundComponent,
-  ],
-  imports: [CommonModule, HomeRoutingModule, HttpClientModule],
+    declarations: [
+        UserHomeComponent,
+        ViewproductComponent,
+        CartComponent,
+        SumPipe,
+        PagenotfoundComponent,
+        NavbarComponent
+       
+    ],
+    imports: [CommonModule, HomeRoutingModule, HttpClientModule],
+    exports:[NavbarComponent]
 })
 export class HomeModule {}

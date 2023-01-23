@@ -33,7 +33,7 @@ export class AccessGuard implements CanActivate {
     if (this.access.active) {
       return true;
     } else {
-      localStorage.clear();
+      // localStorage.clear();
       this.toastr.warning('Please login before continue..!');
       return false;
     }
