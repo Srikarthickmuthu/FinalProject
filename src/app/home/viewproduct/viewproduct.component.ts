@@ -28,6 +28,7 @@ export class ViewproductComponent implements OnInit {
 
   cart(data: any) {
     data.userId = this.user;
+    data.deliveryStatus="Ordered";
     this.userservice.addProduct(data).subscribe();
     delete data.id;
     this.toastr.success('Product added to the cart..!');

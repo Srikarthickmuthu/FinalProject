@@ -1,21 +1,21 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AddProduct } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'],
+  selector: 'app-total-orders',
+  templateUrl: './total-orders.component.html',
+  styleUrls: ['./total-orders.component.css']
 })
-export class CartComponent implements OnInit {
+export class TotalOrdersComponent {
   cart: any = [];
   a!: AddProduct;
 
   constructor(public userservice: UserService, private toastr: ToastrService) {}
 
   user = localStorage.getItem('Active-User');
-  deliveryStatus="Ordered"
+  deliveryStatus="Delivered"
   show = true;
   showCart = false;
   lengthValue = 0;
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
   getCart() {
     this.userservice.getCart().subscribe((res: any) => {
       this.cart = res.filter((el: { userId: string ,deliveryStatus:String}) => {
-        return el.userId == this.user&& el.deliveryStatus=="Ordered";
+        return el.userId == this.user && el.deliveryStatus=="Delivered";
       });
       this.lengthValue = this.cart.length;
       if (length !== 0) {
@@ -33,12 +33,5 @@ export class CartComponent implements OnInit {
         this.showCart = true;
       }
     });
-  }
-  delete(data: any) {
-    this.userservice.delete(data).subscribe(()=>{
-      this.getCart();
-    });
-    
-    this.toastr.warning('Product removed ..!');
   }
 }

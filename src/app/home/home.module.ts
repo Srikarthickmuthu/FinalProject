@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SumPipe } from '../Services/Pipes/sum.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TotalOrdersComponent } from './total-orders/total-orders.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
         CartComponent,
         SumPipe,
         PagenotfoundComponent,
-        NavbarComponent
+        NavbarComponent,
+        TotalOrdersComponent
        
     ],
     imports: [CommonModule, HomeRoutingModule, HttpClientModule],

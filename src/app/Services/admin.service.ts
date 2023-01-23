@@ -43,7 +43,7 @@ export class AdminService {
   addProduct(data: any) {
     return this.http.post(`${this.url}/product-details`, data);
   }
-  updateDelivery(data: any, id: any) {
-    return this.http.patch(`${this.url}/cart/${id}`, data);
+  updateDelivery(id: any,data: any) {
+    return this.http.put(`${this.url}/cart/${id}`, data);
   }
 }

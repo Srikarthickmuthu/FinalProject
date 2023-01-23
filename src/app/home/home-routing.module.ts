@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccessGuard } from '../Services/Guard/access.guard';
 import { CartComponent } from './cart/cart.component';
+import { TotalOrdersComponent } from './total-orders/total-orders.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 
@@ -17,6 +18,11 @@ const routes: Routes = [
     component: ViewproductComponent,
     canActivate: [AccessGuard],
   },
+  {
+    path:'total-orders-path',
+    component:TotalOrdersComponent,
+    canActivate:[AccessGuard]
+  }
 ];
 
 @NgModule({

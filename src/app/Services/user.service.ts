@@ -34,6 +34,9 @@ export class UserService {
   getCart() {
     return this.http.get(`${this.url}/cart`);
   }
+  getSingle(data:any){
+    return this.http.get(`${this.url}/cart/${data}`)
+  }
   delete(data: any) {
     return this.http.delete(`${this.url}/cart/${data}`);
   }

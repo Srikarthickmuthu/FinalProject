@@ -11,6 +11,9 @@
         <li routerLink="../user-cart-path">
           <p>Cart</p>
         </li>
+        <li routerLink="../total-orders-path" *ngIf="showLogout">
+          <p>Your Orders</p>
+        </li>
         <li routerLink="../../loginSignUp-path/login-path" *ngIf="showLogin">
           <p>Login</p>
         </li>

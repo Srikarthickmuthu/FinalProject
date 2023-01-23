@@ -4,6 +4,7 @@ import { AddProduct } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -16,7 +17,8 @@ export class EditProductComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private toastr: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private dialog:MatDialog
   ) {}
 
   ngOnInit() {
@@ -37,5 +39,7 @@ export class EditProductComponent implements OnInit {
     editProduct.resetForm();
 
     this.toastr.success('Product details edited successfully..!');
+
+    this.dialog.closeAll();
   }
 }

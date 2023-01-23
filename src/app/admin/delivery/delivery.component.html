@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <div>
   <h2>List of Ordered Products</h2>
   <table>
@@ -9,6 +10,7 @@
         <th>Product Type</th>
         <th>Product Price</th>
         <th>Ordered By</th>
+        <td>Delivery status</td>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +20,7 @@
         <td>{{ product.productType }}</td>
         <td>{{ product.productPrice }}</td>
         <td>{{product.userId}}</td>
+        <td><button (click)="delivered(product.id)">Delivered</button></td>
       </tr>
     </tbody>
   </table>
