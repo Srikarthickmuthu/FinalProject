@@ -18,13 +18,12 @@ export class AccessGuard implements CanActivate {
   constructor(
     private access: AccessService,
     public user: UserService,
-    private route: Router,
     private toastr: ToastrService
   ) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    // route: ActivatedRouteSnapshot,
+    // state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>

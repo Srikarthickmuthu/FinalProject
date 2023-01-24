@@ -7,15 +7,15 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SellingDetailsComponent } from './selling-details/selling-details.component';
+import { AccessGuard } from '../Services/Guard/access.guard';
 
 const routes: Routes = [
-  { path: 'add-product-path', component: AddProductComponent },
-  { path: 'delivery-path', component: DeliveryComponent },
-  { path: 'user-access-path', component: UserAccessComponent },
-  { path: 'view-product-path', component: ViewProductComponent },
-  { path: 'edit-product-path', component: EditProductComponent },
-  {path:'selling-details-path',component:SellingDetailsComponent},
-  { path: '', component: DeliveryComponent },
+  { path: 'add-product-path', component: AddProductComponent , canActivate: [AccessGuard] },
+  { path: 'delivery-path', component: DeliveryComponent  , canActivate: [AccessGuard]},
+  { path: 'user-access-path', component: UserAccessComponent  , canActivate: [AccessGuard]},
+  { path: 'view-product-path', component: ViewProductComponent , canActivate: [AccessGuard]},
+  { path: 'edit-product-path', component: EditProductComponent , canActivate: [AccessGuard] },
+  {path:'selling-details-path',component:SellingDetailsComponent , canActivate: [AccessGuard]},
 ];
 
 @NgModule({

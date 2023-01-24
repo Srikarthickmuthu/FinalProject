@@ -15,8 +15,8 @@ export class TallyComponent implements OnInit {
   quantity:any;
   data!:any;
   Quantity=0;
-  Price=1;
-  Id=1;
+  Price=0;
+  Id=0;
   ngOnInit(): void {
     this.data=sessionStorage.getItem("productName");
     this.quantity=sessionStorage.getItem("quantity");
