@@ -11,7 +11,7 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./delivery.component.css'],
 })
 export class DeliveryComponent implements OnInit {
-  cart!: any;
+  cart!: AddProduct;
   update!: AddProduct;
   constructor(
     public userservice: UserService,
@@ -26,7 +26,7 @@ value="Ordered"
       });
     });
   }
-  delivered(dataUser: any) {
+  delivered(dataUser: Number) {
     this.userservice.getSingle(dataUser).subscribe((res: any) => {
       this.update = res;
       this.update.deliveryStatus = 'Delivered';

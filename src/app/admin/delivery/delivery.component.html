@@ -14,13 +14,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of cart">
-        <td><img src="{{ product.productImage }}" /></td>
-        <td>{{ product.productName }}</td>
-        <td>{{ product.productType }}</td>
-        <td>{{ product.productPrice }}</td>
-        <td>{{product.userId}}</td>
-        <td><button (click)="delivered(product.id)">Delivered</button></td>
+      <tr>
+        <td><img src="{{ cart.productImage }}" /></td>
+        <td>{{ cart.productName }}</td>
+        <td>{{ cart.productType }}</td>
+        <td>{{ cart.productPrice }}</td>
+        <td>{{cart.user}}</td>
+        <td><button (click)="delivered(cart.id)">Delivered</button></td>
       </tr>
     </tbody>
   </table>

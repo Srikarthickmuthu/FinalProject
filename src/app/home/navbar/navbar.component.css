@@ -12,11 +12,6 @@ ul {
   li:hover {
     background-color: rgb(148, 135, 135);
   }
-  h4 {
-    padding: 25px;
-    font-size: 25px;
-    margin-right: 250px;
-  }
   img {
     position: absolute;
     left: 10px;

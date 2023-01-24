@@ -8,6 +8,7 @@ import { UserAccessComponent } from './user-access/user-access.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SellingDetailsComponent } from './selling-details/selling-details.component';
 import { AccessGuard } from '../Services/Guard/access.guard';
+import { PagenotfoundComponent } from '../home/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: 'add-product-path', component: AddProductComponent , canActivate: [AccessGuard] },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'view-product-path', component: ViewProductComponent , canActivate: [AccessGuard]},
   { path: 'edit-product-path', component: EditProductComponent , canActivate: [AccessGuard] },
   {path:'selling-details-path',component:SellingDetailsComponent , canActivate: [AccessGuard]},
+  { path: '', redirectTo: '/home-path/user-home-path', pathMatch: 'full' },
+  { path: '**', component: PagenotfoundComponent },
 ];
 
 @NgModule({

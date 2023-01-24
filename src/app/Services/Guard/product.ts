@@ -1,5 +1,5 @@
 export interface AddProduct {
-length: any;
+  length: any;
   user: String;
   id: Number;
   productName: String;
