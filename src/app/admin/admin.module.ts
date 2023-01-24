@@ -11,6 +11,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeModule } from '../home/home.module';
+import { SellingDetailsComponent } from './selling-details/selling-details.component';
+import { TallyComponent } from './tally/tally.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,10 @@ import { HomeModule } from '../home/home.module';
     DeliveryComponent,
     ViewProductComponent,
     EditProductComponent,
+    SellingDetailsComponent,
+    TallyComponent,
   ],
-  entryComponents: [EditProductComponent],
+  entryComponents: [EditProductComponent , TallyComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

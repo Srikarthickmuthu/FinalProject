@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div>
+<div *ngIf="cart.length!==0">
   <h2>List of Ordered Products</h2>
   <table>
     <thead>
@@ -25,3 +25,8 @@
     </tbody>
   </table>
 </div>
+<ng-container *ngIf="cart.length==0">
+  <div class="card" >
+    <!-- <button id="button" routerLink="/home-path/view-home-path">Shop Now!</button> -->
+  </div>
+  </ng-container>

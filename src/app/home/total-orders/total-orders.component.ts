@@ -28,10 +28,6 @@ export class TotalOrdersComponent {
         return el.userId == this.user && el.deliveryStatus=="Delivered";
       });
       this.lengthValue = this.cart.length;
-      if (length !== 0) {
-        this.show = false;
-        this.showCart = true;
-      }
     });
   }
 }

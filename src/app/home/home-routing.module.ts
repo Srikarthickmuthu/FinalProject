@@ -16,7 +16,6 @@ const routes: Routes = [
   {
     path: 'view-home-path',
     component: ViewproductComponent,
-    canActivate: [AccessGuard],
   },
   {
     path:'total-orders-path',

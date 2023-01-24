@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AddProduct } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
@@ -15,6 +16,7 @@ export class DeliveryComponent implements OnInit {
   constructor(
     public userservice: UserService,
     public adminservice: AdminService,
+    private toastr:ToastrService
   ) {}
 value="Ordered"
   ngOnInit() {
@@ -30,6 +32,7 @@ value="Ordered"
       this.update.deliveryStatus = 'Delivered';
       this.ngOnInit();
       this.adminservice.updateDelivery(dataUser, this.update).subscribe();
+      this.toastr.success("Status updated successfully");
     });
    
   }
