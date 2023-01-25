@@ -12,12 +12,12 @@ import { TallyComponent } from '../tally/tally.component';
 })
 export class SellingDetailsComponent {
   cart!: any;
-  cart1!:any;
+  cart1!: any;
   update!: AddProduct;
   constructor(
     public userservice: UserService,
     public adminservice: AdminService,
-    private dialog:MatDialog
+    private dialog: MatDialog
   ) {}
   value = 'Delivered';
   ngOnInit() {
@@ -25,25 +25,33 @@ export class SellingDetailsComponent {
       return (this.cart = res);
     });
   }
-  Quantity:any;
-  total(data: any , id:any) {
+  Quantity: any;
+  
+  total(data: any, id: any) {
     this.userservice.getCart().subscribe((res: any) => {
-      this.cart1 = res.filter((el:{deliveryStatus:String;productName:String})=>{
-        return el.deliveryStatus==this.value && el.productName==data 
-      });
-      this.Quantity=this.cart1.length;
+      this.cart1 = res.filter(
+        (el: { deliveryStatus: String; productName: String }) => {
+          return el.deliveryStatus == this.value && el.productName == data;
+        }
+      );
+      this.Quantity = this.cart1.length;
     });
 
-    if(this.Quantity!=null){
-    sessionStorage.setItem("quantity",this.Quantity);}
-    else{
-      sessionStorage.setItem("quantity","1")
+    if (this.Quantity != null) {
+      sessionStorage.setItem('quantity', this.Quantity);
+    } else {
+      sessionStorage.setItem('quantity', '1');
     }
-    sessionStorage.setItem("productName",data)
-    sessionStorage.setItem("productPrice",id)
-    this.dialog.open(TallyComponent).afterClosed().subscribe((res)=>{this.clear()});
+    sessionStorage.setItem('productName', data);
+    sessionStorage.setItem('productPrice', id);
+    this.dialog
+      .open(TallyComponent)
+      .afterClosed()
+      .subscribe(() => {
+        this.clear();
+      });
   }
-  clear(){
+  clear() {
     sessionStorage.clear();
   }
 }

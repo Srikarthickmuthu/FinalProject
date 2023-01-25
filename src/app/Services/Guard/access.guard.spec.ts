@@ -1,11 +1,12 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
+import { Input } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ToastrService } from 'ngx-toastr';
-
 import { AccessGuard } from './access.guard';
 
 describe('AccessGuard', () => {
   let guard: AccessGuard;
+  let access:Input;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -19,4 +20,11 @@ describe('AccessGuard', () => {
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
+  it('grant access' ,()=>{
+    const canActivate=guard.canActivate()
+    expect (canActivate).toBeTrue();
+  })
+  it('if access equal to active ',()=>{
+    expect (access).toBeTruthy()
+  })
 });

@@ -94,20 +94,6 @@
             "scripts": [],
             "codeCoverage": true
           }
-        },
-        "nightwatch-run": {
-          "builder": "@nightwatch/schematics:nightwatch",
-          "options": {
-            "devServerTarget": "OnlineShopping:serve",
-            "tsConfig": "../nightwatch/tsconfig.e2e.json",
-            "config": "./nightwatch.conf.js",
-            "env": "chrome"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "OnlineShopping:serve:production"
-            }
-          }
         }
       }
     }

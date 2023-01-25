@@ -4,19 +4,16 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarComponent } from '../navbar/navbar.component';
-
 import { CartComponent } from './cart.component';
 
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CartComponent, NavbarComponent],
       providers: [
-        HttpClient,
-        HttpHandler,
+        HttpClient,HttpHandler,
         {
           provide: ToastrService,
           useValue: ToastrService,
@@ -33,4 +30,9 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+//   it("clicked",()=>{
+//     component.getCart();
+//     expect(component.getCart).withContext("show=false")
+    
+// })
+})
