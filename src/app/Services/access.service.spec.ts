@@ -1,11 +1,11 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
-
 import { TestBed } from '@angular/core/testing';
 import { ToastrService } from 'ngx-toastr';
 import { AccessService } from './access.service';
 
 describe('AccessService', () => {
   let service: AccessService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [

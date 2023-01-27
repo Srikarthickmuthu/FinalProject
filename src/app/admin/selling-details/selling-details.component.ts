@@ -24,9 +24,11 @@ export class SellingDetailsComponent {
     this.adminservice.getProduct().subscribe((res: any) => {
       return (this.cart = res);
     });
+    this.clear();
   }
+
   Quantity: any;
-  
+
   total(data: any, id: any) {
     this.userservice.getCart().subscribe((res: any) => {
       this.cart1 = res.filter(
@@ -36,20 +38,20 @@ export class SellingDetailsComponent {
       );
       this.Quantity = this.cart1.length;
     });
-
-    if (this.Quantity != null) {
+    setTimeout(() => {
       sessionStorage.setItem('quantity', this.Quantity);
-    } else {
-      sessionStorage.setItem('quantity', '1');
-    }
-    sessionStorage.setItem('productName', data);
-    sessionStorage.setItem('productPrice', id);
-    this.dialog
-      .open(TallyComponent)
-      .afterClosed()
-      .subscribe(() => {
-        this.clear();
-      });
+      sessionStorage.setItem('productName', data);
+      sessionStorage.setItem('productPrice', id);
+    }, 500);
+
+    setTimeout(() => {
+      this.dialog
+        .open(TallyComponent)
+        .afterClosed()
+        .subscribe(() => {
+          this.clear();
+        });
+    }, 700);
   }
   clear() {
     sessionStorage.clear();

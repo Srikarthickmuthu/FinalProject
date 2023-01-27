@@ -19,12 +19,12 @@ export class ViewProductComponent implements OnChanges {
     public adminservice: AdminService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private userService:UserService
+    private userService: UserService
   ) {
     this.getProducts();
   }
 
-  getProducts(){
+  getProducts() {
     this.adminservice.getProduct().subscribe((res: AddProduct[]) => {
       this.product = res;
     });
@@ -36,17 +36,22 @@ export class ViewProductComponent implements OnChanges {
   show = false;
 
   edit(data: any) {
-    this.dialog.open(EditProductComponent ).afterClosed().subscribe((res)=>{this.getProducts()});
+    this.dialog
+      .open(EditProductComponent)
+      .afterClosed()
+      .subscribe((res) => {
+        this.getProducts();
+      });
     localStorage.setItem('id', data);
     this.userService.addedProduct(data);
     this.id = data;
   }
 
   deleteProduct(data: any) {
-    this.adminservice.deleteProduct(data).subscribe(()=>{
+    this.adminservice.deleteProduct(data).subscribe(() => {
       this.getProducts();
     });
-    
+
     this.toastr.warning('Product deleted..!');
   }
 }

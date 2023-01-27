@@ -5,28 +5,27 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-user-access',
   templateUrl: './user-access.component.html',
-  styleUrls: ['./user-access.component.css']
+  styleUrls: ['./user-access.component.css'],
 })
 export class UserAccessComponent implements OnInit {
-
   public user!: UserData[];
   public access = false;
-  constructor(public addminservice: AdminService , private toastr:ToastrService) { }
+  constructor(
+    public addminservice: AdminService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.getUser();
   }
-  getUser(){
-    this.addminservice.getUser().subscribe(
-      (res: UserData[]) => {
-        this.user = res;
-      }
-    )
+  getUser() {
+    this.addminservice.getUser().subscribe((res: UserData[]) => {
+      this.user = res;
+    });
   }
   blockUser(data: Number) {
     this.addminservice.deleteUser(data).subscribe();
     this.getUser();
-    this.toastr.error("User blocked successfully..!");
-
+    this.toastr.error('User blocked successfully..!');
   }
 }

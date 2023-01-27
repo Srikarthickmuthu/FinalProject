@@ -24,14 +24,14 @@ import { TallyComponent } from './tally/tally.component';
     SellingDetailsComponent,
     TallyComponent,
   ],
-  entryComponents: [EditProductComponent , TallyComponent],
+  entryComponents: [EditProductComponent, TallyComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-    HomeModule
+    HomeModule,
   ],
 })
 export class AdminModule {}

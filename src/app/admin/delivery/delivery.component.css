@@ -41,7 +41,7 @@ button {
 .card {
   background-image: url(../../../assets/product-images/admin.png);
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size: contain;
   padding: 200px;
   margin-left: auto;
   margin-right: auto;

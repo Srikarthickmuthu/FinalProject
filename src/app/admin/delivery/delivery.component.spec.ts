@@ -12,13 +12,17 @@ describe('DeliveryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeliveryComponent , NavbarComponent ,],
-      providers:[HttpClient,HttpHandler ,{
-        provide:ToastrService, useValue:ToastrService
-      }],
-      imports:[RouterModule , RouterTestingModule]
-    })
-    .compileComponents();
+      declarations: [DeliveryComponent, NavbarComponent],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+      ],
+      imports: [RouterModule, RouterTestingModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DeliveryComponent);
     component = fixture.componentInstance;
@@ -28,5 +32,4 @@ describe('DeliveryComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

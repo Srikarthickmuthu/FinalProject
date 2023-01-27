@@ -5,8 +5,7 @@ import { PagenotfoundComponent } from './home/pagenotfound/pagenotfound.componen
 const routes: Routes = [
   {
     path: 'home-path',
-    loadChildren: () => 
-      import('./home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'loginSignUp-path',

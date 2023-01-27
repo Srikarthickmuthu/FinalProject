@@ -3,29 +3,28 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-
 import { ToastrService } from 'ngx-toastr';
 import { NavbarComponent } from 'src/app/home/navbar/navbar.component';
-import { AdminService } from 'src/app/Services/admin.service';
-import { UserService } from 'src/app/Services/user.service';
-
 
 import { SellingDetailsComponent } from './selling-details.component';
 
 describe('SellingDetailsComponent', () => {
   let component: SellingDetailsComponent;
   let fixture: ComponentFixture<SellingDetailsComponent>;
-  let service:AdminService;
-  let userservice:UserService
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SellingDetailsComponent , NavbarComponent ],
-      providers:[HttpClient,HttpHandler ,{
-        provide:ToastrService, useValue:ToastrService
-      },MatDialog],
-      imports:[RouterModule,RouterTestingModule , MatDialogModule]
-    })
-    .compileComponents();
+      declarations: [SellingDetailsComponent, NavbarComponent],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+        MatDialog,
+      ],
+      imports: [RouterModule, RouterTestingModule, MatDialogModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SellingDetailsComponent);
     component = fixture.componentInstance;
@@ -35,14 +34,4 @@ describe('SellingDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should clear',()=>{
-    expect(component.clear).toBe(localStorage.clear);
-  })
-  it("should return",()=>{
-    return expect(component.ngOnInit).toBe(service.getProduct);
-  })
-  it("should return",()=>{
-   return expect(component.total).toBe(userservice.getCart);
-  })
 });

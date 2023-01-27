@@ -6,13 +6,17 @@ import { AccessGuard } from './access.guard';
 
 describe('AccessGuard', () => {
   let guard: AccessGuard;
-  let access:Input;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[HttpClient,HttpHandler,{
-        provide:ToastrService, useValue:ToastrService
-      }]
+      providers: [
+        HttpClient,
+        HttpHandler,
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+      ],
     });
     guard = TestBed.inject(AccessGuard);
   });
@@ -20,11 +24,8 @@ describe('AccessGuard', () => {
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
-  it('grant access' ,()=>{
-    const canActivate=guard.canActivate()
-    expect (canActivate).toBeTrue();
-  })
-  it('if access equal to active ',()=>{
-    expect (access).toBeTruthy()
-  })
+  it('grant access', () => {
+    const canActivate = guard.canActivate();
+    expect(canActivate).toBeTrue();
+  });
 });

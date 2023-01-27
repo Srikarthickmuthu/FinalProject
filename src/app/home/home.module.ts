@@ -11,19 +11,17 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TotalOrdersComponent } from './total-orders/total-orders.component';
 
-
 @NgModule({
-    declarations: [
-        UserHomeComponent,
-        ViewproductComponent,
-        CartComponent,
-        SumPipe,
-        PagenotfoundComponent,
-        NavbarComponent,
-        TotalOrdersComponent
-       
-    ],
-    imports: [CommonModule, HomeRoutingModule, HttpClientModule],
-    exports:[NavbarComponent]
+  declarations: [
+    UserHomeComponent,
+    ViewproductComponent,
+    CartComponent,
+    SumPipe,
+    PagenotfoundComponent,
+    NavbarComponent,
+    TotalOrdersComponent,
+  ],
+  imports: [CommonModule, HomeRoutingModule, HttpClientModule],
+  exports: [NavbarComponent],
 })
 export class HomeModule {}

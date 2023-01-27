@@ -3,28 +3,93 @@
   <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
     <h1>Sign-up</h1>
     <div>
-      <input id="fname" name="fname" type="text" class="formcontrol" placeholder="Enter your first name"
-        autocomplete="off" ngModel required fname />
+      <input
+        id="fname"
+        name="fname"
+        type="text"
+        class="formcontrol"
+        placeholder="Enter your first name"
+        autocomplete="off"
+        ngModel
+        required
+        fname
+      />
 
-      <input id="lname" name="lname" type="text" class="formcontrol" placeholder="Enter your last name"
-        autocomplete="off" ngModel required lname />
+      <input
+        id="lname"
+        name="lname"
+        type="text"
+        class="formcontrol"
+        placeholder="Enter your last name"
+        autocomplete="off"
+        ngModel
+        required
+        lname
+      />
 
-      <input id="number" name="number" type="text" class="formcontrol" placeholder="Enter your Mobile Number"
-        autocomplete="off" ngModel [pattern]="mobNumberPattern" required number #number="ngModel" />
+      <input
+        id="number"
+        name="number"
+        type="text"
+        class="formcontrol"
+        placeholder="Enter your Mobile Number"
+        autocomplete="off"
+        ngModel
+        [pattern]="mobNumberPattern"
+        required
+        number
+        #number="ngModel"
+      />
 
-      <span *ngIf="!number.valid && number.touched">Please enter valid number</span><br />
+      <span *ngIf="!number.valid && number.touched"
+        >Please enter valid number</span
+      ><br />
 
-      <input type="text" id="email" class="formcontrol" name="email" placeholder="Enter your Mail Id" autocomplete="off"
-        ngModel [pattern]="Emailpattern" required email #email="ngModel" />
+      <input
+        type="text"
+        id="email"
+        class="formcontrol"
+        name="email"
+        placeholder="Enter your Mail Id"
+        autocomplete="off"
+        ngModel
+        [pattern]="Emailpattern"
+        required
+        email
+        #email="ngModel"
+      />
 
-      <span *ngIf="!email.valid && email.touched">Please enter valid mail-id</span><br />
+      <span *ngIf="!email.valid && email.touched"
+        >Please enter valid mail-id</span
+      ><br />
 
-      <input type="password" id="password" class="formcontrol" name="password" placeholder="Enter the new passsword"
-        autocomplete="off" [pattern]="passwordPattern" ngModel #password="ngModel" required password />
-      <span *ngIf="!password.valid && password.touched">Password is required in requested format e.g Abcd@123
-      </span><br />
-      <label>Select Your Country
-        <select id="country" name="country" for="country" class="formcontrol" ngModel required country>
+      <input
+        type="password"
+        id="password"
+        class="formcontrol"
+        name="password"
+        placeholder="Enter the new passsword"
+        autocomplete="off"
+        [pattern]="passwordPattern"
+        ngModel
+        #password="ngModel"
+        required
+        password
+      />
+      <span *ngIf="!password.valid && password.touched"
+        >Password is required in requested format e.g Abcd@123 </span
+      ><br />
+      <label
+        >Select Your Country
+        <select
+          id="country"
+          name="country"
+          for="country"
+          class="formcontrol"
+          ngModel
+          required
+          country
+        >
           <option *ngFor="let c of countryList">
             {{ c.countryname }}
           </option>

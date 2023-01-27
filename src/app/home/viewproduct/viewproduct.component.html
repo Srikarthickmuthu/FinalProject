@@ -6,7 +6,9 @@
       <h3>{{ item.productName }}</h3>
       <p><strong>Price:</strong>₹ {{ item.productPrice }}</p>
       <p>{{ item.productType }}</p>
-      <button (click)="cart(item)" *ngIf="this.user!=null">ADD TO CART</button>
+      <button (click)="cart(item)" *ngIf="this.user != null">
+        ADD TO CART
+      </button>
     </div>
   </ng-container>
 </div>

@@ -18,10 +18,10 @@ const routes: Routes = [
     component: ViewproductComponent,
   },
   {
-    path:'total-orders-path',
-    component:TotalOrdersComponent,
-    canActivate:[AccessGuard]
-  }
+    path: 'total-orders-path',
+    component: TotalOrdersComponent,
+    canActivate: [AccessGuard],
+  },
 ];
 
 @NgModule({

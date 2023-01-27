@@ -8,14 +8,17 @@
         <th>Product Image</th>
         <th>Product name</th>
         <th>Total Quantity Ordered</th>
-        <!-- <th>Quantity</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of cart">
         <td><img src="{{ product.productImage }}" /></td>
         <td>{{ product.productName }}</td>
-        <td><button (click)="total(product.productName , product.productPrice)">Click Here ..!</button></td>
+        <td>
+          <button (click)="total(product.productName, product.productPrice)">
+            Click Here ..!
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

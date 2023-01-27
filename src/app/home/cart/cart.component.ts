@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AddProduct } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
@@ -15,7 +15,6 @@ export class CartComponent implements OnInit {
   constructor(public userservice: UserService, private toastr: ToastrService) {}
 
   user = localStorage.getItem('Active-User');
-  deliveryStatus="Ordered"
   show = true;
   showCart = false;
   lengthValue = 0;
@@ -24,9 +23,11 @@ export class CartComponent implements OnInit {
   }
   getCart() {
     this.userservice.getCart().subscribe((res: any) => {
-      this.cart = res.filter((el: { userId: string ,deliveryStatus:String}) => {
-        return el.userId == this.user&& el.deliveryStatus=="Ordered";
-      });
+      this.cart = res.filter(
+        (el: { userId: string; deliveryStatus: String }) => {
+          return el.userId == this.user && el.deliveryStatus == 'Ordered';
+        }
+      );
       this.lengthValue = this.cart.length;
       if (length !== 0) {
         this.show = false;
@@ -35,10 +36,10 @@ export class CartComponent implements OnInit {
     });
   }
   delete(data: any) {
-    this.userservice.delete(data).subscribe(()=>{
+    this.userservice.delete(data).subscribe(() => {
       this.getCart();
     });
-    
+
     this.toastr.warning('Product removed ..!');
   }
 }

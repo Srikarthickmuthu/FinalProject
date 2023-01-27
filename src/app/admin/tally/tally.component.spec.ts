@@ -9,11 +9,10 @@ describe('TallyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TallyComponent ],
-      imports:[MatDialogModule],
-      providers:[MatDialog]
-    })
-    .compileComponents();
+      declarations: [TallyComponent],
+      imports: [MatDialogModule],
+      providers: [MatDialog],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TallyComponent);
     component = fixture.componentInstance;

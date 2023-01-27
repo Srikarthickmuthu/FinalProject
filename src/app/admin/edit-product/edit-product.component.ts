@@ -18,7 +18,7 @@ export class EditProductComponent implements OnInit {
     private adminService: AdminService,
     private toastr: ToastrService,
     private userService: UserService,
-    private dialog:MatDialog
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {

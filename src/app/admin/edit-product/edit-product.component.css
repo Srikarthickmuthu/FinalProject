@@ -42,3 +42,6 @@ button {
 .formcontrol.ng-invalid.ng-touched {
   border: 3px solid red;
 }
+#id {
+  pointer-events: none;
+}

@@ -10,18 +10,14 @@ import { AccessService } from '../../Services/access.service';
 })
 export class NavbarComponent {
   user: any;
-  show: any;
+
   showUser = true;
   showAdmin = false;
   showLogin = true;
   showLogout = false;
-  constructor(
-    private access: AccessService,
-    private toastr: ToastrService,
-    private userservice: UserService
-  ) {
+  constructor(private toastr: ToastrService, private userservice: UserService) {
     this.user = localStorage.getItem('Active-User');
-    this.show = this.access.userNav;
+
     if (this.user == 'admin@aspire.com') {
       this.showUser = false;
       this.showAdmin = true;

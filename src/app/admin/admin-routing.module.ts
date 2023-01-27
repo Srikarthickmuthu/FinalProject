@@ -11,12 +11,36 @@ import { AccessGuard } from '../Services/Guard/access.guard';
 import { PagenotfoundComponent } from '../home/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
-  { path: 'add-product-path', component: AddProductComponent , canActivate: [AccessGuard] },
-  { path: 'delivery-path', component: DeliveryComponent  , canActivate: [AccessGuard]},
-  { path: 'user-access-path', component: UserAccessComponent  , canActivate: [AccessGuard]},
-  { path: 'view-product-path', component: ViewProductComponent , canActivate: [AccessGuard]},
-  { path: 'edit-product-path', component: EditProductComponent , canActivate: [AccessGuard] },
-  {path:'selling-details-path',component:SellingDetailsComponent , canActivate: [AccessGuard]},
+  {
+    path: 'add-product-path',
+    component: AddProductComponent,
+    canActivate: [AccessGuard],
+  },
+  {
+    path: 'delivery-path',
+    component: DeliveryComponent,
+    canActivate: [AccessGuard],
+  },
+  {
+    path: 'user-access-path',
+    component: UserAccessComponent,
+    canActivate: [AccessGuard],
+  },
+  {
+    path: 'view-product-path',
+    component: ViewProductComponent,
+    canActivate: [AccessGuard],
+  },
+  {
+    path: 'edit-product-path',
+    component: EditProductComponent,
+    canActivate: [AccessGuard],
+  },
+  {
+    path: 'selling-details-path',
+    component: SellingDetailsComponent,
+    canActivate: [AccessGuard],
+  },
   { path: '', redirectTo: '/home-path/user-home-path', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent },
 ];
