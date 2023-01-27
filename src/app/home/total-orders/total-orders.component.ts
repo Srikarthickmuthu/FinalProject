@@ -23,13 +23,18 @@ export class TotalOrdersComponent {
     this.getCart();
   }
   getCart() {
-    this.userservice.getCart().subscribe((res: any) => {
-      this.cart = res.filter(
-        (el: { userId: string; deliveryStatus: String }) => {
-          return el.userId == this.user && el.deliveryStatus == 'Delivered';
-        }
-      );
-      this.lengthValue = this.cart.length;
-    });
+    this.userservice.getCart().subscribe(
+      (res: any) => {
+        this.cart = res.filter(
+          (el: { userId: string; deliveryStatus: String }) => {
+            return el.userId == this.user && el.deliveryStatus == 'Delivered';
+          }
+        );
+        this.lengthValue = this.cart.length;
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
 }

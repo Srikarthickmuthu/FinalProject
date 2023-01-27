@@ -22,24 +22,33 @@ export class CartComponent implements OnInit {
     this.getCart();
   }
   getCart() {
-    this.userservice.getCart().subscribe((res: any) => {
-      this.cart = res.filter(
-        (el: { userId: string; deliveryStatus: String }) => {
-          return el.userId == this.user && el.deliveryStatus == 'Ordered';
+    this.userservice.getCart().subscribe(
+      (res: any) => {
+        this.cart = res.filter(
+          (el: { userId: string; deliveryStatus: String }) => {
+            return el.userId == this.user && el.deliveryStatus == 'Ordered';
+          }
+        );
+        this.lengthValue = this.cart.length;
+        if (length !== 0) {
+          this.show = false;
+          this.showCart = true;
         }
-      );
-      this.lengthValue = this.cart.length;
-      if (length !== 0) {
-        this.show = false;
-        this.showCart = true;
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
       }
-    });
+    );
   }
   delete(data: any) {
-    this.userservice.delete(data).subscribe(() => {
-      this.getCart();
-    });
-
-    this.toastr.warning('Product removed ..!');
+    this.userservice.delete(data).subscribe(
+      (res) => {
+        this.getCart();
+        this.toastr.warning('Product removed ..!');
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
 }

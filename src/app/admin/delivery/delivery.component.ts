@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/Services/admin.service';
-import { AddProduct, response } from 'src/app/Services/Guard/product';
+import { AddProduct } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -21,9 +20,14 @@ export class DeliveryComponent implements OnInit {
   value = 'Ordered';
   ngOnInit() {
     this.userservice.getCart().subscribe((res: any) => {
-      this.cart = res.filter((el: { deliveryStatus: String }) => {
-        return el.deliveryStatus == this.value;
-      });
+      this.cart = res.filter(
+        (el: { deliveryStatus: String }) => {
+          return el.deliveryStatus == this.value;
+        },
+        (err: any) => {
+          this.toastr.error(`${err.status} Error ${err.name}`);
+        }
+      );
     });
   }
   delivered(dataUser: Number) {
@@ -31,16 +35,14 @@ export class DeliveryComponent implements OnInit {
       this.update = res;
       this.update.deliveryStatus = 'Delivered';
       this.ngOnInit();
-      this.adminservice.updateDelivery(dataUser, this.update).subscribe(() => {
-        (_error: any) => {
-          this.toastr.warning('Failed to fetch the resources');
-        };
-      });
-      this.toastr.success('Status updated successfully');
-
-      (_error: any) => {
-        this.toastr.warning('Failed to fetch the resources');
-      };
+      this.adminservice.updateDelivery(dataUser, this.update).subscribe(
+        (res: any) => {
+          this.toastr.success('Status updated successfully');
+        },
+        (err: any) => {
+          this.toastr.error(`${err.status} Error ${err.name}`);
+        }
+      );
     });
   }
 }

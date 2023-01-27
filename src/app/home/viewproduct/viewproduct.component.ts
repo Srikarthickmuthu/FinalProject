@@ -19,9 +19,14 @@ export class ViewproductComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.adminservice.getProduct().subscribe((res: AddProduct[]) => {
-      this.product = res;
-    });
+    this.adminservice.getProduct().subscribe(
+      (res: AddProduct[]) => {
+        this.product = res;
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
 
   user = localStorage.getItem('Active-User');
@@ -29,8 +34,14 @@ export class ViewproductComponent implements OnInit {
   cart(data: any) {
     data.userId = this.user;
     data.deliveryStatus = 'Ordered';
-    this.userservice.addProduct(data).subscribe();
+    this.userservice.addProduct(data).subscribe(
+      (res: any) => {
+        this.toastr.success('Product added to the cart..!');
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
     delete data.id;
-    this.toastr.success('Product added to the cart..!');
   }
 }

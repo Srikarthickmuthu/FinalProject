@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/Services/admin.service';
 import { AddProduct } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
@@ -17,7 +18,8 @@ export class SellingDetailsComponent {
   constructor(
     public userservice: UserService,
     public adminservice: AdminService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
   value = 'Delivered';
   ngOnInit() {
@@ -34,6 +36,9 @@ export class SellingDetailsComponent {
       this.cart1 = res.filter(
         (el: { deliveryStatus: String; productName: String }) => {
           return el.deliveryStatus == this.value && el.productName == data;
+        },
+        (err: any) => {
+          this.toastr.error(`${err.status} Error ${err.name}`);
         }
       );
       this.Quantity = this.cart1.length;
@@ -48,9 +53,14 @@ export class SellingDetailsComponent {
       this.dialog
         .open(TallyComponent)
         .afterClosed()
-        .subscribe(() => {
-          this.clear();
-        });
+        .subscribe(
+          (res) => {
+            this.clear();
+          },
+          (err: any) => {
+            this.toastr.error(`${err.status} Error ${err.name}`);
+          }
+        );
     }, 700);
   }
   clear() {

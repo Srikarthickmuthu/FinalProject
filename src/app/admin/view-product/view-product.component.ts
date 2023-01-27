@@ -25,9 +25,14 @@ export class ViewProductComponent implements OnChanges {
   }
 
   getProducts() {
-    this.adminservice.getProduct().subscribe((res: AddProduct[]) => {
-      this.product = res;
-    });
+    this.adminservice.getProduct().subscribe(
+      (res: AddProduct[]) => {
+        this.product = res;
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
   ngOnChanges() {
     this.getProducts();
@@ -39,18 +44,28 @@ export class ViewProductComponent implements OnChanges {
     this.dialog
       .open(EditProductComponent)
       .afterClosed()
-      .subscribe((res) => {
-        this.getProducts();
-      });
+      .subscribe(
+        (res) => {
+          this.getProducts();
+        },
+        (err: any) => {
+          this.toastr.error(`${err.status} Error ${err.name}`);
+        }
+      );
     localStorage.setItem('id', data);
     this.userService.addedProduct(data);
     this.id = data;
   }
 
   deleteProduct(data: any) {
-    this.adminservice.deleteProduct(data).subscribe(() => {
-      this.getProducts();
-    });
+    this.adminservice.deleteProduct(data).subscribe(
+      (res) => {
+        this.getProducts();
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
 
     this.toastr.warning('Product deleted..!');
   }

@@ -19,13 +19,24 @@ export class UserAccessComponent implements OnInit {
     this.getUser();
   }
   getUser() {
-    this.addminservice.getUser().subscribe((res: UserData[]) => {
-      this.user = res;
-    });
+    this.addminservice.getUser().subscribe(
+      (res: UserData[]) => {
+        this.user = res;
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
   blockUser(data: Number) {
-    this.addminservice.deleteUser(data).subscribe();
+    this.addminservice.deleteUser(data).subscribe(
+      (res) => {
+        this.toastr.error('User blocked successfully..!');
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
     this.getUser();
-    this.toastr.error('User blocked successfully..!');
   }
 }

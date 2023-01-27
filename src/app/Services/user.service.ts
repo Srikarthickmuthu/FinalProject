@@ -37,7 +37,6 @@ export class UserService {
   }
   addedProduct(data: any) {
     const value = data;
-    console.log(value);
     return value;
   }
 }

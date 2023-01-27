@@ -23,9 +23,14 @@ export class AccessService {
       this.toastr.success('Welcome admin ');
     } else {
       this.addminservice.getUser().subscribe((res: UserData[]) => {
-        const user = res.find((a: any) => {
-          return a.email === email && a.password === password;
-        });
+        const user = res.find(
+          (a: any) => {
+            return a.email === email && a.password === password;
+          },
+          (err: any) => {
+            this.toastr.error(`${err.status} Error ${err.name}`);
+          }
+        );
         if (user) {
           this.toastr.success('Login Successful !!');
 
@@ -35,9 +40,6 @@ export class AccessService {
         } else {
           this.toastr.error('User Not Found');
         }
-        (_err: any) => {
-          this.toastr.warning('Something went wrong');
-        };
       });
     }
   }

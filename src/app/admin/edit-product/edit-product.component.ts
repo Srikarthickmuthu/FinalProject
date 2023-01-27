@@ -23,10 +23,15 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit() {
     this.id = localStorage.getItem('id');
-    this.userService.addedProduct(this.id);
-    this.adminService.getProductEdit(this.id).subscribe((res: AddProduct) => {
-      this.product = res;
-    });
+
+    this.adminService.getProductEdit(this.id).subscribe(
+      (res: AddProduct) => {
+        this.product = res;
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
 
   onSubmit(editProduct: NgForm) {
@@ -34,11 +39,16 @@ export class EditProductComponent implements OnInit {
 
     this.product = editProduct.value;
 
-    this.adminService.editProduct(data, this.product).subscribe();
+    this.adminService.editProduct(data, this.product).subscribe(
+      (res) => {
+        this.toastr.success('Product details edited successfully..!');
+      },
+      (err) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
 
     editProduct.resetForm();
-
-    this.toastr.success('Product details edited successfully..!');
 
     this.dialog.closeAll();
   }

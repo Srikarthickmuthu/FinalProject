@@ -15,10 +15,15 @@ export class AddProductComponent {
   ) {}
 
   onSubmit(addProduct: NgForm): void {
-    this.adminservice.addProduct(addProduct.value).subscribe();
+    this.adminservice.addProduct(addProduct.value).subscribe(
+      (res: any) => {
+        this.toastr.success('New product added..!');
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
 
     addProduct.resetForm();
-
-    this.toastr.success('New product added..!');
   }
 }

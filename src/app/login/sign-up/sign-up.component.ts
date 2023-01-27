@@ -20,9 +20,15 @@ export class SignUpComponent {
   passwordPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
 
   onSubmit(myForm: NgForm) {
-    this.userservice.addUser(myForm.value).subscribe();
-    myForm.resetForm();
-    this.toastr.success('Sign-up Successfull ..!');
+    this.userservice.addUser(myForm.value).subscribe(
+      (res) => {
+        myForm.resetForm();
+        this.toastr.success('Sign-up Successfull..!');
+      },
+      (err: any) => {
+        this.toastr.error(`${err.status} Error ${err.name}`);
+      }
+    );
   }
 
   countryList = [

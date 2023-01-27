@@ -43,7 +43,7 @@
 
       <span *ngIf="!number.valid && number.touched"
         >Please enter valid number</span
-      ><br />
+      >
 
       <input
         type="text"
@@ -61,7 +61,7 @@
 
       <span *ngIf="!email.valid && email.touched"
         >Please enter valid mail-id</span
-      ><br />
+      >
 
       <input
         type="password"
@@ -78,7 +78,7 @@
       />
       <span *ngIf="!password.valid && password.touched"
         >Password is required in requested format e.g Abcd@123 </span
-      ><br />
+      >
       <label
         >Select Your Country
         <select
@@ -95,9 +95,9 @@
           </option>
         </select>
       </label>
-      <br /><br />
+      
 
-      <button [disabled]="!userForm.valid">Submit</button><br /><br />
+      <button [disabled]="!userForm.valid">Submit</button>
 
       <button routerLink="/loginSignUp-path/login-path">Login</button>
     </div>
