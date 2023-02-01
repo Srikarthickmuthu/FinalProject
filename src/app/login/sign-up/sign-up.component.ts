@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { errorMessage } from 'src/app/Services/Guard/product';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  password: any;
+  password!: String;
 
   constructor(public userservice: UserService, private toastr: ToastrService) {}
 
@@ -21,11 +22,11 @@ export class SignUpComponent {
 
   onSubmit(myForm: NgForm) {
     this.userservice.addUser(myForm.value).subscribe(
-      (res) => {
+      () => {
         myForm.resetForm();
         this.toastr.success('Sign-up Successfull..!');
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );

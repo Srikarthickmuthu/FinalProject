@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { AddProduct } from 'src/app/Services/Guard/product';
+import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -35,18 +35,18 @@ export class CartComponent implements OnInit {
           this.showCart = true;
         }
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
   }
-  delete(data: any) {
+  delete(data: Number) {
     this.userservice.delete(data).subscribe(
-      (res) => {
+      () => {
         this.getCart();
         this.toastr.warning('Product removed ..!');
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );

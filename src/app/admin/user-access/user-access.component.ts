@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../Services/admin.service';
 import { UserData } from 'src/app/Services/Guard/sign-up';
 import { ToastrService } from 'ngx-toastr';
+import { errorMessage } from 'src/app/Services/Guard/product';
 @Component({
   selector: 'app-user-access',
   templateUrl: './user-access.component.html',
@@ -23,17 +24,17 @@ export class UserAccessComponent implements OnInit {
       (res: UserData[]) => {
         this.user = res;
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
   }
   blockUser(data: Number) {
     this.addminservice.deleteUser(data).subscribe(
-      (res) => {
+      () => {
         this.toastr.error('User blocked successfully..!');
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );

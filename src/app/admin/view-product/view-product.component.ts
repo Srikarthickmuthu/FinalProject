@@ -1,5 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
-import { AddProduct } from 'src/app/Services/Guard/product';
+import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,7 +29,7 @@ export class ViewProductComponent implements OnChanges {
       (res: AddProduct[]) => {
         this.product = res;
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
@@ -37,32 +37,32 @@ export class ViewProductComponent implements OnChanges {
   ngOnChanges() {
     this.getProducts();
   }
-  id: any;
+  id!: Number;
   show = false;
 
-  edit(data: any) {
+  edit(data: Number) {
     this.dialog
       .open(EditProductComponent)
       .afterClosed()
       .subscribe(
-        (res) => {
+        () => {
           this.getProducts();
         },
-        (err: any) => {
+        (err: errorMessage) => {
           this.toastr.error(`${err.status} Error ${err.name}`);
         }
       );
-    localStorage.setItem('id', data);
-    this.userService.addedProduct(data);
+    localStorage.setItem('id', data.toString());
+    // this.userService.addedProduct(data);
     this.id = data;
   }
 
-  deleteProduct(data: any) {
+  deleteProduct(data: Number) {
     this.adminservice.deleteProduct(data).subscribe(
-      (res) => {
+      () => {
         this.getProducts();
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );

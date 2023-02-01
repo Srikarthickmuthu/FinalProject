@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
+import { errorMessage } from 'src/app/Services/Guard/product';
 
 @Component({
   selector: 'app-add-product',
@@ -16,10 +17,10 @@ export class AddProductComponent {
 
   onSubmit(addProduct: NgForm): void {
     this.adminservice.addProduct(addProduct.value).subscribe(
-      (res: any) => {
+      () => {
         this.toastr.success('New product added..!');
       },
-      (err: any) => {
+      (err :errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from './admin.service';
+import { errorMessage } from './Guard/product';
 import { UserData } from './Guard/sign-up';
 
 @Injectable({
@@ -16,18 +17,18 @@ export class AccessService {
 
   public user!: UserData[];
 
-  login(email: any, password: any) {
+  login(email: string, password: string) {
     if (email == 'admin@aspire.com' && password == 'admin@123') {
       localStorage.setItem('Active-User', email);
-      this.router.navigate(['admin-path/delivery-path']);
+      this.router.navigate(['/admin-path/delivery-path']);
       this.toastr.success('Welcome admin ');
     } else {
       this.addminservice.getUser().subscribe((res: UserData[]) => {
         const user = res.find(
-          (a: any) => {
+          (a: UserData) => {
             return a.email === email && a.password === password;
           },
-          (err: any) => {
+          (err: errorMessage) => {
             this.toastr.error(`${err.status} Error ${err.name}`);
           }
         );
@@ -36,7 +37,7 @@ export class AccessService {
 
           localStorage.setItem('Active-User', email);
 
-          this.router.navigate(['home-path/user-home-path']);
+          this.router.navigate(['/home-path/user-home-path']);
         } else {
           this.toastr.error('User Not Found');
         }

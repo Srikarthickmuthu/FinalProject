@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/Services/admin.service';
-import { AddProduct } from 'src/app/Services/Guard/product';
+import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 import { TallyComponent } from '../tally/tally.component';
 
@@ -37,7 +37,7 @@ export class SellingDetailsComponent {
         (el: { deliveryStatus: String; productName: String }) => {
           return el.deliveryStatus == this.value && el.productName == data;
         },
-        (err: any) => {
+        (err: errorMessage) => {
           this.toastr.error(`${err.status} Error ${err.name}`);
         }
       );
@@ -54,10 +54,10 @@ export class SellingDetailsComponent {
         .open(TallyComponent)
         .afterClosed()
         .subscribe(
-          (res) => {
+          () => {
             this.clear();
           },
-          (err: any) => {
+          (err:errorMessage) => {
             this.toastr.error(`${err.status} Error ${err.name}`);
           }
         );

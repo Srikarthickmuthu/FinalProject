@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddProduct } from './Guard/product';
+import { UserData } from './Guard/sign-up';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +21,7 @@ export class UserService {
     this.router.navigate(['/home-path/user-home-path']);
   }
 
-  addUser(data: any) {
+  addUser(data: UserData) {
     return this.http.post(`${this.url}/user-details`, data);
   }
 
@@ -29,14 +31,10 @@ export class UserService {
   getCart() {
     return this.http.get(`${this.url}/cart`);
   }
-  getSingle(data: any) {
+  getSingle(data: Number) {
     return this.http.get(`${this.url}/cart/${data}`);
   }
-  delete(data: any) {
+  delete(data: Number) {
     return this.http.delete(`${this.url}/cart/${data}`);
-  }
-  addedProduct(data: any) {
-    const value = data;
-    return value;
   }
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AddProduct } from 'src/app/Services/Guard/product';
+import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from 'src/app/Services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-edit-product',
@@ -12,23 +11,21 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class EditProductComponent implements OnInit {
   public product!: AddProduct;
-  id: any;
 
   constructor(
     private adminService: AdminService,
     private toastr: ToastrService,
-    private userService: UserService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    this.id = localStorage.getItem('id');
+    const id = localStorage.getItem('id');
 
-    this.adminService.getProductEdit(this.id).subscribe(
+    this.adminService.getProductEdit(id).subscribe(
       (res: AddProduct) => {
         this.product = res;
       },
-      (err: any) => {
+      (err :errorMessage)=>{
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
@@ -40,10 +37,10 @@ export class EditProductComponent implements OnInit {
     this.product = editProduct.value;
 
     this.adminService.editProduct(data, this.product).subscribe(
-      (res) => {
+      () => {
         this.toastr.success('Product details edited successfully..!');
       },
-      (err) => {
+      (err :errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );

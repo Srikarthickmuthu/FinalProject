@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { AddProduct } from 'src/app/Services/Guard/product';
+import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -9,8 +9,7 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./total-orders.component.css'],
 })
 export class TotalOrdersComponent {
-  cart: any = [];
-  a!: AddProduct;
+  cart: any=[];
 
   constructor(public userservice: UserService, private toastr: ToastrService) {}
 
@@ -30,11 +29,11 @@ export class TotalOrdersComponent {
             return el.userId == this.user && el.deliveryStatus == 'Delivered';
           }
         );
-        this.lengthValue = this.cart.length;
       },
-      (err: any) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
-      }
+      },
+      (this.lengthValue = this.cart.length)
     );
   }
 }

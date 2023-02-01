@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs';
+import { UserData } from './Guard/sign-up';
+import { AddProduct } from './Guard/product';
 @Injectable({
   providedIn: 'root',
 })
@@ -31,19 +33,19 @@ export class AdminService {
       })
     );
   }
-  deleteProduct(data: any) {
+  deleteProduct(data: Number) {
     return this.http.delete(`${this.url}/product-details/${data}`);
   }
-  deleteUser(data: any) {
+  deleteUser(data: Number) {
     return this.http.delete(`${this.url}/user-details/${data}`);
   }
-  editProduct(data: any, update: any) {
+  editProduct(data: Number, update: AddProduct) {
     return this.http.put(`${this.url}/product-details/${data}`, update);
   }
-  addProduct(data: any) {
+  addProduct(data: AddProduct) {
     return this.http.post(`${this.url}/product-details`, data);
   }
-  updateDelivery(id: any,data: any) {
+  updateDelivery(id: Number,data: AddProduct) {
     return this.http.put(`${this.url}/cart/${id}`, data);
   }
 }
