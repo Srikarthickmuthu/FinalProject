@@ -16,7 +16,7 @@ export class UserService {
 
   logout() {
     localStorage.clear();
-    this.router.navigate(['home-path/user-home-path']);
+    this.router.navigate(['/home-path/user-home-path']);
   }
 
   addUser(data: any) {

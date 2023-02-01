@@ -19,7 +19,7 @@ export class AccessService {
   login(email: any, password: any) {
     if (email == 'admin@aspire.com' && password == 'admin@123') {
       localStorage.setItem('Active-User', email);
-      this.router.navigate(['../../admin-path/delivery-path']);
+      this.router.navigate(['admin-path/delivery-path']);
       this.toastr.success('Welcome admin ');
     } else {
       this.addminservice.getUser().subscribe((res: UserData[]) => {
@@ -36,7 +36,7 @@ export class AccessService {
 
           localStorage.setItem('Active-User', email);
 
-          this.router.navigate(['/home-path/user-home-path']);
+          this.router.navigate(['home-path/user-home-path']);
         } else {
           this.toastr.error('User Not Found');
         }

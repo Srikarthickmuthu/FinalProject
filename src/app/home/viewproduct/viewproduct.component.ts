@@ -3,6 +3,7 @@ import { AddProduct } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { UserService } from 'src/app/Services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-viewproduct',
@@ -15,7 +16,8 @@ export class ViewproductComponent implements OnInit {
   constructor(
     public adminservice: AdminService,
     public userservice: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class ViewproductComponent implements OnInit {
   user = localStorage.getItem('Active-User');
 
   cart(data: any) {
+    if(this.user!=null){
     data.userId = this.user;
     data.deliveryStatus = 'Ordered';
     this.userservice.addProduct(data).subscribe(
@@ -44,4 +47,12 @@ export class ViewproductComponent implements OnInit {
     );
     delete data.id;
   }
+  else{
+    this.toastr.warning("Please login before continue..!");
+    setTimeout(()=>{
+      this.router.navigate(['/loginSignUp-path/login-path'])
+    },1000);
+  }
+}
+
 }

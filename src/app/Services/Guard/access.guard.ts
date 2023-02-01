@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class AccessGuard implements CanActivate {
-  constructor(public user: UserService, private toastr: ToastrService) {}
+  constructor(public user: UserService, private toastr: ToastrService , private router:Router) {}
 
   canActivate():
     | Observable<boolean | UrlTree>
@@ -20,6 +20,7 @@ export class AccessGuard implements CanActivate {
       return true;
     } else {
       this.toastr.warning('Please login before continue..!');
+      this.router.navigate(['/loginSignUp-path/login-path']);
       return false;
     }
   }
