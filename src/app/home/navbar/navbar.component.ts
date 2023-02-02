@@ -9,6 +9,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class NavbarComponent {
   user: any;
+  admin:any;
 
   showUser = true;
   showAdmin = false;
@@ -16,8 +17,8 @@ export class NavbarComponent {
   showLogout = false;
   constructor(private toastr: ToastrService, private userservice: UserService) {
     this.user = localStorage.getItem('Active-User');
-
-    if (this.user == 'admin@aspire.com') {
+    this.admin=localStorage.getItem("Active-User-admin")
+    if (this.admin!=null) {
       this.showUser = false;
       this.showAdmin = true;
       this.showLogin = false;

@@ -57,7 +57,7 @@ export class SellingDetailsComponent {
           () => {
             this.clear();
           },
-          (err:errorMessage) => {
+          (err: errorMessage) => {
             this.toastr.error(`${err.status} Error ${err.name}`);
           }
         );

@@ -9,37 +9,38 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { SellingDetailsComponent } from './selling-details/selling-details.component';
 import { AccessGuard } from '../Services/Guard/access.guard';
 import { PagenotfoundComponent } from '../home/pagenotfound/pagenotfound.component';
+import { AdminGuard } from '../Services/Guard/admin.guard';
 
 const routes: Routes = [
   {
     path: 'add-product-path',
     component: AddProductComponent,
-    canActivate: [AccessGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'delivery-path',
     component: DeliveryComponent,
-    canActivate: [AccessGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'user-access-path',
     component: UserAccessComponent,
-    canActivate: [AccessGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'view-product-path',
     component: ViewProductComponent,
-    canActivate: [AccessGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'edit-product-path',
     component: EditProductComponent,
-    canActivate: [AccessGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'selling-details-path',
     component: SellingDetailsComponent,
-    canActivate: [AccessGuard],
+    canActivate: [AdminGuard],
   },
   { path: '', redirectTo: '/home-path/user-home-path', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent },

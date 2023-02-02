@@ -18,7 +18,7 @@ export class AccessGuard implements CanActivate {
     const access = localStorage.getItem('Active-User');
     if (access != null) {
       return true;
-    } else {
+    } else  {
       this.toastr.warning('Please login before continue..!');
       this.router.navigate(['/loginSignUp-path/login-path']);
       return false;

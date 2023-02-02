@@ -19,7 +19,7 @@ export class AccessService {
 
   login(email: string, password: string) {
     if (email == 'admin@aspire.com' && password == 'admin@123') {
-      localStorage.setItem('Active-User', email);
+      localStorage.setItem('Active-User-admin', email);
       this.router.navigate(['/admin-path/delivery-path']);
       this.toastr.success('Welcome admin ');
     } else {

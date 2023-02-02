@@ -1,10 +1,10 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { ToastrService } from 'ngx-toastr';
-import { AccessGuard } from './access.guard';
+import { AdminGuard } from './admin.guard';
 
-describe('AccessGuard', () => {
-  let guard: AccessGuard;
+describe('AdminGuard', () => {
+  let guard: AdminGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,7 +17,7 @@ describe('AccessGuard', () => {
         },
       ],
     });
-    guard = TestBed.inject(AccessGuard);
+    guard = TestBed.inject(AdminGuard);
   });
 
   it('should be created', () => {

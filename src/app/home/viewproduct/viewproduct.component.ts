@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class ViewproductComponent implements OnInit {
   public product!: AddProduct[];
-  public product1!: AddProduct[];
   constructor(
     public adminservice: AdminService,
     public userservice: UserService,
@@ -30,15 +29,15 @@ export class ViewproductComponent implements OnInit {
       }
     );
   }
-
   user = localStorage.getItem('Active-User');
 
   cart(data: any) {
     if(this.user!=null){
-    data.userId = this.user;
-    data.deliveryStatus = 'Ordered';
+    
     this.userservice.addProduct(data).subscribe(
       () => {
+        data.userId = this.user;
+        data.deliveryStatus = 'Ordered';
         this.toastr.success('Product added to the cart..!');
       },
       (err : errorMessage) => {

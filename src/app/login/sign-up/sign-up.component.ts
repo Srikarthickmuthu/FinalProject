@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { errorMessage } from 'src/app/Services/Guard/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +13,7 @@ import { errorMessage } from 'src/app/Services/Guard/product';
 export class SignUpComponent {
   password!: String;
 
-  constructor(public userservice: UserService, private toastr: ToastrService) {}
+  constructor(public userservice: UserService, private toastr: ToastrService , private router :Router) {}
 
   mobNumberPattern = '^((\\+91-?)|0)?[0-9]{10}$';
 
@@ -25,6 +26,9 @@ export class SignUpComponent {
       () => {
         myForm.resetForm();
         this.toastr.success('Sign-up Successfull..!');
+        setTimeout(()=>{
+          this.router.navigate(['/loginSignUp-path/login-path'])
+        },1000)
       },
       (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);

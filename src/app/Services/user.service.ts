@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddProduct } from './Guard/product';
 import { UserData } from './Guard/sign-up';
 
 @Injectable({
@@ -31,7 +30,7 @@ export class UserService {
   getCart() {
     return this.http.get(`${this.url}/cart`);
   }
-  getSingle(data: Number) {
+  getSingle(data: Number){
     return this.http.get(`${this.url}/cart/${data}`);
   }
   delete(data: Number) {
