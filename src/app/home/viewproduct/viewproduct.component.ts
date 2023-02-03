@@ -18,7 +18,6 @@ export class ViewproductComponent implements OnInit {
     private toastr: ToastrService,
     private router:Router
   ) {}
-
   ngOnInit() {
     this.adminservice.getProduct().subscribe(
       (res: AddProduct[]) => {
@@ -33,18 +32,18 @@ export class ViewproductComponent implements OnInit {
 
   cart(data: any) {
     if(this.user!=null){
-    
-    this.userservice.addProduct(data).subscribe(
-      () => {
+      setTimeout(()=>{
         data.userId = this.user;
         data.deliveryStatus = 'Ordered';
-        this.toastr.success('Product added to the cart..!');
-      },
-      (err : errorMessage) => {
-        this.toastr.error(`${err.status} Error ${err.name}`);
-      }   
-    );
-    delete data.id;
+       this.userservice.addProduct(data).subscribe(
+        () => {
+          this.toastr.success('Product added to the cart..!');
+        },
+        (err : errorMessage) => {
+          this.toastr.error(`${err.status} Error ${err.name}`);
+        }  ) 
+      },1000);
+      delete data.id;
   }
   else{
     this.toastr.warning("Please login before continue..!");

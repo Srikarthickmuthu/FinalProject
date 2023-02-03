@@ -53,7 +53,6 @@ export class ViewProductComponent implements OnChanges {
         }
       );
     localStorage.setItem('id', data.toString());
-    // this.userService.addedProduct(data);
     this.id = data;
   }
 
