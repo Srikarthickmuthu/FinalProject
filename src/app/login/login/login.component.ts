@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginform = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
 
-      password: ['', Validators.required],
+      password: ['', [Validators.required , Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$') , Validators.minLength(8)]],
     });
   }
 

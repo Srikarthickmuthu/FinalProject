@@ -30,9 +30,4 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-//   it("clicked",()=>{
-//     component.getCart();
-//     expect(component.getCart).withContext("show=false")
-    
-// })
 })

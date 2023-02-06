@@ -53,3 +53,7 @@ label {
 p{
   padding-top: 30px;
 }
+span{
+  color: red;
+  padding: 3px;
+}

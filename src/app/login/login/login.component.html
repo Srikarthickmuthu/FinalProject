@@ -10,6 +10,11 @@
       placeholder="Enter your Mail Id"
       autocomplete="off"
     />
+    <span
+      *ngIf="loginform.get('email')?.invalid && loginform.get('email')?.touched"
+    >
+      Please enter valid email address
+    </span>
     <input
       type="password"
       id="password"
@@ -18,8 +23,18 @@
       placeholder="Enter the passsword"
       autocomplete="off"
     />
+    <span
+      *ngIf="
+        loginform.get('password')?.invalid && loginform.get('password')?.touched
+      "
+      >Password must contain 1 Uppercase , 1 Lowercase , 1 Special character and
+      1 Number and Minimum length 8</span
+    >
+    <!-- <button type="submit" [disabled]="!loginform.valid">Submit</button> -->
     <button type="submit">Submit</button>
-    <p> New user? <a routerLink="/loginSignUp-path/sign-up-path"> Register </a> </p>
+    <p>
+      New user? <a routerLink="/loginSignUp-path/sign-up-path"> Register </a>
+    </p>
   </form>
 </div>
 <router-outlet></router-outlet>

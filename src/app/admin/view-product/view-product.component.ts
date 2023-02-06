@@ -4,7 +4,6 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { EditProductComponent } from '../edit-product/edit-product.component';
-import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-view-product',
@@ -18,8 +17,7 @@ export class ViewProductComponent implements OnChanges {
   constructor(
     public adminservice: AdminService,
     private toastr: ToastrService,
-    private dialog: MatDialog,
-    private userService: UserService
+    private dialog: MatDialog
   ) {
     this.getProducts();
   }

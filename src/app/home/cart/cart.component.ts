@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
   show = true;
   showCart = false;
   lengthValue = 0;
+  showRemove=true;
   ngOnInit() {
     this.getCart();
   }
@@ -50,5 +51,9 @@ export class CartComponent implements OnInit {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
+  }
+  ordered(){
+    this.showRemove=false;
+    this.ngOnInit();
   }
 }

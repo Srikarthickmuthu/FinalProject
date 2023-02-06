@@ -15,7 +15,7 @@ h2 {
 h3 {
   font-size: 45px;
   font-weight: 500;
-  color: black;
+  color: rgb(8, 12, 109);
   text-align: center;
 }
 tr:nth-child(odd) {
@@ -56,11 +56,11 @@ button {
 
 #button {
   border-radius: 20px;
-  border: 1px solid #00d2ff;
-  background-color: #3a47d5;
-  color: #ffffff;
+  background-color: #5bbae6;
+  color: #121111;
   font-size: 12px;
   font-weight: bold;
+  margin-top: 20px;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -69,5 +69,5 @@ button {
 }
 
 #button:hover {
-  background-color: #92fe9d;
+  background-color: #fffdfd;
 }
