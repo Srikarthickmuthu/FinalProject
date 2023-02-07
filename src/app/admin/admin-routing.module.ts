@@ -7,7 +7,6 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { UserAccessComponent } from './user-access/user-access.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SellingDetailsComponent } from './selling-details/selling-details.component';
-import { AccessGuard } from '../Services/Guard/access.guard';
 import { PagenotfoundComponent } from '../home/pagenotfound/pagenotfound.component';
 import { AdminGuard } from '../Services/Guard/admin.guard';
 

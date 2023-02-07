@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -7,31 +7,29 @@ import { UserService } from 'src/app/Services/user.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
-  user: any;
-  admin:any;
-
-  showUser = true;
-  showAdmin = false;
-  showLogin = true;
-  showLogout = false;
-  constructor(private toastr: ToastrService, private userservice: UserService) {
-    this.user = localStorage.getItem('Active-User');
-    this.admin=localStorage.getItem("Active-User-admin")
-    if (this.admin!=null) {
+export class NavbarComponent implements OnInit {
+  showUser!: boolean;
+  showLogout!: boolean;
+  constructor(
+    private toastr: ToastrService,
+    private userservice: UserService
+  ) {}
+  user = localStorage.getItem('Active-User');
+  admin = localStorage.getItem('Active-User-admin');
+  ngOnInit() {
+    if (this.admin != null) {
       this.showUser = false;
-      this.showAdmin = true;
-      this.showLogin = false;
       this.showLogout = true;
-    }
-    if (this.user != null) {
-      this.showLogin = false;
+    } else if (this.user != null) {
       this.showLogout = true;
+    } else {
+      this.showUser = true;
+      this.showLogout = false;
     }
   }
-
-  logout(): void {
-    this.userservice.logout();
+  logout(){
     this.toastr.success('Logout Successfull..!');
+    this.showLogout = false;
+    this.userservice.logout();
   }
 }

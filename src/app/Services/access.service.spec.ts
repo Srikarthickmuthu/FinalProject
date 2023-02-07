@@ -5,8 +5,6 @@ import { AccessService } from './access.service';
 
 describe('AccessService', () => {
   let service: AccessService;
-  let email:string;
-  let password:string;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [

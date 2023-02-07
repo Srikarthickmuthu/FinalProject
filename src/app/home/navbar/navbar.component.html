@@ -13,7 +13,7 @@
       <li routerLink="/home-path/total-orders-path" *ngIf="showLogout">
         <p>My Orders</p>
       </li>
-      <li routerLink="/loginSignUp-path/login-path" *ngIf="showLogin">
+      <li routerLink="/loginSignUp-path/login-path" *ngIf="!showLogout">
         <p>Login</p>
       </li>
       <li (click)="logout()" *ngIf="showLogout">
@@ -22,7 +22,7 @@
     </ul>
   </nav>
 </ng-container>
-<ng-container *ngIf="showAdmin">
+<ng-container *ngIf="!showUser">
   <div>
     <ul>
       <img

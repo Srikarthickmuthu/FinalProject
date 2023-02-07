@@ -56,7 +56,7 @@ export class ViewProductComponent implements OnChanges {
 
   deleteProduct(data: Number) {
     this.adminservice.deleteProduct(data).subscribe(
-      () => {
+       (res: AddProduct[]) => {
         this.getProducts();
       },
       (err: errorMessage) => {

@@ -9,7 +9,7 @@ import { NavbarComponent } from './navbar.component';
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
-
+  let toastr:ToastrService;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
@@ -28,4 +28,8 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it ('should call',()=>{
+    expect(component.logout).toBe(toastr.success);
+    expect(toastr.success).withContext("Logout Successfull..!");
+  })
 });
