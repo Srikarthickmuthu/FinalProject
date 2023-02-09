@@ -19,18 +19,18 @@ export class DeliveryComponent implements OnInit {
   ) {}
   value = 'Ordered';
   ngOnInit() {
-    this.userservice.getCart().subscribe((res:any) => {
+    this.userservice.getCart().subscribe((res: any) => {
       this.cart = res.filter(
-        (el: { deliveryStatus: String }) => {
+        (el: { deliveryStatus: string }) => {
           return el.deliveryStatus == this.value;
         },
-        (err : errorMessage) => {
+        (err: errorMessage) => {
           this.toastr.error(`${err.status} Error ${err.name}`);
         }
       );
     });
   }
-  delivered(dataUser: Number) {
+  delivered(dataUser: number) {
     this.userservice.getSingle(dataUser).subscribe((res: any) => {
       this.update = res;
       this.update.deliveryStatus = 'Delivered';
@@ -39,7 +39,7 @@ export class DeliveryComponent implements OnInit {
         () => {
           this.toastr.success('Status updated successfully');
         },
-        (err :errorMessage) => {
+        (err: errorMessage) => {
           this.toastr.error(`${err.status} Error ${err.name}`);
         }
       );

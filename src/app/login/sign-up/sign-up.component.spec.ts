@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
@@ -11,7 +11,7 @@ import { SignUpComponent } from './sign-up.component';
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
   let fixture: ComponentFixture<SignUpComponent>;
-
+  let myForm:NgForm;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SignUpComponent, NavbarComponent ],
@@ -30,4 +30,8 @@ describe('SignUpComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // it('',()=>{
+  //   component.onSubmit(myForm);
+  //   expect(ser)
+  // })
 });

@@ -12,7 +12,7 @@ import { ViewproductComponent } from './viewproduct.component';
 describe('ViewproductComponent', () => {
   let component: ViewproductComponent;
   let fixture: ComponentFixture<ViewproductComponent>;
-
+let data:any;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ViewproductComponent , NavbarComponent],
@@ -31,4 +31,7 @@ describe('ViewproductComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('',()=>{
+    component.cart(data);
+  })
 });

@@ -14,7 +14,6 @@ export class UserService {
   getUser() {
     return localStorage.getItem('Active-User');
   }
-
   logout() {
     localStorage.clear();
     this.router.navigate(['/home-path/user-home-path']);
@@ -30,10 +29,10 @@ export class UserService {
   getCart() {
     return this.http.get(`${this.url}/cart`);
   }
-  getSingle(data: Number){
+  getSingle(data: number) {
     return this.http.get(`${this.url}/cart/${data}`);
   }
-  delete(data: Number) {
+  delete(data: number) {
     return this.http.delete(`${this.url}/cart/${data}`);
   }
 }

@@ -25,7 +25,7 @@ export class EditProductComponent implements OnInit {
       (res: AddProduct) => {
         this.product = res;
       },
-      (err :errorMessage)=>{
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
@@ -39,14 +39,12 @@ export class EditProductComponent implements OnInit {
     this.adminService.editProduct(data, this.product).subscribe(
       () => {
         this.toastr.success('Product details edited successfully..!');
+        this.dialog.closeAll();
       },
-      (err :errorMessage) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
-
-    editProduct.resetForm();
-
-    this.dialog.closeAll();
+    return editProduct.resetForm();
   }
 }

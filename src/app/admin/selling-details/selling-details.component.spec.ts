@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarComponent } from 'src/app/home/navbar/navbar.component';
-
 import { SellingDetailsComponent } from './selling-details.component';
 
 describe('SellingDetailsComponent', () => {

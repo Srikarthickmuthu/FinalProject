@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  password!: String;
+  password!: string;
 
   constructor(public userservice: UserService, private toastr: ToastrService , private router :Router) {}
 
@@ -34,7 +34,7 @@ export class SignUpComponent {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
-  }
+}
 
   countryList = [
     { countryname: 'India' },

@@ -24,7 +24,7 @@ export class SellingDetailsComponent {
   value = 'Delivered';
   ngOnInit() {
     this.adminservice.getProduct().subscribe((res: any) => {
-      return (this.cart = res);
+      this.cart = res;
     });
     this.clear();
   }
@@ -34,7 +34,7 @@ export class SellingDetailsComponent {
   total(data: any, id: any) {
     this.userservice.getCart().subscribe((res: any) => {
       this.cart1 = res.filter(
-        (el: { deliveryStatus: String; productName: String }) => {
+        (el: { deliveryStatus: string; productName: string }) => {
           return el.deliveryStatus == this.value && el.productName == data;
         },
         (err: errorMessage) => {

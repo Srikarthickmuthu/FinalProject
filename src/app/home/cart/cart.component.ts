@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   show = true;
   showCart = false;
   lengthValue = 0;
-  showRemove=true;
+  showRemove = true;
   ngOnInit() {
     this.getCart();
   }
@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
     this.userservice.getCart().subscribe(
       (res: any) => {
         this.cart = res.filter(
-          (el: { userId: string; deliveryStatus: String }) => {
+          (el: { userId: string; deliveryStatus: string }) => {
             return el.userId == this.user && el.deliveryStatus == 'Ordered';
           }
         );
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
       }
     );
   }
-  delete(data: Number) {
+  delete(data: number) {
     this.userservice.delete(data).subscribe(
       () => {
         this.getCart();
@@ -52,8 +52,8 @@ export class CartComponent implements OnInit {
       }
     );
   }
-  ordered(){
-    this.showRemove=false;
+  ordered() {
+    this.showRemove = false;
     this.ngOnInit();
   }
 }

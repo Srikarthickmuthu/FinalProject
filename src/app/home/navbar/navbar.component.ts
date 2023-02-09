@@ -18,16 +18,14 @@ export class NavbarComponent implements OnInit {
   admin = localStorage.getItem('Active-User-admin');
   ngOnInit() {
     if (this.admin != null) {
-      this.showUser = false;
-      this.showLogout = true;
+      (this.showUser = false), (this.showLogout = true);
     } else if (this.user != null) {
-      this.showLogout = true;
+      (this.showUser = true), (this.showLogout = true);
     } else {
-      this.showUser = true;
-      this.showLogout = false;
+      (this.showUser = true), (this.showLogout = false);
     }
   }
-  logout(){
+  logout() {
     this.toastr.success('Logout Successfull..!');
     this.showLogout = false;
     this.userservice.logout();

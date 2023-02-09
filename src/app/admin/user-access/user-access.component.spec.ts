@@ -10,16 +10,20 @@ import { UserAccessComponent } from './user-access.component';
 describe('UserAccessComponent', () => {
   let component: UserAccessComponent;
   let fixture: ComponentFixture<UserAccessComponent>;
-
+let data:Number;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[RouterModule , RouterTestingModule],
-      declarations: [ UserAccessComponent , NavbarComponent  ],
-      providers:[HttpClient,HttpHandler,{
-        provide:ToastrService, useValue:ToastrService
-      }]
-    })
-    .compileComponents();
+      imports: [RouterModule, RouterTestingModule],
+      declarations: [UserAccessComponent, NavbarComponent],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserAccessComponent);
     component = fixture.componentInstance;

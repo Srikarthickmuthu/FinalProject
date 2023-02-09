@@ -3,22 +3,28 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/Services/user.service';
 
 import { NavbarComponent } from './navbar.component';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
-  let toastr:ToastrService;
+  let service: UserService;
+  let showLogout = true;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ],
-      providers:[{
-        provide:ToastrService, useValue:ToastrService
-      },HttpClient,HttpHandler],
-      imports:[RouterModule, RouterTestingModule]
-    })
-    .compileComponents();
+      declarations: [NavbarComponent],
+      providers: [
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+        HttpClient,
+        HttpHandler,
+      ],
+      imports: [RouterModule, RouterTestingModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
@@ -28,8 +34,9 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it ('should call',()=>{
-    expect(component.logout).toBe(toastr.success);
-    expect(toastr.success).withContext("Logout Successfull..!");
-  })
+  it('', () => {
+    component.logout();
+    expect(showLogout).toBe(false);
+    expect(service.logout()).toHaveBeenCalled();
+  });
 });

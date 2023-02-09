@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AddProduct } from './Guard/product';
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class AdminService {
   constructor(private http: HttpClient) {}
   url = 'http://localhost:3000';
 
-  getUser(): Observable<any> {
+  getUser() :Observable<any>{
     return this.http.get(`${this.url}/user-details`);
   }
 
@@ -21,20 +21,20 @@ export class AdminService {
     return this.http.get(`${this.url}/product-details/${data}`);
   }
 
-  deleteProduct(data: Number): Observable<any> {
+  deleteProduct(data: number) {
     return this.http.delete(`${this.url}/product-details/${data}`);
   }
 
-  deleteUser(data: Number): Observable<any> {
+  deleteUser(data: number) {
     return this.http.delete(`${this.url}/user-details/${data}`);
   }
-  editProduct(data: Number, update: AddProduct): Observable<any> {
+  editProduct(data: number, update: AddProduct) {
     return this.http.put(`${this.url}/product-details/${data}`, update);
   }
-  addProduct(data: AddProduct): Observable<any> {
+  addProduct(data: AddProduct) {
     return this.http.post(`${this.url}/product-details`, data);
   }
-  updateDelivery(id: Number, data: AddProduct): Observable<any> {
+  updateDelivery(id: number, data: AddProduct) {
     return this.http.put(`${this.url}/cart/${id}`, data);
   }
 }

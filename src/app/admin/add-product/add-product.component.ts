@@ -18,13 +18,12 @@ export class AddProductComponent {
   onSubmit(addProduct: NgForm): void {
     this.adminservice.addProduct(addProduct.value).subscribe(
       () => {
+        addProduct.resetForm();
         this.toastr.success('New product added..!');
       },
-      (err :errorMessage) => {
+      (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
-
-    addProduct.resetForm();
   }
 }

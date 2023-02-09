@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from './admin.service';
@@ -12,8 +12,9 @@ export class AccessService {
   constructor(
     private router: Router,
     private toastr: ToastrService,
-    public addminservice: AdminService
+    public adminservice: AdminService
   ) {}
+  
 
   public user!: UserData[];
 
@@ -23,7 +24,7 @@ export class AccessService {
       this.router.navigate(['/admin-path/delivery-path']);
       this.toastr.success('Welcome admin ');
     } else {
-      this.addminservice.getUser().subscribe((res: UserData[]) => {
+      this.adminservice.getUser().subscribe((res: UserData[]) => {
         const user = res.find(
           (a: UserData) => {
             return a.email === email && a.password === password;

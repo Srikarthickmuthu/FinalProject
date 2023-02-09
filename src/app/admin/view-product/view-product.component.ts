@@ -35,10 +35,10 @@ export class ViewProductComponent implements OnChanges {
   ngOnChanges() {
     this.getProducts();
   }
-  id!: Number;
+  id!: number;
   show = false;
 
-  edit(data: Number) {
+  edit(data: number) {
     this.dialog
       .open(EditProductComponent)
       .afterClosed()
@@ -54,16 +54,15 @@ export class ViewProductComponent implements OnChanges {
     this.id = data;
   }
 
-  deleteProduct(data: Number) {
+  deleteProduct(data: number) {
     this.adminservice.deleteProduct(data).subscribe(
-       (res: AddProduct[]) => {
+      () => {
         this.getProducts();
+        this.toastr.warning('Product deleted..!');
       },
       (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
-
-    this.toastr.warning('Product deleted..!');
   }
 }

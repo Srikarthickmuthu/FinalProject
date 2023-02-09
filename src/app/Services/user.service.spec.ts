@@ -1,6 +1,5 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserData } from './Guard/sign-up';
 
@@ -8,10 +7,9 @@ import { UserService } from './user.service';
 
 describe('UserService', () => {
   let service: UserService;
-  let router:Router;
   let data:any;
   let data1:UserData;
-  let data2:Number;
+  let data2:number;
   let http:HttpClient;
   let url ='http://localhost:3000';
   beforeEach(() => {

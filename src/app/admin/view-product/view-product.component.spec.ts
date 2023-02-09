@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
@@ -11,16 +11,22 @@ import { ViewProductComponent } from './view-product.component';
 describe('ViewProductComponent', () => {
   let component: ViewProductComponent;
   let fixture: ComponentFixture<ViewProductComponent>;
-
+  let data: number;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewProductComponent , NavbarComponent],
-      imports:[MatDialogModule,RouterModule , RouterTestingModule],
-      providers:[HttpClient,HttpHandler,{
-        provide:ToastrService, useValue:ToastrService
-      },MatDialogModule,MatDialog]
-    })
-    .compileComponents();
+      declarations: [ViewProductComponent, NavbarComponent],
+      imports: [MatDialogModule, RouterModule, RouterTestingModule],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        {
+          provide: ToastrService,
+          useValue: ToastrService,
+        },
+        MatDialogModule,
+        MatDialog,
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ViewProductComponent);
     component = fixture.componentInstance;
@@ -29,5 +35,9 @@ describe('ViewProductComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('', () => {
+    component.edit(data);
+    expect(localStorage.setItem('id', data.toString()));
   });
 });

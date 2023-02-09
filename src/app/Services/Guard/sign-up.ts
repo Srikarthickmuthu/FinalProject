@@ -3,8 +3,8 @@ export interface UserData {
   fname: String;
   lname: String;
   number: Number;
-  email: String;
-  password: String;
+  email: string;
+  password: string;
   country: String;
   access: String;
 }

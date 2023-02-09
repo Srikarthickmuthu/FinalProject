@@ -25,8 +25,8 @@ export class TotalOrdersComponent {
     this.userservice.getCart().subscribe(
       (res: any) => {
         this.cart = res.filter(
-          (el: { userId: string; deliveryStatus: String }) => {
-            return el.userId == this.user && el.deliveryStatus == 'Delivered';
+          (el: { userId: string; deliveryStatus: string }) => {
+             el.userId == this.user && el.deliveryStatus == 'Delivered';
           }
         );
       },

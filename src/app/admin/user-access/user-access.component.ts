@@ -21,7 +21,7 @@ export class UserAccessComponent implements OnInit {
   }
   getUser() {
     this.addminservice.getUser().subscribe(
-      (res: UserData[]) => {
+      (res: any) => {
         this.user = res;
       },
       (err: errorMessage) => {
@@ -29,7 +29,7 @@ export class UserAccessComponent implements OnInit {
       }
     );
   }
-  blockUser(data: Number) {
+  blockUser(data: number) {
     this.addminservice.deleteUser(data).subscribe(
       () => {
         this.toastr.error('User blocked successfully..!');
