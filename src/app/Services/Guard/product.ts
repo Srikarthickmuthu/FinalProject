@@ -1,15 +1,15 @@
 export interface AddProduct {
   length: any;
-  userId: String;
-  id: Number;
-  productName: String;
-  productType: String;
-  productPrice: Number;
-  productImage: String;
-  deliveryStatus: String;
+  userId: string;
+  id: number;
+  productName: string;
+  productType: string;
+  productPrice: number;
+  productImage: string;
+  deliveryStatus: string;
 }
 
 export interface errorMessage{
-  status:Number;
-  name:String;
+  status:number;
+  name:string;
 }

@@ -33,4 +33,21 @@ describe('SellingDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  describe('setSessionData', () => {
+    it('should set the session storage items', () => {
+      const spy = spyOn(sessionStorage, 'setItem');
+      const data = 'exampleData';
+      const id = 'exampleId';
+      let Quantity:any;
+      component.setSessionData(data, id);
+      expect(spy).toHaveBeenCalledWith('quantity', Quantity);
+      expect(spy).toHaveBeenCalledWith('productName', data);
+      expect(spy).toHaveBeenCalledWith('productPrice', id);
+    });
+  });
+  it('',()=>{
+    component.openTallyDialog();
+  })
 });
+
+

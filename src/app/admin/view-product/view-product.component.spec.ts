@@ -37,7 +37,7 @@ describe('ViewProductComponent', () => {
     expect(component).toBeTruthy();
   });
   it('', () => {
-    component.edit(data);
+    component.editProduct(data);
     expect(localStorage.setItem('id', data.toString()));
   });
 });

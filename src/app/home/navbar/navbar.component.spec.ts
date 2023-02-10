@@ -36,7 +36,8 @@ describe('NavbarComponent', () => {
   });
   it('', () => {
     component.logout();
-    expect(showLogout).toBe(false);
-    expect(service.logout()).toHaveBeenCalled();
+    spyOn(service, 'logout');
+    expect(component.showLogout).toBe(false);
+    expect(service.logout).toHaveBeenCalled();
   });
-});
+}); 

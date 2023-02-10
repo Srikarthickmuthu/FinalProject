@@ -18,24 +18,23 @@ export class EditProductComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit() {
-    const id = localStorage.getItem('id');
+ngOnInit() {
+  const id = localStorage.getItem('id');
 
-    this.adminService.getProductEdit(id).subscribe(
-      (res: AddProduct) => {
-        this.product = res;
-      },
-      (err: errorMessage) => {
-        this.toastr.error(`${err.status} Error ${err.name}`);
-      }
-    );
-  }
+  this.adminService.getProductEdit(id).subscribe(
+    (res: AddProduct) => {
+      this.product = res;
+    },
+    (err) => {
+      this.toastr.error(`${err.status} Error ${err.name}`);
+    }
+  );
+}
 
   onSubmit(editProduct: NgForm) {
     const data = editProduct.value.id;
-
     this.product = editProduct.value;
-
+  
     this.adminService.editProduct(data, this.product).subscribe(
       () => {
         this.toastr.success('Product details edited successfully..!');
@@ -45,6 +44,7 @@ export class EditProductComponent implements OnInit {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
-    return editProduct.resetForm();
+  
+    editProduct.resetForm();
   }
 }

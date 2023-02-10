@@ -13,7 +13,8 @@ describe('CartComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CartComponent, NavbarComponent],
       providers: [
-        HttpClient,HttpHandler,
+        HttpClient,
+        HttpHandler,
         {
           provide: ToastrService,
           useValue: ToastrService,
@@ -30,4 +31,14 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-})
+  // it('should set showRemove to false', () => {
+  //   component.ordered();
+  //   expect(component.showRemove).toBe(false);
+  // });
+
+  it('should call ngOnInit()', () => {
+    spyOn(component, 'ngOnInit');
+    component.ordered();
+    expect(component.ngOnInit).toHaveBeenCalled();
+  });
+});

@@ -15,10 +15,10 @@ export class AddProductComponent {
     private toastr: ToastrService
   ) {}
 
-  onSubmit(addProduct: NgForm): void {
-    this.adminservice.addProduct(addProduct.value).subscribe(
+  onSubmit(formData: NgForm): void {
+    this.adminservice.addProduct(formData.value).subscribe(
       () => {
-        addProduct.resetForm();
+        formData.resetForm();
         this.toastr.success('New product added..!');
       },
       (err: errorMessage) => {

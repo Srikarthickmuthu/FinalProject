@@ -10,21 +10,19 @@ import { UserService } from 'src/app/Services/user.service';
 export class NavbarComponent implements OnInit {
   showUser!: boolean;
   showLogout!: boolean;
+
   constructor(
     private toastr: ToastrService,
     private userservice: UserService
   ) {}
-  user = localStorage.getItem('Active-User');
-  admin = localStorage.getItem('Active-User-admin');
+
   ngOnInit() {
-    if (this.admin != null) {
-      (this.showUser = false), (this.showLogout = true);
-    } else if (this.user != null) {
-      (this.showUser = true), (this.showLogout = true);
-    } else {
-      (this.showUser = true), (this.showLogout = false);
-    }
+    const user = localStorage.getItem('Active-User');
+    const admin = localStorage.getItem('Active-User-admin');
+    this.showUser = !!user;
+    this.showLogout = !!admin || !!user;
   }
+
   logout() {
     this.toastr.success('Logout Successfull..!');
     this.showLogout = false;

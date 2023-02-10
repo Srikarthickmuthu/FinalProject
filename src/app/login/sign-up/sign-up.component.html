@@ -53,8 +53,7 @@
         placeholder="Enter your Mail Id"
         autocomplete="off"
         ngModel
-        [pattern]="Emailpattern"
-        required
+        required="email"
         email
         #email="ngModel"
       />
@@ -77,8 +76,8 @@
         password
       />
       <span *ngIf="!password.valid && password.touched"
-        >Password is required in requested format e.g Abcd@123 </span
-      >
+        >Password is required in requested format e.g Abcd@123
+      </span>
       <label
         >Select Your Country
         <select
@@ -95,14 +94,14 @@
           </option>
         </select>
       </label>
-      
-<div>
-  <button [disabled]="!userForm.valid">Submit</button>
-</div>
-      
-<div>
-      <button routerLink="/loginSignUp-path/login-path">Login</button>
-    </div>
+
+      <div>
+        <button [disabled]="!userForm.valid">Submit</button>
+      </div>
+
+      <div>
+        <button routerLink="/loginSignUp-path/login-path">Login</button>
+      </div>
     </div>
   </form>
 </div>

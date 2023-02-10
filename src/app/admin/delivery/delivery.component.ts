@@ -12,13 +12,19 @@ import { UserService } from 'src/app/Services/user.service';
 export class DeliveryComponent implements OnInit {
   public cart!: AddProduct[];
   public update!: AddProduct;
+  public value = 'Ordered';
+
   constructor(
     public userservice: UserService,
     public adminservice: AdminService,
     private toastr: ToastrService
   ) {}
-  value = 'Ordered';
+
   ngOnInit() {
+    this.getCart();
+  }
+
+  getCart() {
     this.userservice.getCart().subscribe((res: any) => {
       this.cart = res.filter(
         (el: { deliveryStatus: string }) => {
@@ -30,14 +36,15 @@ export class DeliveryComponent implements OnInit {
       );
     });
   }
+
   delivered(dataUser: number) {
     this.userservice.getSingle(dataUser).subscribe((res: any) => {
       this.update = res;
       this.update.deliveryStatus = 'Delivered';
-      this.ngOnInit();
       this.adminservice.updateDelivery(dataUser, this.update).subscribe(
         () => {
           this.toastr.success('Status updated successfully');
+          this.getCart();
         },
         (err: errorMessage) => {
           this.toastr.error(`${err.status} Error ${err.name}`);

@@ -15,25 +15,33 @@ export class SignUpComponent {
 
   constructor(public userservice: UserService, private toastr: ToastrService , private router :Router) {}
 
-  mobNumberPattern = '^((\\+91-?)|0)?[0-9]{10}$';
+  mobNumberPattern = /^((\+91-?)|0)?[0-9]{10}$/;
 
-  Emailpattern = '[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
+  Emailpattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
-  passwordPattern = '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
+  passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
 
-  onSubmit(myForm: NgForm) {
-    this.userservice.addUser(myForm.value).subscribe(
-      () => {
-        myForm.resetForm();
-        this.toastr.success('Sign-up Successfull..!');
-        setTimeout(()=>{
-          this.router.navigate(['/loginSignUp-path/login-path'])
-        },1000)
-      },
-      (err: errorMessage) => {
-        this.toastr.error(`${err.status} Error ${err.name}`);
-      }
-    );
+onSubmit(myForm: NgForm) {
+  this.userservice.addUser(myForm.value).subscribe(
+    () => {
+      this.handleSuccess(myForm);
+    },
+    (err: errorMessage) => {
+      this.handleError(err);
+    }
+  );
+}
+
+handleSuccess(myForm: NgForm) {
+  myForm.resetForm();
+  this.toastr.success('Sign-up Successfull..!');
+  setTimeout(()=>{
+    this.router.navigate(['/loginSignUp-path/login-path'])
+  },1000)
+}
+
+handleError(err: errorMessage) {
+  this.toastr.error(`${err.status} Error ${err.name}`);
 }
 
   countryList = [

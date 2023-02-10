@@ -38,11 +38,10 @@ export class ViewProductComponent implements OnChanges {
   id!: number;
   show = false;
 
-  edit(data: number) {
+  editProduct(data: number) {
     this.dialog
       .open(EditProductComponent)
-      .afterClosed()
-      .subscribe(
+      .afterClosed().subscribe(
         () => {
           this.getProducts();
         },

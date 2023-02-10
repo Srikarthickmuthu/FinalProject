@@ -9,6 +9,8 @@ describe('AccessService', () => {
   let service: AccessService;
   // let adminService:AdminService;
   // let user:UserData;
+  // let email:string;
+  // let password:string;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -30,4 +32,8 @@ describe('AccessService', () => {
   //   service.ngOnInit();
   //   expect(adminService.getUser().subscribe()).toHaveBeenCalledTimes(1)
   // })
+  // it('',()=>{
+  //   service.login(email , password);
+  // })
+  
 });

@@ -1,8 +1,8 @@
 export interface UserData {
-  id: Number;
-  fname: String;
-  lname: String;
-  number: Number;
+  id: number;
+  fname: string;
+  lname: string;
+  number: number;
   email: string;
   password: string;
   country: String;

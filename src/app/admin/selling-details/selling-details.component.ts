@@ -15,21 +15,22 @@ export class SellingDetailsComponent {
   cart!: any;
   cart1!: any;
   update!: AddProduct;
+  Quantity: any;
+  value = 'Delivered';
+
   constructor(
     public userservice: UserService,
     public adminservice: AdminService,
     private dialog: MatDialog,
     private toastr: ToastrService
   ) {}
-  value = 'Delivered';
+
   ngOnInit() {
     this.adminservice.getProduct().subscribe((res: any) => {
       this.cart = res;
     });
     this.clear();
   }
-
-  Quantity: any;
 
   total(data: any, id: any) {
     this.userservice.getCart().subscribe((res: any) => {
@@ -43,12 +44,19 @@ export class SellingDetailsComponent {
       );
       this.Quantity = this.cart1.length;
     });
+    this.setSessionData(data, id);
+    this.openTallyDialog();
+  }
+
+  setSessionData(data: any, id: any) {
     setTimeout(() => {
       sessionStorage.setItem('quantity', this.Quantity);
       sessionStorage.setItem('productName', data);
       sessionStorage.setItem('productPrice', id);
     }, 500);
+  }
 
+  openTallyDialog() {
     setTimeout(() => {
       this.dialog
         .open(TallyComponent)
@@ -63,6 +71,7 @@ export class SellingDetailsComponent {
         );
     }, 700);
   }
+
   clear() {
     sessionStorage.clear();
   }

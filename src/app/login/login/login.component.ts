@@ -24,18 +24,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginform = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
-
-      password: ['', [Validators.required , Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$') , Validators.minLength(8)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+')]],
     });
   }
 
   login() {
-    this.access.login(
-      this.loginform.value.email,
-      this.loginform.value.password
-    );
+    this.access.login(this.loginform.value.email , this.loginform.value.password);
     this.loginform.reset();
   }
 }
-

@@ -11,17 +11,18 @@ import { UserService } from 'src/app/Services/user.service';
 export class CartComponent implements OnInit {
   cart: any = [];
   a!: AddProduct;
-
-  constructor(public userservice: UserService, private toastr: ToastrService) {}
-
   user = localStorage.getItem('Active-User');
   show = true;
   showCart = false;
   lengthValue = 0;
   showRemove = true;
+
+  constructor(public userservice: UserService, private toastr: ToastrService) {}
+
   ngOnInit() {
     this.getCart();
   }
+
   getCart() {
     this.userservice.getCart().subscribe(
       (res: any) => {
@@ -31,16 +32,15 @@ export class CartComponent implements OnInit {
           }
         );
         this.lengthValue = this.cart.length;
-        if (length !== 0) {
-          this.show = false;
-          this.showCart = true;
-        }
+        this.show = this.lengthValue === 0;
+        this.showCart = !this.show;
       },
       (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
       }
     );
   }
+
   delete(data: number) {
     this.userservice.delete(data).subscribe(
       () => {
@@ -52,6 +52,7 @@ export class CartComponent implements OnInit {
       }
     );
   }
+
   ordered() {
     this.showRemove = false;
     this.ngOnInit();
