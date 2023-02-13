@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
+import { errorMessage } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -14,7 +14,6 @@ export class TotalOrdersComponent {
   deliveryStatus = 'Delivered';
   show = true;
   showCart = false;
-  lengthValue = 0;
 
   constructor(public userservice: UserService, private toastr: ToastrService) {
     this.user = localStorage.getItem('Active-User');
@@ -29,10 +28,9 @@ export class TotalOrdersComponent {
       (res: any) => {
         this.cart = res.filter(
           (el: { userId: string; deliveryStatus: string }) => {
-             el.userId == this.user && el.deliveryStatus == 'Delivered';
+            return el.userId == this.user && el.deliveryStatus == 'Delivered';
           }
         );
-        this.lengthValue = this.cart.length;
       },
       (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);

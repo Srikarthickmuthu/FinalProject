@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { AccessGuard } from '../Services/Guard/access.guard';
-import { AdminGuard } from '../Services/Guard/admin.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PagenotfoundComponent } from '../home/pagenotfound/pagenotfound.component';
+import { LoginGuard } from '../Services/Guard/login.guard';
 
 const routes: Routes = [
-  { path: 'login-path', component: LoginComponent , canActivate:[]},
-  { path: 'sign-up-path', component: SignUpComponent },
+  { path: 'login-path', component: LoginComponent  , canActivate:[LoginGuard]},
+  { path: 'sign-up-path', component: SignUpComponent , canActivate:[LoginGuard]},
+  { path: '', redirectTo: '/home-path/user-home-path', pathMatch: 'full' },
+  { path: '**', component: PagenotfoundComponent },
 ];
 
 @NgModule({

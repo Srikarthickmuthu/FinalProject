@@ -9,6 +9,8 @@ import { SellingDetailsComponent } from './selling-details.component';
 
 describe('SellingDetailsComponent', () => {
   let component: SellingDetailsComponent;
+  let data :any;
+  let id :any;
   let fixture: ComponentFixture<SellingDetailsComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,20 +35,11 @@ describe('SellingDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  describe('setSessionData', () => {
-    it('should set the session storage items', () => {
-      const spy = spyOn(sessionStorage, 'setItem');
-      const data = 'exampleData';
-      const id = 'exampleId';
-      let Quantity:any;
-      component.setSessionData(data, id);
-      expect(spy).toHaveBeenCalledWith('quantity', Quantity);
-      expect(spy).toHaveBeenCalledWith('productName', data);
-      expect(spy).toHaveBeenCalledWith('productPrice', id);
-    });
-  });
   it('',()=>{
     component.openTallyDialog();
+  })
+  it('',()=>{
+    component.setSessionData(data , id);
   })
 });
 

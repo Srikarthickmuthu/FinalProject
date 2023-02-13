@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class AccessGuard implements CanActivate {
-  constructor(public user: UserService, private toastr: ToastrService , private router:Router) {}
+  constructor(private toastr: ToastrService , private router:Router) {}
 
   canActivate():
     | Observable<boolean | UrlTree>
