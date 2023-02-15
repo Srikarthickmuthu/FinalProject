@@ -9,6 +9,8 @@ import { CartComponent } from './cart.component';
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
+  let data:any;
+  let id:number;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CartComponent, NavbarComponent],
@@ -31,14 +33,15 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  // it('should set showRemove to false', () => {
+  // it('should call ngOnInit()', () => {
+  //   spyOn(component, 'ngOnInit');
   //   component.ordered();
-  //   expect(component.showRemove).toBe(false);
+  //   expect(component.ngOnInit).toHaveBeenCalled();
   // });
-
-  it('should call ngOnInit()', () => {
-    spyOn(component, 'ngOnInit');
-    component.ordered();
-    expect(component.ngOnInit).toHaveBeenCalled();
-  });
+  it('',()=>{
+    component.increment(data , id)
+  })
+  it('',()=>{
+    component.decrement(data , id)
+  })
 });

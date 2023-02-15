@@ -9,6 +9,7 @@
         <th>Product name</th>
         <th>Product Type</th>
         <th>Product Price</th>
+        <th>Quantity</th>
         <th>Ordered By</th>
         <th>Delivery status</th>
       </tr>
@@ -19,6 +20,7 @@
         <td>{{ cart.productName }}</td>
         <td>{{ cart.productType }}</td>
         <td>{{ cart.productPrice }}</td>
+        <td>{{cart.quantity}}</td>
         <td>{{ cart.userId }}</td>
         <td><button (click)="delivered(cart.id)">Delivered</button></td>
       </tr>

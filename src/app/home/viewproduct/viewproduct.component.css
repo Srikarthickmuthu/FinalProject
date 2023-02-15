@@ -1,6 +1,6 @@
 .card img {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 10px;
   transition: 0.3s ease-in-out;
 }
@@ -9,10 +9,11 @@
   transform: scale(1.1);
 }
 .card {
+  align-items: center;
   padding: 5px;
   margin: 30px;
   border: 1px solid black;
-  width: fit-content;
+  width: 250px;
   background-color: floralwhite;
 }
 .container {
@@ -32,6 +33,13 @@ button {
   cursor: pointer;
 }
 img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 250px;
+  max-height: 250px;
+}
+.disabled{
+  background-color: green;
+}
+b{
+  border: 1px solid black;
+  padding: 4px 10px;
 }
