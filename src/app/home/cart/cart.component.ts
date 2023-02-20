@@ -111,6 +111,6 @@ export class CartComponent implements OnInit {
       let id = element.id;
       this.userservice.updateDelivery(id, element).subscribe();
     });
-    // this.getCart();
+    this.getCart();
   }
 }
