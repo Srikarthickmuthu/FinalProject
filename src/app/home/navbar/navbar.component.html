@@ -10,6 +10,9 @@
       <li routerLink="/home-path/user-cart-path">
         <p>My Cart</p>
       </li>
+      <li routerLink="/home-path/track-delivery-path" *ngIf="showLogout">
+        <p>Track Delivery</p>
+      </li>
       <li routerLink="/home-path/total-orders-path" *ngIf="showLogout">
         <p>My Orders</p>
       </li>
@@ -49,5 +52,3 @@
     </ul>
   </div>
 </ng-container>
-
-<router-outlet></router-outlet>

@@ -1,31 +1,31 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
 import { AdminService } from 'src/app/Services/admin.service';
 import { UserService } from 'src/app/Services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-viewproduct',
   templateUrl: './viewproduct.component.html',
   styleUrls: ['./viewproduct.component.css'],
+  providers: [CartComponent],
 })
-export class ViewproductComponent implements OnInit, OnDestroy {
+export class ViewproductComponent implements OnInit {
   public product!: AddProduct[];
-  public product1: any;
+  public product1: any = [];
   public cart1!: AddProduct[];
   public id: any = [];
-  public idValue: any;
+  public id1: any = [];
+  public idValue = '';
+  qunatity = 0;
   constructor(
     public adminservice: AdminService,
     public userservice: UserService,
     private toastr: ToastrService,
     private router: Router
   ) {}
-  ngOnDestroy() {
-    // console.log(this.id);
-    localStorage.setItem('id', this.id);
-  }
   ngOnInit() {
     this.adminservice.getProduct().subscribe(
       (res: AddProduct[]) => {
@@ -41,7 +41,7 @@ export class ViewproductComponent implements OnInit, OnDestroy {
 
   cart(data: any) {
     if (this.user != null) {
-      this.id.push(data.id);
+      this.qunatity = 1;
       setTimeout(() => {
         data.userId = this.user;
         data.deliveryStatus = 'Ordered';
@@ -56,7 +56,7 @@ export class ViewproductComponent implements OnInit, OnDestroy {
             this.toastr.error(`${err.status} Error ${err.name}`);
           }
         );
-      }, 1000);
+      }, 200);
       delete data.id;
     } else {
       this.toastr.warning('Please login before continue..!');
@@ -67,18 +67,35 @@ export class ViewproductComponent implements OnInit, OnDestroy {
   }
 
   getCart() {
-    this.idValue = localStorage.getItem('id');
-    console.log(this.idValue)
-    const id=this.idValue.split(',').map((item:any)=>{
-      return parseInt(item)
-    })
-    console.log(id)
-    id.map((element:any)=>{
-      this.userservice.getSingleProduct(element).subscribe((res:any)=>{
-        res.show=false;
-        this.cart1=res;
-        console.log(this.cart1);
-      })
-    })
+    this.userservice.getCart().subscribe((res: any) => {
+      this.cart1 = res.filter(
+        (el: { userId: string; deliveryStatus: string }) => {
+          return el.userId == this.user && el.deliveryStatus == 'Ordered';
+        }
+      );
+      this.cart1.map((element: any) => {
+        this.id.push(element.productName);
+        localStorage.setItem('id', this.id);
+      });
+    });
+    let idValueFromLocalStorage = localStorage.getItem('id');
+    this.idValue =
+      idValueFromLocalStorage !== null ? idValueFromLocalStorage : '';
+    if (this.idValue != null) {
+      this.id1 = this.idValue.split(',');
+    }
+    setTimeout(() => {
+      this.product.map((element: any) => {
+        if (this.id1.includes(element.productName)) {
+          element.show = false;
+          return this.product1.push(element);
+        } else {
+          return this.product1.push(element);
+        }
+      });
+    }, 1000);
+  }
+  added() {
+    this.toastr.info('Item is already added to the cart..!');
   }
 }

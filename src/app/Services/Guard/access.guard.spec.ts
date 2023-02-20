@@ -13,7 +13,7 @@ describe('AccessGuard', () => {
         HttpHandler,
         {
           provide: ToastrService,
-          useValue: ToastrService,
+          useValue: {warning:()=>{}},
         },
       ],
     });

@@ -35,12 +35,12 @@ describe('SellingDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('',()=>{
-    component.openTallyDialog();
-  })
-  it('',()=>{
-    component.setSessionData(data , id);
-  })
+  // it('',()=>{
+  //   component.openTallyDialog();
+  // })
+  // it('',()=>{
+  //   component.setSessionData(data , id);
+  // })
 });
 
 

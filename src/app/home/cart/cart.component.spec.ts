@@ -5,12 +5,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CartComponent } from './cart.component';
+import { of, throwError } from 'rxjs';
+import { UserService } from 'src/app/Services/user.service';
+import { AddProduct } from 'src/app/Services/Guard/product';
 
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
-  let data:any;
-  let id:number;
+  let userService: UserService;
+  let toastr: ToastrService;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CartComponent, NavbarComponent],
@@ -19,12 +22,11 @@ describe('CartComponent', () => {
         HttpHandler,
         {
           provide: ToastrService,
-          useValue: ToastrService,
+          useValue: { warning: () => {} , error: () => {} , info:()=>{}},
         },
       ],
       imports: [RouterModule, RouterTestingModule],
     }).compileComponents();
-
     fixture = TestBed.createComponent(CartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -33,15 +35,62 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  // it('should call ngOnInit()', () => {
-  //   spyOn(component, 'ngOnInit');
-  //   component.ordered();
-  //   expect(component.ngOnInit).toHaveBeenCalled();
-  // });
-  it('',()=>{
-    component.increment(data , id)
-  })
-  it('',()=>{
-    component.decrement(data , id)
-  })
+
+  it('should call userService.delete and show toastr message on success', () => {
+    const userService = TestBed.inject(UserService);
+    spyOn(userService, 'delete').and.returnValue(of<any>(null));
+    spyOn(TestBed.inject(ToastrService), 'warning');
+    component.delete(123);
+    expect(userService.delete).toHaveBeenCalledWith(123);
+    expect(component.getCart()).toEqual([]);
+    expect(TestBed.inject(ToastrService).warning).toHaveBeenCalledWith('Product removed ..!');
+  });
+  it('should set quantity to 10 and show info message if quantity is already 10', () => {
+    const data = { quantity: 10, productPrice: 5, total: 50 };
+    component.increment(data, 'productName');
+    spyOn(TestBed.inject(ToastrService), 'info');
+    expect(toastr.info).toHaveBeenCalledWith('You can add upto 10 units only !');
+    expect(data.quantity).toEqual(10);
+  });
+
+  it('should increment quantity and update delivery if quantity is between 1 and 9', () => {
+    const data : AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    const name = 'product name';
+    const expectedData = { ...data, quantity: 6, total: 30 };
+    component.increment(data, name);
+    expect(data.quantity).toEqual(6);
+    expect(data.total).toEqual(expectedData.total);
+    expect(userService.updateDelivery).toHaveBeenCalledWith( expectedData.id,expectedData );
+  });
+
+  it('should decrement the quantity of an item in the cart', () => {
+    const cartItem :AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    component.cart = [cartItem];
+    spyOn(userService, 'updateDelivery').and.returnValue(of<any>(null));
+    spyOn(component, 'getCart');
+    component.decrement(cartItem, 'test');
+    expect(cartItem.quantity).toBe(1);
+    expect(cartItem.total).toBe(10);
+    expect(userService.updateDelivery).toHaveBeenCalledWith(cartItem.id, cartItem);
+    expect(component.getCart).toHaveBeenCalled();
+  });
+
+  it('should delete an item from the cart if the quantity is 1', () => {
+    const cartItem :AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    component.cart = [cartItem];
+    spyOn(component, 'delete');
+    component.decrement(cartItem, 'test');
+    expect(component.delete).toHaveBeenCalledWith(1);
+  });
+
+  it('should show an error message if the update request fails', () => {
+    const cartItem :AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    component.cart = [cartItem];
+    const error = { status: 500, name: 'Internal Server Error' };
+    spyOn(userService, 'updateDelivery').and.returnValue(throwError(error));
+    spyOn(toastr, 'error');
+    component.decrement(cartItem, 'test');
+    expect(toastr.error).toHaveBeenCalledWith(`${error.status} Error ${error.name}`);
+  });  
 });
+

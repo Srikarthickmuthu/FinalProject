@@ -18,7 +18,7 @@ describe('NavbarComponent', () => {
       providers: [
         {
           provide: ToastrService,
-          useValue: ToastrService,
+          useValue: {success:()=>{}},
         },
         HttpClient,
         HttpHandler,

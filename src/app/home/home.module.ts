@@ -10,6 +10,7 @@ import { SumPipe } from '../Services/Pipes/sum.pipe';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TotalOrdersComponent } from './total-orders/total-orders.component';
+import { TrackDeliveryComponent } from './trackDelivery/trackDelivery.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TotalOrdersComponent } from './total-orders/total-orders.component';
     PagenotfoundComponent,
     NavbarComponent,
     TotalOrdersComponent,
+    TrackDeliveryComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, HttpClientModule],
   exports: [NavbarComponent],

@@ -14,14 +14,11 @@ export class NavbarComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private userservice: UserService
-  ) {
-  
-  }
+  ) {}
   user = localStorage.getItem('Active-User');
   admin = localStorage.getItem('Active-User-admin');
 
   ngOnInit() {
-    
     if (this.admin != null) {
       (this.showUser = false), (this.showLogout = true);
     } else if (this.user != null) {

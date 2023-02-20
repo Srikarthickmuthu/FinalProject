@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { AddProductComponent } from 'src/app/admin/add-product/add-product.component';
-import { AddProduct, errorMessage } from 'src/app/Services/Guard/product';
+import { errorMessage } from 'src/app/Services/Guard/product';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -10,12 +9,13 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  public cart: any;
-  public product: any=[];
+  public cart: any = [];
+  public product: any = [];
   public product1: any;
+  public uniqueCart: any;
+  public id: any;
   user = localStorage.getItem('Active-User');
-  quantity = 0;
-  constructor(public userservice: UserService, private toastr: ToastrService) {}
+  constructor(public userservice: UserService, public toastr: ToastrService) {}
 
   ngOnInit() {
     this.getCart();
@@ -29,16 +29,26 @@ export class CartComponent implements OnInit {
             return el.userId == this.user && el.deliveryStatus == 'Ordered';
           }
         );
-        // this.cart.map((element:any)=>{
-        //   console.log(element)
-        // });
-        
+        this.uniqueCart = this.cart.filter(
+          (item: { productName: any }, index: any, self: any[]) => {
+            return (
+              index ===
+              self.findIndex(
+                (t: { productName: any }) => t.productName === item.productName
+              )
+            );
+          }
+        );
+        this.cart = this.uniqueCart;
+        if (this.cart.length == 0) {
+          localStorage.removeItem('id');
+        }
       },
       (err: errorMessage) => {
         this.toastr.error(`${err.status} Error ${err.name}`);
-      },
-      
+      }
     );
+    return this.cart;
   }
 
   delete(data: number) {
@@ -52,29 +62,19 @@ export class CartComponent implements OnInit {
       }
     );
   }
-  duplicateItem(data: any) {
-    const a = this.cart.filter((el: any) => {
-      return el.productName == data.productName;
-    });
-    data.quantity = a.length;
-    const id = data.id;
-    this.userservice.updateDelivery(id, data).subscribe(
-      () => {
-        this.getCart();
-      },
-      (err: errorMessage) => {
-        this.toastr.error(`${err.status} Error ${err.name}`);
-      }
-    );
-  }
-  increment(data: any, id: number) {
-    if (data.quantity >= 5) {
-      this.toastr.info('You can add upto 5 units only !');
-      data.quantity = 5;
+  increment(data: any, name: string) {
+    if (data.quantity >= 10) {
+      this.toastr.info('You can add upto 10 units only !');
+      data.quantity = 10;
     } else if (data.quantity >= 1) {
       data.quantity++;
       data.total = data.productPrice * data.quantity;
-      this.userservice.updateDelivery(id, data).subscribe(
+      this.cart.map((element: any) => {
+        if (element.productName == name) {
+          return (this.id = element.id);
+        }
+      });
+      this.userservice.updateDelivery(this.id, data).subscribe(
         () => {
           this.getCart();
         },
@@ -84,11 +84,16 @@ export class CartComponent implements OnInit {
       );
     }
   }
-  decrement(data: any, id: number) {
+  decrement(data: any, name: string) {
     if (data.quantity > 1) {
       data.quantity--;
       data.total = data.productPrice * data.quantity;
-      this.userservice.updateDelivery(id, data).subscribe(
+      this.cart.map((element: any) => {
+        if (element.productName == name) {
+          return (this.id = element.id);
+        }
+      });
+      this.userservice.updateDelivery(this.id, data).subscribe(
         () => {
           this.getCart();
         },
@@ -97,7 +102,15 @@ export class CartComponent implements OnInit {
         }
       );
     } else if ((data.quantity = 1)) {
-      this.delete(data.id);
+      this.delete(this.id);
     }
+  }
+  checkout() {
+    this.cart.map((element: any) => {
+      element.deliveryStatus = 'Out for delivery';
+      let id = element.id;
+      this.userservice.updateDelivery(id, element).subscribe();
+    });
+    // this.getCart();
   }
 }

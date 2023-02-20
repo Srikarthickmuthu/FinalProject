@@ -12,7 +12,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class DeliveryComponent implements OnInit {
   public cart!: AddProduct[];
   public update!: AddProduct;
-  public value = 'Ordered';
+  public value = 'Out for delivery';
 
   constructor(
     public userservice: UserService,

@@ -20,7 +20,7 @@ export class AccessGuard implements CanActivate {
       return true;
     } else  {
       this.toastr.warning('Please login before continue..!');
-      this.router.navigate(['/loginSignUp-path/login-path']);
+      this.router.navigate(['loginSignUp-path/login-path']);
       return false;
     }
   }

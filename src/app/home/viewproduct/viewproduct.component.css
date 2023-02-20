@@ -11,7 +11,7 @@
 .card {
   align-items: center;
   padding: 5px;
-  margin: 30px;
+  margin: 20px;
   border: 1px solid black;
   width: 250px;
   background-color: floralwhite;
@@ -21,7 +21,7 @@
   flex-wrap: wrap;
   padding-top: 55px;
 }
-button {
+#button {
   border-radius: 20px;
   border: 1px solid #00d2ff;
   background-color: #3a47d5;
@@ -36,10 +36,23 @@ img {
   max-width: 250px;
   max-height: 250px;
 }
-.disabled{
+.disabled {
+  border-radius: 20px;
+  border: 1px solid #00d2ff;
+  /* background-color: #3a47d5; */
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  cursor: pointer;
   background-color: green;
 }
-b{
+b {
   border: 1px solid black;
   padding: 4px 10px;
+}
+#quantity{
+  padding: 10px;
+  font-size: large;
 }
