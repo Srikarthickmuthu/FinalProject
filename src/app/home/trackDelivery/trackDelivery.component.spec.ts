@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { TrackDeliveryComponent } from './trackDelivery.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrService } from 'ngx-toastr';
 
 describe('TrackDeliveryComponent', () => {
   let component: TrackDeliveryComponent;
@@ -11,7 +15,11 @@ describe('TrackDeliveryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrackDeliveryComponent ]
+      declarations: [ TrackDeliveryComponent ],
+      providers:[HttpClient,HttpHandler,{
+        provide:ToastrService, useValue:ToastrService
+      }],
+      imports:[RouterModule,RouterTestingModule],
     })
     .compileComponents();
   }));
