@@ -6,7 +6,8 @@ import { AdminGuard } from './admin.guard';
 
 describe('AdminGuard', () => {
   let guard: AdminGuard;
-  let router:Router;
+  let router: Router;
+  let toastr: ToastrService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -14,11 +15,12 @@ describe('AdminGuard', () => {
         HttpHandler,
         {
           provide: ToastrService,
-          useValue: {warning:()=>{}},
+          useValue: { warning: () => {} },
         },
         {
-          provide:Router , useValue:router
-        }
+          provide: Router,
+          useValue: router,
+        },
       ],
     });
     guard = TestBed.inject(AdminGuard);
@@ -27,12 +29,36 @@ describe('AdminGuard', () => {
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
-  it('grant access', () => {
-    const canActivate = guard.canActivate();
-    expect(canActivate).toBeTrue();
+  describe('canActivate', () => {
+    beforeEach(() => {
+      toastr = TestBed.inject(ToastrService);
+      router = TestBed.inject(Router);
+      guard = TestBed.inject(AdminGuard);
+    });
+    it('should return true if Active-User-admin is set in localStorage', () => {
+      spyOn(localStorage, 'getItem').and.returnValue('someValue');
+
+      const result = guard.canActivate();
+
+      expect(result).toBeTrue();
+    });
+
+    it('should return true if Active-User-admin is set in localStorage', () => {
+      spyOn(localStorage, 'getItem').and.returnValue('someValue');
+
+      const result = guard.canActivate();
+
+      expect(result).toBeTrue();
+    });
+
+    it('should return false and redirect to user home path if Active-User-admin is not set in localStorage', () => {
+      spyOn(localStorage, 'getItem').and.returnValue(null);
+      const result = guard.canActivate();
+      expect(toastr.warning).toHaveBeenCalledWith('Access denied..!');
+      expect(router.navigate).toHaveBeenCalledWith([
+        '/home-path/user-home-path',
+      ]);
+      expect(result).toBeFalse();
+    });
   });
-  // it ('should return false',()=>{
-  //   expect(guard.canActivate()).toBe(false);
-  //   expect(router.navigate).toHaveBeenCalledWith(['/home-path/user-home-path'])
-  // })
 });

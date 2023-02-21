@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="cart.length !== 0">
+<div *ngIf="cart?.length !== 0">
   <h2>List of Ordered Products</h2>
   <table>
     <thead>
@@ -27,6 +27,6 @@
     </tbody>
   </table>
 </div>
-<ng-container *ngIf="cart.length == 0">
+<ng-container *ngIf="cart?.length == 0">
   <div class="card"></div>
 </ng-container>

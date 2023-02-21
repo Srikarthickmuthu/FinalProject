@@ -40,4 +40,7 @@ describe('ViewProductComponent', () => {
     component.editProduct(data);
     expect(localStorage.setItem('id', data.toString()));
   });
+  // it('',()=>{
+
+  // })
 });

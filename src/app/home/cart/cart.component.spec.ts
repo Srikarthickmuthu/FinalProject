@@ -22,7 +22,7 @@ describe('CartComponent', () => {
         HttpHandler,
         {
           provide: ToastrService,
-          useValue: { warning: () => {} , error: () => {} , info:()=>{}},
+          useValue: { warning: () => {}, error: () => {}, info: () => {} },
         },
       ],
       imports: [RouterModule, RouterTestingModule],
@@ -43,40 +43,86 @@ describe('CartComponent', () => {
     component.delete(123);
     expect(userService.delete).toHaveBeenCalledWith(123);
     expect(component.getCart()).toEqual([]);
-    expect(TestBed.inject(ToastrService).warning).toHaveBeenCalledWith('Product removed ..!');
+    expect(TestBed.inject(ToastrService).warning).toHaveBeenCalledWith(
+      'Product removed ..!'
+    );
   });
   it('should set quantity to 10 and show info message if quantity is already 10', () => {
     const data = { quantity: 10, productPrice: 5, total: 50 };
     component.increment(data, 'productName');
     spyOn(TestBed.inject(ToastrService), 'info');
-    expect(toastr.info).toHaveBeenCalledWith('You can add upto 10 units only !');
+    expect(toastr.info).toHaveBeenCalledWith(
+      'You can add upto 10 units only !'
+    );
     expect(data.quantity).toEqual(10);
   });
 
   it('should increment quantity and update delivery if quantity is between 1 and 9', () => {
-    const data : AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    const data: AddProduct = {
+      quantity: 5,
+      productPrice: 5,
+      total: 25,
+      length: 1,
+      userId: '1',
+      id: 1,
+      show: true,
+      productName: 'abc',
+      productImage: 'abc',
+      deliveryStatus: 'ordered',
+      productType: 'kilo',
+    };
     const name = 'product name';
     const expectedData = { ...data, quantity: 6, total: 30 };
     component.increment(data, name);
     expect(data.quantity).toEqual(6);
     expect(data.total).toEqual(expectedData.total);
-    expect(userService.updateDelivery).toHaveBeenCalledWith( expectedData.id,expectedData );
+    expect(userService.updateDelivery).toHaveBeenCalledWith(
+      expectedData.id,
+      expectedData
+    );
   });
 
   it('should decrement the quantity of an item in the cart', () => {
-    const cartItem :AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    const cartItem: AddProduct = {
+      quantity: 5,
+      productPrice: 5,
+      total: 25,
+      length: 1,
+      userId: '1',
+      id: 1,
+      show: true,
+      productName: 'abc',
+      productImage: 'abc',
+      deliveryStatus: 'ordered',
+      productType: 'kilo',
+    };
     component.cart = [cartItem];
     spyOn(userService, 'updateDelivery').and.returnValue(of<any>(null));
     spyOn(component, 'getCart');
     component.decrement(cartItem, 'test');
     expect(cartItem.quantity).toBe(1);
     expect(cartItem.total).toBe(10);
-    expect(userService.updateDelivery).toHaveBeenCalledWith(cartItem.id, cartItem);
+    expect(userService.updateDelivery).toHaveBeenCalledWith(
+      cartItem.id,
+      cartItem
+    );
     expect(component.getCart).toHaveBeenCalled();
   });
 
   it('should delete an item from the cart if the quantity is 1', () => {
-    const cartItem :AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    const cartItem: AddProduct = {
+      quantity: 5,
+      productPrice: 5,
+      total: 25,
+      length: 1,
+      userId: '1',
+      id: 1,
+      show: true,
+      productName: 'abc',
+      productImage: 'abc',
+      deliveryStatus: 'ordered',
+      productType: 'kilo',
+    };
     component.cart = [cartItem];
     spyOn(component, 'delete');
     component.decrement(cartItem, 'test');
@@ -84,13 +130,90 @@ describe('CartComponent', () => {
   });
 
   it('should show an error message if the update request fails', () => {
-    const cartItem :AddProduct={ quantity: 5, productPrice: 5, total: 25 , length:1 , userId:'1' , id:1 ,show: true, productName:'abc' , productImage:'abc' , deliveryStatus:'ordered',productType:'kilo'};
+    const cartItem: AddProduct = {
+      quantity: 5,
+      productPrice: 5,
+      total: 25,
+      length: 1,
+      userId: '1',
+      id: 1,
+      show: true,
+      productName: 'abc',
+      productImage: 'abc',
+      deliveryStatus: 'ordered',
+      productType: 'kilo',
+    };
     component.cart = [cartItem];
     const error = { status: 500, name: 'Internal Server Error' };
     spyOn(userService, 'updateDelivery').and.returnValue(throwError(error));
     spyOn(toastr, 'error');
     component.decrement(cartItem, 'test');
-    expect(toastr.error).toHaveBeenCalledWith(`${error.status} Error ${error.name}`);
-  });  
-});
+    expect(toastr.error).toHaveBeenCalledWith(
+      `${error.status} Error ${error.name}`
+    );
+  });
 
+  it('should filter and return the unique cart items', () => {
+    const mockResponse = [
+      { userId: '1', deliveryStatus: 'Ordered', productName: 'Product 1' },
+      { userId: '1', deliveryStatus: 'Ordered', productName: 'Product 2' },
+      { userId: '1', deliveryStatus: 'Ordered', productName: 'Product 1' },
+      {
+        userId: '1',
+        deliveryStatus: 'Out for delivery',
+        productName: 'Product 3',
+      },
+    ];
+
+    spyOn(component.userservice, 'getCart').and.returnValue(of(mockResponse));
+    spyOn(component.toastr, 'error');
+
+    component.getCart();
+
+    expect(component.cart).toEqual([
+      { userId: '1', deliveryStatus: 'Ordered', productName: 'Product 1' },
+      { userId: '1', deliveryStatus: 'Ordered', productName: 'Product 2' },
+    ]);
+    expect(localStorage.removeItem).toHaveBeenCalledWith('id');
+    expect(component.toastr.error).not.toHaveBeenCalled();
+  });
+  it('should update delivery status to "Out for delivery" for all items in the cart and call getCart()', () => {
+    const mockCart = [
+      { id: 1, deliveryStatus: 'Ordered' },
+      { id: 2, deliveryStatus: 'Ordered' },
+    ];
+    spyOn(userService, 'getCart').and.returnValue(of(mockCart));
+    spyOn(userService, 'updateDelivery').and.returnValue(of({}));
+
+    component.checkout();
+
+    expect(userService.updateDelivery).toHaveBeenCalledTimes(2);
+    expect(userService.updateDelivery).toHaveBeenCalledWith(1, {
+      id: 1,
+      deliveryStatus: 'Out for delivery',
+      productImage: 'acx',
+      productName: 'sd',
+      productPrice: 1223,
+      productType: 'sa',
+      length: 1,
+      total: 2,
+      show: true,
+      userId: 'qw',
+      quantity: 1,
+    });
+    expect(userService.updateDelivery).toHaveBeenCalledWith(2, {
+      id: 1,
+      deliveryStatus: 'Out for delivery',
+      productImage: 'acx',
+      productName: 'sd',
+      productPrice: 1223,
+      productType: 'sa',
+      length: 1,
+      total: 2,
+      show: true,
+      userId: 'qw',
+      quantity: 1,
+    });
+    expect(userService.getCart).toHaveBeenCalled();
+  });
+});

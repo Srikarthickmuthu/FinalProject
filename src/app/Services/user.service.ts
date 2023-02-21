@@ -25,7 +25,6 @@ export class UserService {
     return this.http.post(`${this.url}/user-details`, data);
   }
   addProduct(data: any) {
-    // console.log(data)
     return this.http.post(`${this.url}/cart`,data);
   }
   getCart() {

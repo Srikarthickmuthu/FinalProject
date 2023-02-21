@@ -106,7 +106,7 @@ export class CartComponent implements OnInit {
     }
   }
   checkout() {
-    this.cart.map((element: any) => {
+    this.cart.forEach((element: any) => {
       element.deliveryStatus = 'Out for delivery';
       let id = element.id;
       this.userservice.updateDelivery(id, element).subscribe();

@@ -22,4 +22,7 @@ describe('TallyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // it('should call the method',()=>{
+  //   component.close()
+  // })
 });
