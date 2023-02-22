@@ -3,6 +3,7 @@ import { AdminService } from '../../Services/admin.service';
 import { UserData } from 'src/app/Services/Guard/sign-up';
 import { ToastrService } from 'ngx-toastr';
 import { errorMessage } from 'src/app/Services/Guard/product';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-user-access',
@@ -15,7 +16,8 @@ export class UserAccessComponent implements OnInit {
 
   constructor(
     private addminservice: AdminService,
-    private toastr: ToastrService
+    private userService:UserService,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class UserAccessComponent implements OnInit {
   }
 
   blockUser(data: number) {
-    this.addminservice.deleteUser(data).subscribe(
+    this.userService.deleteUser(data).subscribe(
       () => {
         this.toastr.error('User blocked successfully..!');
         this.getUser();

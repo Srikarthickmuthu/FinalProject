@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { access } from 'fs';
@@ -13,7 +13,8 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let service:AccessService;
-  let loginform:NgForm;
+  // let access:
+  let loginForm:FormGroup;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent , NavbarComponent ],
@@ -26,10 +27,26 @@ describe('LoginComponent', () => {
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    // loginForm = {
+    //   value: {
+    //     email: 'user@example.com',
+    //     password: 'password'
+    //   },
+    //   reset: jasmine.createSpy('reset')
+    // };
+    service = jasmine.createSpyObj('access', ['login']);
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should call access.login with the correct arguments', () => {
+    component.loginform = loginForm;
+    component.login();
+
+    expect(service.login).toHaveBeenCalledWith('user@example.com', 'password');
+    expect(loginForm.reset).toHaveBeenCalled();
+  });
+
 });

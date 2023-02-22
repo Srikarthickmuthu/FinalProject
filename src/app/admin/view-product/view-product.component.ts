@@ -4,6 +4,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { EditProductComponent } from '../edit-product/edit-product.component';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-view-product',
@@ -16,6 +17,7 @@ export class ViewProductComponent implements OnChanges {
   public update!: AddProduct[];
   constructor(
     public adminservice: AdminService,
+    public userservice:UserService,
     private toastr: ToastrService,
     private dialog: MatDialog
   ) {
@@ -54,7 +56,7 @@ export class ViewProductComponent implements OnChanges {
   }
 
   deleteProduct(data: number) {
-    this.adminservice.deleteProduct(data).subscribe(
+    this.userservice.deleteProduct(data).subscribe(
       () => {
         this.getProducts();
         this.toastr.warning('Product deleted..!');

@@ -176,5 +176,18 @@
       "productImage": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTYXyut3FKJprfnhvk2pafkwSbsDOpHzfF-5NwErb1K5576ZmUINXvQqVRYEHZ_5yhDFRS_giN-ZEecPJfKEJyIp9M-1PqH-O-rA8Pd1TQkt8QFaNy5OiSofg&usqp=CAE"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "show": true,
+      "productName": "Wheat",
+      "productType": "Kilogram",
+      "productPrice": 102,
+      "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9_H139mUWM_1egyGTEGm_yNxELdPDhsBdng&usqp=CAU",
+      "userId": "1",
+      "deliveryStatus": "Out for delivery",
+      "quantity": 1,
+      "total": 102,
+      "id": 2
+    }
+  ]
 }

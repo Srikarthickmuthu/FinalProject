@@ -33,15 +33,13 @@ onSubmit(myForm: NgForm) {
 }
 
 handleSuccess(myForm: NgForm) {
-  myForm?.resetForm();
+  myForm.resetForm();
   this.toastr.success('Sign-up Successfull..!');
-  setTimeout(()=>{
-    this.router.navigate(['/loginSignUp-path/login-path'])
-  },1000)
+  this.router.navigate(['/loginSignUp-path/login-path'])
 }
 
 handleError(err: errorMessage) {
-  this.toastr.error(`${err?.status} Error ${err?.name}`);
+  this.toastr.error(`${err.status} Error ${err.name}`);
 }
 
   countryList = [

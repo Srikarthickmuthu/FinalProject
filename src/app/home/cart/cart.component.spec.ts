@@ -216,4 +216,27 @@ describe('CartComponent', () => {
     });
     expect(userService.getCart).toHaveBeenCalled();
   });
+  it('should update delivery status of each cart item and call updateDelivery for each item', () => {
+    const mockCart = [      {id: 1, name: 'Item 1', deliveryStatus: 'In progress'},      {id: 2, name: 'Item 2', deliveryStatus: 'In progress'},      {id: 3, name: 'Item 3', deliveryStatus: 'In progress'}    ];
+    spyOn(userService, 'updateDelivery').and.returnValue(of<any>(null));
+
+    component.cart = mockCart;
+    component.checkout();
+
+    expect(component.cart[0].deliveryStatus).toBe('Out for delivery');
+    expect(component.cart[1].deliveryStatus).toBe('Out for delivery');
+    expect(component.cart[2].deliveryStatus).toBe('Out for delivery');
+    expect(userService.updateDelivery).toHaveBeenCalledTimes(3);
+    expect(userService.updateDelivery).toHaveBeenCalledWith(1, component.cart[0]);
+    expect(userService.updateDelivery).toHaveBeenCalledWith(2, component.cart[1]);
+    expect(userService.updateDelivery).toHaveBeenCalledWith(3, component.cart[2]);
+  });
+
+  it('should call getCart() after updating delivery status', () => {
+    spyOn(component, 'getCart');
+
+    component.checkout();
+
+    expect(component.getCart).toHaveBeenCalled();
+  });
 });

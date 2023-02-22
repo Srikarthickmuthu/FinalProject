@@ -41,7 +41,7 @@ export class DeliveryComponent implements OnInit {
     this.userservice.getSingle(dataUser).subscribe((res: any) => {
       this.update = res;
       this.update.deliveryStatus = 'Delivered';
-      this.adminservice.updateDelivery(dataUser, this.update).subscribe(
+      this.userservice.updateDeliveryAdmin(dataUser, this.update).subscribe(
         () => {
           this.toastr.success('Status updated successfully');
           this.getCart();

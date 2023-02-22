@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { errorMessage } from 'src/app/Services/Guard/product';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-add-product',
@@ -12,11 +13,12 @@ import { errorMessage } from 'src/app/Services/Guard/product';
 export class AddProductComponent {
   constructor(
     public adminservice: AdminService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService:UserService,
   ) {}
 
   onSubmit(formData: NgForm): void {
-    this.adminservice.addProduct(formData.value).subscribe(
+    this.userService.addProductAdmin(formData.value).subscribe(
       () => {
         formData.resetForm();
         this.toastr.success('New product added..!');

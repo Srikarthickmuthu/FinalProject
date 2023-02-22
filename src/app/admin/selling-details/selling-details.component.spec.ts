@@ -104,5 +104,4 @@ describe('SellingDetailsComponent', () => {
     expect(component.cart).toEqual(sampleData);
     expect(sessionStorage.clear).toHaveBeenCalled();
   });
-  
 });
