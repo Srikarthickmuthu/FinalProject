@@ -105,12 +105,13 @@ export class CartComponent implements OnInit {
       this.delete(this.id);
     }
   }
-  checkout() {
-    this.cart.forEach((element: any) => {
-      element.deliveryStatus = 'Out for delivery';
-      let id = element.id;
-      this.userservice.updateDelivery(id, element).subscribe();
-    });
-    this.getCart();
+ async checkout() {
+  for (const element of this.cart) {
+    element.deliveryStatus = 'Out for delivery';
+    const id = element.id;
+    await this.userservice.updateDelivery(id, element).toPromise();
   }
+  this.getCart();
+}
+
 }
